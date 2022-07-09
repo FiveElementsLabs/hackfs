@@ -1,3 +1,4 @@
+import { ethers } from "ethers";
 import actions from "./actions";
 
 type action = {
@@ -5,7 +6,16 @@ type action = {
   payload?: any;
 };
 
-export const initialState = {
+type State = {
+  is_connected: boolean;
+  account: string | null;
+  provider: ethers.providers.Provider | null;
+  network_name: string | null;
+  chain_id: number | string | null;
+  loading: boolean;
+};
+
+export const initialState: State = {
   is_connected: false,
   account: "",
   provider: null,
@@ -14,7 +24,7 @@ export const initialState = {
   loading: false,
 };
 
-export const reducer = (state: typeof initialState, action: action) => {
+export const reducer = (state: State, action: action) => {
   switch (action.type) {
     case actions.LOGIN_WALLET:
       window.localStorage.setItem("shouldConnectMetamask", "true");
