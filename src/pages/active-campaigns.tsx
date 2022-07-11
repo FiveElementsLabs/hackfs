@@ -1,11 +1,9 @@
 import type { NextPage } from "next";
 
+import ActiveCampaignView from "../components/active-campaign/active-campaign-view";
+
 const ActiveCampaigns: NextPage = () => {
-  return (
-    <div>
-      <h1 className="text-3xl font-medium">Active Campaigns</h1>
-    </div>
-  );
+  return <ActiveCampaignView />;
 };
 
 export default ActiveCampaigns;
