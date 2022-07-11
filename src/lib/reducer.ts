@@ -13,6 +13,16 @@ type State = {
   network_name: string | null;
   chain_id: number | string | null;
   loading: boolean;
+  theme: string;
+};
+
+const getInitialTheme = () => {
+  if (typeof window !== "undefined") {
+    const theme = window.localStorage.getItem("theme");
+    if (theme) return theme;
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+  }
+  return "light";
 };
 
 export const initialState: State = {
@@ -22,6 +32,7 @@ export const initialState: State = {
   network_name: null,
   chain_id: null,
   loading: false,
+  theme: getInitialTheme(),
 };
 
 export const reducer = (state: State, action: action) => {
@@ -51,7 +62,14 @@ export const reducer = (state: State, action: action) => {
     case actions.SET_LOADING:
       return {
         ...state,
-        loading: action.payload,
+        loading: action.payload.loading,
+      };
+
+    case actions.SET_THEME:
+      window.localStorage.setItem("theme", action.payload.theme);
+      return {
+        ...state,
+        theme: action.payload.theme,
       };
 
     case actions.CHANGE_NETWORK:

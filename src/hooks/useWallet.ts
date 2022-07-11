@@ -35,10 +35,12 @@ export const useWallet = () => {
   };
 
   const autoLoginWallet = async () => {
-    const shouldAutoConnect = window.localStorage.getItem("shouldConnectMetamask") === "true";
+    if (typeof window !== "undefined") {
+      const shouldAutoConnect = window.localStorage.getItem("shouldConnectMetamask") === "true";
 
-    if (shouldAutoConnect) {
-      await loginWallet();
+      if (shouldAutoConnect) {
+        await loginWallet();
+      }
     }
   };
 
@@ -56,10 +58,9 @@ export const useWallet = () => {
   const changeNetwork = async (chainId: string) => {
     if (!(window as any).ethereum) return;
     try {
-      console.log([{ ...networks[chainId] }]);
       await (window as any).ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ ...networks[chainId] }],
+        params: [{ chainId: networks[chainId].chainId }],
       });
       const Web3Provider = new ethers.providers.Web3Provider((window as any).ethereum);
       const { name: network_name, chainId: chain_id } = await Web3Provider.getNetwork();
