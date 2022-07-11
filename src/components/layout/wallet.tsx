@@ -99,7 +99,7 @@ export default function Wallet() {
 
       {account ? (
         <button
-          style={{ backgroundImage: "linear-gradient(to right, #F2F2F2, #B9EaFc" }}
+          style={{ backgroundColor: "#ff996f" }}
           className="ml-2 py-2 px-4 border border-gray-300 dark:border-gray-500 rounded-md shadow-sm text-sm"
           onClick={logoutWallet}
         >
@@ -107,7 +107,7 @@ export default function Wallet() {
         </button>
       ) : (
         <button
-          style={{ backgroundImage: "linear-gradient(to right, #ffcdb9, #ff9d75" }}
+          style={{ backgroundColor: "#ff996f" }}
           className="py-2 px-4 border border-black dark:border-gray-500 rounded-md shadow-sm text-sm"
           onClick={loginWallet}
         >

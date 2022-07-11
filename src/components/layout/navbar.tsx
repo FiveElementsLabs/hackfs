@@ -8,7 +8,13 @@ const Navbar = () => {
         <div className="grid grid-cols-12 ">
           <div className="col-span-10 flex items-center">
             <Link href="/">
-              <h2 className="text-3xl mr-16 cursor-pointer">Tide Protocol</h2>
+              <div className="flex">
+                <div
+                  className="w-8 mr-2 ICON_PLACEHOLDER"
+                  style={{ backgroundColor: "#ff996f" }}
+                ></div>
+                <h2 className="text-3xl mr-16 cursor-pointer">Tide Protocol</h2>
+              </div>
             </Link>
             <Link href="/active-campaigns">
               <p className="text-sm mr-16 cursor-pointer">ACTIVE CAMPAIGNS</p>
