@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useSharedState } from "../../lib/store";
 import { useWallet } from "../../hooks/useWallet";
 import Wallet from "../Wallet";
+import Navbar from "./navbar";
 
 const Layout = ({ children }) => {
   const [{ account }] = useSharedState();
@@ -11,10 +12,10 @@ const Layout = ({ children }) => {
   useMemo(() => (!account ? autoLoginWallet() : null), [account]);
 
   return (
-    <div className="max-w-3xl px-2">
-      <div className="mt-4">
-        <Wallet />
-        <main>{children}</main>
+    <div className="">
+      <div className="">
+        <Navbar />
+        <main className="max-w-4xl mx-auto">{children}</main>
       </div>
     </div>
   );
