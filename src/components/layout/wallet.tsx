@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from "react";
+import React, { Fragment, useMemo } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { useSharedState } from "../../lib/store";
@@ -18,7 +18,7 @@ export default function Wallet() {
   );
 
   return (
-    <div className="flex items-center w-auto text-black dark:text-white">
+    <div className="flex items-center w-auto text-tide-darker">
       {network_name && (
         <div>
           <Listbox
@@ -29,15 +29,15 @@ export default function Wallet() {
               <>
                 <div className="relative">
                   <Listbox.Button
-                    className="bg-white dark:bg-black relative w-full border border-gray-300 
-                  dark:border-gray-500 rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-default focus:outline-none 
-                  focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="bg-tide-light relative w-full border-2 border-tide-medium text-tide-darker
+                  rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-default focus:outline-none 
+                  focus:ring-1 focus:ring-tide-dark focus:border-tide-dark sm:text-sm font-medium"
                   >
                     <span className="block truncate">
                       {selectedNetwork?.chainName || "Wrong Network"}
                     </span>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                      <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                      <SelectorIcon className="h-5 w-5 text-tide-darker" aria-hidden="true" />
                     </span>
                   </Listbox.Button>
 
@@ -49,19 +49,19 @@ export default function Wallet() {
                     leaveTo="opacity-0"
                   >
                     <Listbox.Options
-                      className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-800 shadow-lg max-h-60 
-                    rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+                      className="absolute z-10 mt-1 w-full bg-tide-light shadow-lg max-h-60 rounded-md
+                    py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
                     >
                       {Object.values(networks).map((network: network) => (
                         <Listbox.Option
                           key={network.chainId}
+                          value={network}
                           className={({ active }) =>
                             classNames(
-                              active ? "text-white bg-indigo-600" : "text-gray-900 dark:text-white",
+                              active ? "text-white bg-tide-dark" : "text-gray-900",
                               "cursor-default select-none relative py-2 pl-3 pr-9"
                             )
                           }
-                          value={network}
                         >
                           {({ selected, active }) => (
                             <>
@@ -77,7 +77,7 @@ export default function Wallet() {
                               {selected ? (
                                 <span
                                   className={classNames(
-                                    active ? "text-white" : "text-indigo-600",
+                                    active ? "text-white" : "text-tide-dark",
                                     "absolute inset-y-0 right-0 flex items-center pr-4"
                                   )}
                                 >
@@ -99,16 +99,16 @@ export default function Wallet() {
 
       {account ? (
         <button
-          style={{ backgroundColor: "#ff996f" }}
-          className="ml-2 py-2 px-4 border border-gray-300 dark:border-gray-500 rounded-md shadow-sm text-sm"
+          className="ml-2 py-2 px-4 border-2 border-tide-medium rounded-md shadow-sm 
+          text-sm bg-tide-light text-tide-darker font-medium"
           onClick={logoutWallet}
         >
           {shortenAddress(account)}
         </button>
       ) : (
         <button
-          style={{ backgroundColor: "#ff996f" }}
-          className="py-2 px-4 border border-black dark:border-gray-500 rounded-md shadow-sm text-sm"
+          className="py-2 px-4 border-2 box-border  border-tide-medium rounded-md shadow-sm 
+          text-sm bg-tide-light text-tide-darker font-medium"
           onClick={loginWallet}
         >
           Connect Wallet

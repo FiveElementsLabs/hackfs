@@ -1,5 +1,4 @@
-import type { NextPage } from "next";
-import { useState } from "react";
+import React, { useState } from "react";
 import ActiveCampaignsBox from "./active-campaign-box";
 import { ActiveCampaignsBoxEmpty } from "./active-campaign-box";
 
@@ -38,7 +37,7 @@ const campaigns = [
   },
 ];
 
-const ActiveCampaignsView: NextPage = () => {
+const ActiveCampaignsView = () => {
   const [switchCampaign, setSwitchCampaign] = useState(true);
   return (
     <div>
@@ -48,8 +47,8 @@ const ActiveCampaignsView: NextPage = () => {
             <button
               className={`rounded-[0.45rem] azeret font-medium text-xs uppercase focus:outline-none py-1.5 ${
                 switchCampaign
-                  ? "px-6 bg-white z-10 -mr-3 border-2 border-secondary"
-                  : "pl-6 pr-6 border-none bg-gray-500 z-0 text-white py-[1px]"
+                  ? "px-6 bg-tide-lighter text-black z-10 -mr-3 border-2 border-secondary"
+                  : "pl-6 pr-6 border-none bg-tide-darker z-0 text-white py-[1px]"
               }`}
               onClick={() => setSwitchCampaign(true)}
             >
@@ -58,8 +57,8 @@ const ActiveCampaignsView: NextPage = () => {
             <button
               className={`px-2 rounded-[0.45rem] azeret font-medium text-xs uppercase focus:outline-none py-1.5 ${
                 !switchCampaign
-                  ? "px-6 bg-white z-10 -ml-3 border-2 border-secondary primary"
-                  : "pl-6 pr-6 border-none bg-gray-500 z-0 text-white py-[1px]"
+                  ? "px-6 bg-tide-lighter text-black z-10 -ml-3 border-2 border-secondary primary"
+                  : "pl-6 pr-6 border-none bg-tide-darker z-0 text-white py-[1px]"
               }`}
               onClick={() => setSwitchCampaign(false)}
             >
@@ -71,9 +70,9 @@ const ActiveCampaignsView: NextPage = () => {
       {switchCampaign ? (
         <div className="mt-12">
           <div className="grid grid-cols-3 gap-4">
-            {campaigns.map((campaign) => {
-              return <ActiveCampaignsBox campaign={campaign} />;
-            })}
+            {campaigns.map((campaign, id) => (
+              <ActiveCampaignsBox key={id} campaign={campaign} />
+            ))}
             <ActiveCampaignsBoxEmpty />
           </div>
         </div>

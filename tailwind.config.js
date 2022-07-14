@@ -11,6 +11,15 @@ module.exports = {
       xl: "1280px",
     },
     extend: {
+      colors: {
+        tide: {
+          darker: "#03045E",
+          dark: "#0077B6",
+          medium: "#00B4D8",
+          light: "#90E0EF",
+          lighter: "#CAF0F8",
+        },
+      },
       spacing: {
         128: "32rem",
         144: "36rem",
