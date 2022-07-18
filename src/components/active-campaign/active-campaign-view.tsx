@@ -71,8 +71,8 @@ const ActiveCampaignsView: NextPage = () => {
       {switchCampaign ? (
         <div className="mt-12">
           <div className="grid grid-cols-3 gap-4">
-            {campaigns.map((campaign) => {
-              return <ActiveCampaignsBox campaign={campaign} />;
+            {campaigns.map((campaign, index) => {
+              return <ActiveCampaignsBox key={index} campaign={campaign} />;
             })}
             <ActiveCampaignsBoxEmpty />
           </div>

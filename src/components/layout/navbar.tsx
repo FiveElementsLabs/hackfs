@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Wallet from "./wallet";
+import { getCredentials } from "../../api/getCredentialGalaxy";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  useEffect(() => {
+    (async () => await getCredentials("0x7d06dE4aE53Ef27Fff2B34731C97bb44FD27D9E6"))();
+  }, []);
   return (
     <div className="py-4">
       <div className="max-w-4xl mx-auto">
