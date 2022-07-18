@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import Wallet from "./wallet";
 import { getCredentials } from "../../api/getCredentialGalaxy";
@@ -10,7 +11,7 @@ const Navbar = () => {
   return (
     <div className="py-4">
       <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-12 ">
+        <div className="grid grid-cols-12">
           <div className="col-span-10 flex items-center">
             <Link href="/">
               <div className="flex">

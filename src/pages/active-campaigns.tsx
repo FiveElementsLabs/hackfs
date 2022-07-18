@@ -1,3 +1,4 @@
+import React from "react";
 import type { NextPage } from "next";
 
 import ActiveCampaignView from "../components/active-campaign/active-campaign-view";

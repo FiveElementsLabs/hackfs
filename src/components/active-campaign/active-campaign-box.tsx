@@ -1,15 +1,17 @@
-import type { NextPage } from "next";
-import { useState } from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 
 const ActiveCampaignsBox = ({ campaign }) => {
   const { title, imageURL, deadline, participant, drawMethod } = campaign;
   return (
     <div
-      className="border rounded-3xl bg-white"
+      className="rounded-3xl bg-white text-black"
       style={{ boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)" }}
     >
       <div className="p-4">
-        <img className="rounded-3xl object-cover h-40 w-full" src={imageURL} />
+        <div className="relative h-40 w-full object-cover">
+          <Image alt="campaign image" layout="fill" className="rounded-2xl" src={imageURL} />
+        </div>
         <h3 className="py-4">{title}</h3>
         <hr />
         <div className="mt-2 flex text-xs justify-between">
@@ -37,7 +39,9 @@ export const ActiveCampaignsBoxEmpty = () => {
       className="border rounded-3xl bg-white grid place-content-center"
       style={{ boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)" }}
     >
-      <h5 className="text-xs p-6 opacity-30">The giveaways you participate to will appear here.</h5>
+      <h5 className="text-center text-sm px-6 opacity-30">
+        Join more giveaways to see them appear here
+      </h5>
     </div>
   );
 };
