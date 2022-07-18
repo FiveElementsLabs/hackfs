@@ -4,6 +4,7 @@ import { useEvents } from "../hooks/useEvents";
 import { SharedStateProvider } from "../lib/store";
 import Layout from "../components/layout/layout";
 import "../styles/globals.css";
+import React from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEvents();
