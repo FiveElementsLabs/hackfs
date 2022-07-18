@@ -1,30 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 const ActiveCampaignsBox = ({ campaign }) => {
-  const { title, imageURL, deadline, participant, drawMethod } = campaign;
+  const { title, imageURL, deadline, participants, drawMethod } = campaign;
   return (
-    <div
-      className="rounded-3xl bg-white text-black"
-      style={{ boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)" }}
-    >
+    <div className="rounded-3xl bg-tide-lighter text-black border-2 border-tide-medium cursor-pointer">
       <div className="p-4">
-        <div className="relative h-40 w-full object-cover">
+        <div className="relative h-36 w-full object-cover border-2 border-white rounded-2xl">
           <Image alt="campaign image" layout="fill" className="rounded-2xl" src={imageURL} />
         </div>
-        <h3 className="py-4">{title}</h3>
+        <h3 className="py-2 text-lg font-bold text-slate-800">{title}</h3>
         <hr />
-        <div className="mt-2 flex text-xs justify-between">
+        <div className="mt-2 flex text-xs justify-between text-slate-900">
           <div>
-            <h4>Ends in</h4>
-            <p>0d:22h:41m:15s</p>
+            <h4 className="font-medium opacity-70">Ends in</h4>
+            <p className="text-orange-600">0d:22h:41m</p>
           </div>
           <div>
-            <h4>Participant</h4>
-            <p>{participant}</p>
+            <h4 className="font-medium opacity-70">Participants</h4>
+            <p>{participants}</p>
           </div>
           <div>
-            <h4>Draw method</h4>
+            <h4 className="font-medium opacity-70">Draw method</h4>
             <p>{drawMethod ? "Everyone wins" : ""}</p>
           </div>
         </div>
@@ -35,11 +32,8 @@ const ActiveCampaignsBox = ({ campaign }) => {
 
 export const ActiveCampaignsBoxEmpty = () => {
   return (
-    <div
-      className="border rounded-3xl bg-white grid place-content-center"
-      style={{ boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)" }}
-    >
-      <h5 className="text-center text-sm px-6 opacity-30">
+    <div className="rounded-3xl bg-tide-lighter grid place-content-center border-2 border-tide-medium">
+      <h5 className="text-center text-sm px-6 opacity-50 text-black">
         Join more giveaways to see them appear here
       </h5>
     </div>
