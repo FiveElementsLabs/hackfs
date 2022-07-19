@@ -25,6 +25,9 @@ struct StorageStruct {
   address[] facetAddresses;
   address owner;
   IERC20 rewardToken;
+  uint256 amountPerUser;
+  uint256 campaignStartTime;
+  uint256 campaignEndTime;
 }
 
 library CampaignStorage {
