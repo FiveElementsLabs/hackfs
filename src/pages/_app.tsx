@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SharedStateProvider>
       <Head>
-        <title>HackFS</title>
+        <title>Tide Protocol | Boost your content and grow your audience.</title>
       </Head>
       <Layout>
         <Component {...pageProps} />
