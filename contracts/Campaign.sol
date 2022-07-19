@@ -12,14 +12,19 @@ contract Campaign {
 
   modifier onlyActiveCampaign() {
     StorageStruct storage Storage = CampaignStorage.getStorage();
-    require(Storage.campaignStartTime <= now && now <= Storage.campaignEndTime);
+    require(
+      Storage.campaignStartTime <= block.timestamp && block.timestamp <= Storage.campaignEndTime
+    );
     _;
   }
 
   constructor(
     address _owner,
     address _diamondCutFacet,
-    address _rewardToken
+    address _rewardToken,
+    uint256 _amountPerUser,
+    uint256 campaignStartTime,
+    uint256 campaignEndTime
   ) payable {
     CampaignStorage.setContractOwner(_owner);
 
@@ -35,6 +40,9 @@ contract Campaign {
     CampaignStorage.diamondCut(cut, address(0), "");
     StorageStruct storage Storage = CampaignStorage.getStorage();
     Storage.rewardToken = IERC20(_rewardToken);
+    Storage.amountPerUser = _amountPerUser;
+    Storage.campaignStartTime = campaignStartTime;
+    Storage.campaignEndTime = campaignEndTime;
   }
 
   fallback() external payable onlyActiveCampaign {
