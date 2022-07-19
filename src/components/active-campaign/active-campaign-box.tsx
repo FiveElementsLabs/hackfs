@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const ActiveCampaignsBox = ({ campaign }) => {
   const { title, imageURL, deadline, participants, drawMethod } = campaign;
+
   return (
     <div className="rounded-3xl bg-tide-lighter text-black border-2 border-tide-medium cursor-pointer">
       <div className="p-4">
@@ -13,8 +14,8 @@ const ActiveCampaignsBox = ({ campaign }) => {
         <hr />
         <div className="mt-2 flex text-xs justify-between text-slate-900">
           <div>
-            <h4 className="font-medium opacity-70">Ends in</h4>
-            <p className="text-orange-600">0d:22h:41m</p>
+            <h4 className="font-medium opacity-80">Ends in</h4>
+            <p className="text-teal-medium">0d:22h:41m</p>
           </div>
           <div>
             <h4 className="font-medium opacity-70">Participants</h4>

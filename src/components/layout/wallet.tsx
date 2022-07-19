@@ -27,11 +27,11 @@ export default function Wallet() {
           >
             {({ open }) => (
               <>
-                <div className="relative">
+                <div className="relative cursor-pointer">
                   <Listbox.Button
                     className="bg-tide-light relative w-full border-2 border-tide-medium text-tide-darker
-                  rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-default focus:outline-none 
-                  focus:ring-1 focus:ring-tide-dark focus:border-tide-dark sm:text-sm font-medium"
+                  rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-pointer focus:outline-none 
+                  focus:ring-none sm:text-sm font-medium"
                   >
                     <span className="block truncate">
                       {selectedNetwork?.chainName || "Wrong Network"}
