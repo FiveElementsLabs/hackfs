@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: CryptoUnicorns
@@ -17,8 +17,8 @@ dataSources:
         - Collection
       abis:
         - name: ERC721
-          file: ./abis/ERC721.json
+          file: CryptoUnicorns/abis/ERC721.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/erc721.ts
+      file: CryptoUnicorns/CryptoUnicorns.wasm
