@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import ActiveCampaignsBox from "./active-campaign-box";
 import { CampaignsBoxEmpty, Campaign } from "./active-campaign-box";
 import { getDeadline } from "../../utils/utils";
-import path from "node:path/win32";
 import { CreateGiveawayBox } from "./create-giveaway-box";
 
 const fakeMyCampaigns: Campaign[] = [
@@ -67,7 +66,7 @@ const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; second
 
   const campaigns = useMemo(
     () => (pathname === "/active-campaigns" ? fakeCampaigns : fakeMyCampaigns),
-    []
+    [pathname]
   );
 
   return (
