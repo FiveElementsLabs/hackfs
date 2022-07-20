@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0
 pragma solidity ^0.8.0;
 
-import "../interfaces/IERC721Minter.sol";
+import "../../interfaces/IERC721Minter.sol";
+import "../../interfaces/IWhitelistModule.sol";
+
 import "../CampaignStorage.sol";
 
 contract LotteryRewarder {
@@ -22,8 +24,9 @@ contract LotteryRewarder {
       );
   }
 
-  function lottery(address[] memory eligibleUsers, uint256 numToExtract) external view {
+  function lottery(uint256 numToExtract) external view {
     StorageStruct storage Storage = CampaignStorage.getStorage();
+    address[] memory eligibleUsers = IWhitelistModule(address(this)).whitelist();
     IERC721Minter rewardToken = IERC721Minter(Storage.rewardToken);
     for (uint256 i; i < numToExtract; i++) {
       uint256 randNumb = _getRandomNumber(eligibleUsers.length - i);
