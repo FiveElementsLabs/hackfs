@@ -7,7 +7,7 @@ const ActiveCampaignsBox = ({ campaign }) => {
   return (
     <div className="hover:opacity-80 rounded-2xl bg-elements text-white border-2 border-tide-medium cursor-pointer">
       <div className="p-3">
-        <div className="relative h-36 w-full object-cover border-2 border-white rounded-2xl">
+        <div className="relative h-36 w-full object-cover border-3 border-white rounded-2xl">
           <Image alt="campaign image" layout="fill" className="rounded-2xl" src={imageURL} />
         </div>
         <h3 className="py-2 text-lg font-bold text-white">{title}</h3>
