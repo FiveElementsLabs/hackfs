@@ -23,8 +23,8 @@ contract Campaign {
     address _diamondCutFacet,
     address _rewardToken,
     uint256 _amountPerUser,
-    uint256 campaignStartTime,
-    uint256 campaignEndTime
+    uint256 _campaignStartTime,
+    uint256 _campaignEndTime
   ) payable {
     CampaignStorage.setContractOwner(_owner);
 
@@ -41,8 +41,8 @@ contract Campaign {
     StorageStruct storage Storage = CampaignStorage.getStorage();
     Storage.rewardToken = IERC20(_rewardToken);
     Storage.amountPerUser = _amountPerUser;
-    Storage.campaignStartTime = campaignStartTime;
-    Storage.campaignEndTime = campaignEndTime;
+    Storage.campaignStartTime = _campaignStartTime;
+    Storage.campaignEndTime = _campaignEndTime;
   }
 
   fallback() external payable onlyActiveCampaign {
