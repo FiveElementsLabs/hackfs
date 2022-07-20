@@ -12,13 +12,30 @@ module.exports = {
     },
     extend: {
       colors: {
-        tide: {
-          darker: "#03045E",
-          dark: "#0077B6",
-          medium: "#00B4D8",
-          light: "#90E0EF",
-          lighter: "#CAF0F8",
+        principal: {
+          blue: "#00001E",
+          lightgray: "#E8EEF9",
+          gray: "#BFC1C6",
+          text: "#5C6F81",
         },
+        bright: {
+          blue: "#1988F7",
+          green: "#32C66D",
+          red: "#F82518",
+          yellow: "#FFC700",
+        },
+        shade: {
+          0: "#E8F1FF",
+          1: "#CFE2FF",
+          2: "#A8CBFF",
+          3: "#73ABFF",
+        },
+        dark: {
+          card: "#0B0E29",
+          bg: "#040722",
+        },
+        buttonHover: "#69B4FF",
+        elements: "#0A3576",
       },
       spacing: {
         128: "32rem",

@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useSharedState } from "../../lib/store";
 import { useWallet } from "../../hooks/useWallet";
 import Navbar from "./navbar";
-import { arrayBuffer } from "stream/consumers";
+import Footer from "./footer";
 
 const Layout = ({ children }) => {
   const [{ account }] = useSharedState();
@@ -13,10 +13,12 @@ const Layout = ({ children }) => {
   useMemo(() => (!account ? autoLoginWallet() : null), [account]);
 
   return (
-    <div className="text-white min-h-screen bg-gradient-to-t from-tide-darker to-tide-dark">
+    <div className="min-h-screen bg-dark-bg text-principal-lightgray">
       <Navbar />
       <main className="max-w-4xl mx-auto">{children}</main>
+      <Footer />
     </div>
   );
 };
+
 export default Layout;

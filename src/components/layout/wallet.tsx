@@ -27,11 +27,11 @@ export default function Wallet() {
           >
             {({ open }) => (
               <>
-                <div className="relative">
+                <div className="relative cursor-pointer">
                   <Listbox.Button
-                    className="bg-tide-light relative w-full border-2 border-tide-medium text-tide-darker
-                  rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-default focus:outline-none 
-                  focus:ring-1 focus:ring-tide-dark focus:border-tide-dark sm:text-sm font-medium"
+                    className="bg-tide-light relative w-full border-2 border-principal-lightgray text-tide-darker
+                  rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-pointer focus:outline-none 
+                  focus:ring-none sm:text-sm font-medium"
                   >
                     <span className="block truncate">
                       {selectedNetwork?.chainName || "Wrong Network"}
@@ -49,7 +49,7 @@ export default function Wallet() {
                     leaveTo="opacity-0"
                   >
                     <Listbox.Options
-                      className="absolute z-10 mt-1 w-full bg-tide-light shadow-lg max-h-60 rounded-md
+                      className="absolute z-10 mt-1 w-full bg-dark-bg shadow-lg max-h-60 rounded-md
                     py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
                     >
                       {Object.values(networks).map((network: network) => (
@@ -58,8 +58,10 @@ export default function Wallet() {
                           value={network}
                           className={({ active }) =>
                             classNames(
-                              active ? "text-white bg-tide-dark" : "text-gray-900",
-                              "cursor-default select-none relative py-2 pl-3 pr-9"
+                              active
+                                ? "text-principal-lightgray bg-dark-card"
+                                : "text-principal-lightgray",
+                              "cursor-pointer select-none relative py-2 pl-3 pr-9"
                             )
                           }
                         >
@@ -67,7 +69,7 @@ export default function Wallet() {
                             <>
                               <span
                                 className={classNames(
-                                  selected ? "font-semibold" : "font-normal",
+                                  selected ? "font-bold" : "font-normal",
                                   "block truncate"
                                 )}
                               >
@@ -77,7 +79,7 @@ export default function Wallet() {
                               {selected ? (
                                 <span
                                   className={classNames(
-                                    active ? "text-white" : "text-tide-dark",
+                                    active ? "text-principal-lightgray" : "text-principal-gray",
                                     "absolute inset-y-0 right-0 flex items-center pr-4"
                                   )}
                                 >
