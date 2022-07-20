@@ -6,6 +6,7 @@ export function getOwnerOrCreate(address: Address): Owner {
   let owner = Owner.load(address.toHexString());
   if (!owner) {
     owner = new Owner(address.toHexString());
+    owner.save();
   }
   return owner;
 }
@@ -16,6 +17,7 @@ export function getTokenOrCreate(tokenId: BigInt): Token {
     token = new Token(tokenId.toString());
     const collectionContract = ERC721.bind(dataSource.address());
     token.owner = getOwnerOrCreate(collectionContract.ownerOf(tokenId)).id;
+    token.save();
   }
   return token;
 }
@@ -27,7 +29,7 @@ export function getPairOrCreate(owner: Address, tokenId: BigInt, block: ethereum
     pair.tokenId = tokenId.toString();
     pair.owner = owner.toHexString();
     pair.from = block.timestamp;
-    pair.to = block.timestamp;
+    pair.save();
   }
   return pair;
 }

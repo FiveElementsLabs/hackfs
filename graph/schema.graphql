@@ -21,5 +21,6 @@ type Pair @entity {
   tokenId: Token!
   owner: Owner!
   from: BigInt!
-  to: BigInt!
+  to: BigInt
+  timeHolded: BigInt
 }
