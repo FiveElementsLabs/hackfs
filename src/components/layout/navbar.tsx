@@ -83,10 +83,12 @@ const InfoDropdown = () => {
                       <button
                         className={`${
                           active ? "bg-second primary" : "text-gray"
-                        } flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        } flex w-full items-center rounded-md py-2 text-sm`}
                         onClick={() => window.open(item.link, "_blank")}
                       >
-                        <item.icon className={`mr-2 h-${item.height} w-${item.width}`} />
+                        <div className="w-9 flex justify-center items-center scale-90">
+                          <item.icon />
+                        </div>
                         <span className="text-sm">{item.name}</span>
                       </button>
                     )}
@@ -129,17 +131,6 @@ const infoDropdownData = [
     name: "Docs",
     height: "6",
     width: "5",
-
-    border: false,
-    mobile: true,
-    desktop: true,
-  },
-  {
-    icon: Medium,
-    link: "https://fiveelementslabs.gitbook.io/tide/",
-    name: "Blog",
-    height: "6",
-    width: "7",
 
     border: false,
     mobile: true,
