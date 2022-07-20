@@ -64,6 +64,7 @@ describe("Campaign Factory", () => {
     await tokenEth.mint(deployer.address, ethers.utils.parseEther("1000000000000"));
 
     const rewardAmount = 1e7;
+    const winners = 1;
     const amountPerUser = 1e4;
     const campaignStartTime = Date.now();
     const campaignEndTime = campaignStartTime + 1000 * 60 * 60 * 24 * 7;
@@ -74,6 +75,7 @@ describe("Campaign Factory", () => {
       .connect(deployer)
       .createCampaign(
         tokenEth.address,
+        winners,
         rewardAmount,
         amountPerUser,
         campaignStartTime,
