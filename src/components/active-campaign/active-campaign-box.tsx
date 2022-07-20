@@ -33,8 +33,8 @@ const ActiveCampaignsBox = ({ campaign }) => {
 
 export const ActiveCampaignsBoxEmpty = () => {
   return (
-    <div className="rounded-2xl bg-elements grid place-content-center border-2 border-principal-gray">
-      <h5 className="text-center text-xl px-6 text-white">Active campaign will be shown here.</h5>
+    <div className="h-36 rounded-2xl bg-elements grid place-content-center">
+      <h5 className="text-center text-xl px-6 text-white">Active campaigns will be shown here.</h5>
     </div>
   );
 };
