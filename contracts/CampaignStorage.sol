@@ -24,6 +24,7 @@ struct StorageStruct {
   // facet addresses
   address[] facetAddresses;
   address owner;
+  address factory;
   IERC20 rewardToken;
   uint256 amountPerUser;
   uint256 campaignStartTime;
@@ -40,6 +41,15 @@ library CampaignStorage {
     assembly {
       s.slot := k
     }
+  }
+
+  ///@notice make sure that a function is called by the PositionManagerFactory contract
+  function enforceIsGovernance() internal view {
+    StorageStruct storage ds = getStorage();
+    require(
+      msg.sender == ds.factory,
+      "Storage::enforceIsGovernance: Must be campaignFactory to call this function"
+    );
   }
 
   ///@notice emitted when a contract changes ownership

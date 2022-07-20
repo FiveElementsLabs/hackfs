@@ -32,7 +32,7 @@ const hardhat: HardhatUserConfig = {
       },
       accounts: [
         {
-          privateKey: process.env.PRIVATE_KEY || "",
+          privateKey: process.env.POLYGON_PRIVATE_KEY || "",
           balance: "1000000000000000000000",
         },
       ],
