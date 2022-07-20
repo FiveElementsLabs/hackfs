@@ -1,26 +1,17 @@
+// SPDX-License-Identifier: GPL-2.0
 pragma solidity ^0.8.0;
 
 import "../interfaces/IERC721Minter.sol";
+import "../CampaignStorage.sol";
 
 contract LotteryRewarder {
-  //array of address to be rewarded
-  address[] toBeRewarder = [
-    0x1234567890123456789012345678901234567890,
-    0x2234567890123456789012345678901234567890,
-    0x3234567890123456789012345678901234567890
-  ];
-  // address of 721 contract
-  IERC721Minter NFTtokenToMint = IERC721Minter(0x4234567890123456789012345678901234567890);
-  // address of the creatoir that need to trigger the lottery
-  address creator = 0x5234567890123456789012345678901234567890;
-
   //doesn't needed to be manipulated by miner cause the transaction
-  function getRandomNumber() internal view returns (uint256) {
+  function _getRandomNumber(uint256 param) internal view returns (uint256) {
     return
       uint256(
         keccak256(
           abi.encodePacked(
-            toBeRewarder.length,
+            param,
             block.timestamp,
             block.number,
             block.difficulty,
@@ -31,11 +22,19 @@ contract LotteryRewarder {
       );
   }
 
-  function lottery(uint256 numToExtract) external view {
-    assert(msg.sender == creator);
+  function lottery(address[] memory eligibleUsers, uint256 numToExtract) external view {
+    StorageStruct storage Storage = CampaignStorage.getStorage();
+    IERC721Minter rewardToken = IERC721Minter(Storage.rewardToken);
     for (uint256 i; i < numToExtract; i++) {
-      uint256 randNumb = getRandomNumber();
-      NFTtokenToMint.mint(toBeRewarder[randNumb % toBeRewarder.length]);
+      uint256 randNumb = _getRandomNumber(eligibleUsers.length - i);
+
+      //mint reward token to user
+      rewardToken.mint(eligibleUsers[randNumb % (eligibleUsers.length - i)]);
+
+      //remove the user from the list
+      eligibleUsers[randNumb % (eligibleUsers.length - i)] = eligibleUsers[
+        eligibleUsers.length - 1
+      ];
     }
   }
 }
