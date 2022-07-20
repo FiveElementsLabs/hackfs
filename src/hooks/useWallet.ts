@@ -5,7 +5,7 @@ import actions from "../lib/actions";
 import networks from "../lib/networks";
 
 export const useWallet = () => {
-  const [, dispatch] = useSharedState();
+  const [{ account }, dispatch] = useSharedState();
   const { notify } = useNotifications();
 
   const connectMetamask = async () => {
@@ -23,7 +23,6 @@ export const useWallet = () => {
   const loginWallet = async () => {
     try {
       await connectMetamask();
-      notify("success", "Wallet connected");
     } catch (err) {
       console.error(err);
     }
@@ -33,9 +32,7 @@ export const useWallet = () => {
     if (typeof window !== "undefined") {
       const shouldAutoConnect = window.localStorage.getItem("shouldConnectMetamask") === "true";
 
-      if (shouldAutoConnect) {
-        await loginWallet();
-      }
+      if (shouldAutoConnect) await loginWallet();
     }
   };
 
