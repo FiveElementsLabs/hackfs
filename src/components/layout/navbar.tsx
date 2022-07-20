@@ -11,6 +11,7 @@ import Contact from "../../assets/svg/Contact";
 import Medium from "../../assets/svg/Medium";
 import Twitter from "../../assets/svg/Twitter";
 import Discord from "../../assets/svg/Discord";
+import Lens from "../../assets/svg/Lens";
 
 const Navbar = () => {
   return (
@@ -52,7 +53,7 @@ const InfoDropdown = () => {
       as="div"
       className="grid place-content-center no-outline md:float-right relative w-mobile-100"
     >
-      <Menu.Button className="border-2 rounded-md w-12 grid place-content-center no-outline h-12 md:h-10">
+      <Menu.Button className="bg-bright-blue rounded-md w-12 grid place-content-center no-outline h-12 md:h-9">
         <MoreSvg />
       </Menu.Button>
       <Transition
@@ -82,10 +83,12 @@ const InfoDropdown = () => {
                       <button
                         className={`${
                           active ? "bg-second primary" : "text-gray"
-                        } flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        } flex w-full items-center rounded-md py-2 text-sm`}
                         onClick={() => window.open(item.link, "_blank")}
                       >
-                        <item.icon className="mr-2 h-5 w-5" />
+                        <div className="w-9 flex justify-center items-center scale-90">
+                          <item.icon />
+                        </div>
                         <span className="text-sm">{item.name}</span>
                       </button>
                     )}
@@ -102,19 +105,11 @@ const InfoDropdown = () => {
 
 const infoDropdownData = [
   {
-    icon: Docs,
-    link: "https://fiveelementslabs.gitbook.io/tide/",
-    name: "Docs",
-    height: "6",
-    border: false,
-    mobile: true,
-    desktop: true,
-  },
-  {
     icon: Fel,
     link: "https://fiveelementslabs.com/",
-    name: "Five Elements Labs",
-    height: "8",
+    name: "By Five Elements Labs",
+    height: "7",
+    width: "7",
     border: false,
     mobile: true,
     desktop: true,
@@ -125,6 +120,19 @@ const infoDropdownData = [
     name: "Contact us",
     height: "7",
     border: false,
+    width: "5",
+
+    mobile: true,
+    desktop: true,
+  },
+  {
+    icon: Docs,
+    link: "https://fiveelementslabs.gitbook.io/tide/",
+    name: "Docs",
+    height: "6",
+    width: "5",
+
+    border: false,
     mobile: true,
     desktop: true,
   },
@@ -133,6 +141,18 @@ const infoDropdownData = [
     link: "https://twitter.com/TideProtocol",
     name: "Twitter",
     height: "7",
+    width: "5",
+    border: false,
+    mobile: true,
+    desktop: true,
+  },
+  {
+    icon: Lens,
+    link: "https://twitter.com/TideProtocol",
+    name: "Lens",
+    height: "7",
+    width: "6",
+
     border: false,
     mobile: true,
     desktop: true,
@@ -142,6 +162,8 @@ const infoDropdownData = [
     link: "https://discord.gg/tide",
     name: "Discord",
     height: "7",
+    width: "5",
+
     border: false,
     mobile: true,
     desktop: true,

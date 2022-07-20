@@ -29,14 +29,14 @@ export default function Wallet() {
               <>
                 <div className="relative cursor-pointer">
                   <Listbox.Button
-                    className="bg-tide-light relative w-full border-2 border-principal-lightgray text-tide-darker
+                    className="bg-bright-blue relative w-full  text-tide-darker
                   rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-pointer focus:outline-none 
                   focus:ring-none sm:text-sm font-medium"
                   >
                     <span className="block truncate">
                       {selectedNetwork?.chainName || "Wrong Network"}
                     </span>
-                    <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                    <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none ">
                       <SelectorIcon className="h-5 w-5 text-tide-darker" aria-hidden="true" />
                     </span>
                   </Listbox.Button>
@@ -59,8 +59,8 @@ export default function Wallet() {
                           className={({ active }) =>
                             classNames(
                               active
-                                ? "text-principal-lightgray bg-dark-card"
-                                : "text-principal-lightgray",
+                                ? "text-principal-lightgray bg-bright-blue "
+                                : "text-principal-lightgray bg-bright-blue ",
                               "cursor-pointer select-none relative py-2 pl-3 pr-9"
                             )
                           }
@@ -101,16 +101,16 @@ export default function Wallet() {
 
       {account ? (
         <button
-          className="ml-2 py-2 px-4 border-2 border-tide-medium rounded-md shadow-sm 
-          text-sm bg-tide-light text-tide-darker font-medium"
+          className="ml-2 py-2 px-4 rounded-md shadow-sm 
+          text-sm bg-bright-blue  text-tide-darker font-medium"
           onClick={logoutWallet}
         >
           {shortenAddress(account)}
         </button>
       ) : (
         <button
-          className="py-2 px-4 border-2 box-border  border-tide-medium rounded-md shadow-sm 
-          text-sm bg-tide-light text-tide-darker font-medium"
+          className="py-2 px-4 box-border rounded-md shadow-sm 
+          text-sm bg-bright-blue  text-tide-darker font-medium uppercase"
           onClick={loginWallet}
         >
           Connect Wallet

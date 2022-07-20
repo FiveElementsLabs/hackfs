@@ -31,7 +31,7 @@ module.exports = {
           3: "#73ABFF",
         },
         dark: {
-          card: "#0B0E29",
+          card: "#0f1d45", // #0B0E29
           bg: "#040722",
         },
         buttonHover: "#69B4FF",
