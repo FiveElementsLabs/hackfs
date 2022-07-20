@@ -30,12 +30,6 @@ const hardhat: HardhatUserConfig = {
         url: process.env.ALCHEMY_POLYGON || "",
         blockNumber: 15000000,
       },
-      accounts: [
-        {
-          privateKey: process.env.POLYGON_PRIVATE_KEY || "",
-          balance: "1000000000000000000000",
-        },
-      ],
     },
   },
   mocha: { timeout: 100000 },

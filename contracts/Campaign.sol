@@ -46,7 +46,7 @@ contract Campaign {
     Storage.campaignEndTime = _campaignEndTime;
   }
 
-  fallback() external payable onlyActiveCampaign {
+  fallback() external payable {
     StorageStruct storage Storage = CampaignStorage.getStorage();
 
     address facet = Storage.selectorToFacetAndPosition[msg.sig].facetAddress;

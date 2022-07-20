@@ -1,3 +1,10 @@
+import { ethers } from "hardhat";
+import { MockToken } from "../../typechain-types";
+
+interface TokensFixture {
+  tokenFixture: MockToken;
+}
+
 // get function selectors from ABI
 export async function getSelectors(contract: any) {
   const signatures = Object.keys(contract.interface.functions);
@@ -10,4 +17,10 @@ export async function getSelectors(contract: any) {
   selectors.contract = contract;
 
   return selectors;
+}
+
+export async function tokensFixture(name: string): Promise<TokensFixture> {
+  const tokenFactory = await ethers.getContractFactory("MockToken");
+  const tokenFixture: MockToken = (await tokenFactory.deploy(name, name)) as MockToken;
+  return { tokenFixture };
 }

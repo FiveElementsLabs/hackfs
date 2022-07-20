@@ -10,6 +10,8 @@ contract CampaignFactory {
   IDiamondCut.FacetCut[] public elegibilityModules;
   IDiamondCut.FacetCut[] public rewardModules;
 
+  event CampaignCreated(address campaign);
+
   modifier onlyGovernance() {
     require(
       msg.sender == governance,
@@ -51,9 +53,7 @@ contract CampaignFactory {
       _campaignStartTime,
       _campaignEndTime
     );
-
     IERC20(_rewardToken).transferFrom(msg.sender, address(campaign), _rewardAmount);
-
     IDiamondCut.FacetCut[] memory cut = new IDiamondCut.FacetCut[](2);
     for (uint256 i; i < elegibilityModules.length; ++i) {
       if (elegibilityModules[i].facetAddress == _checkElegibilityModule) {
@@ -78,5 +78,7 @@ contract CampaignFactory {
     }
 
     IDiamondCut(address(campaign)).diamondCut(cut, address(0), "");
+
+    emit CampaignCreated(address(campaign));
   }
 }
