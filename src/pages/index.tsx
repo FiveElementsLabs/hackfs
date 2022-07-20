@@ -56,7 +56,7 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="mt-8 w-full grid">
+      <div className="mt-6 w-full grid">
         <div className="h-16 bg-elements grid place-content-center rounded-xl">
           <h2 className="text-3xl font-medium">How it works</h2>
         </div>
