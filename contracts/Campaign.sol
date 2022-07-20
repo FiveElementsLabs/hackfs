@@ -5,19 +5,6 @@ pragma abicoder v2;
 import "./CampaignStorage.sol";
 
 contract Campaign {
-  modifier onlyOwner() {
-    require(msg.sender == CampaignStorage.getStorage().owner);
-    _;
-  }
-
-  modifier onlyActiveCampaign() {
-    StorageStruct storage Storage = CampaignStorage.getStorage();
-    require(
-      Storage.campaignStartTime <= block.timestamp && block.timestamp <= Storage.campaignEndTime
-    );
-    _;
-  }
-
   constructor(
     address _owner,
     address _diamondCutFacet,
