@@ -5,7 +5,7 @@ const ActiveCampaignsBox = ({ campaign }) => {
   const { title, imageURL, deadline, participants, drawMethod } = campaign;
 
   return (
-    <div className="rounded-3xl bg-tide-lighter text-black border-2 border-tide-medium cursor-pointer">
+    <div className="rounded-2xl bg-tide-lighter text-black border-2 border-tide-medium cursor-pointer">
       <div className="p-4">
         <div className="relative h-36 w-full object-cover border-2 border-white rounded-2xl">
           <Image alt="campaign image" layout="fill" className="rounded-2xl" src={imageURL} />
@@ -33,10 +33,8 @@ const ActiveCampaignsBox = ({ campaign }) => {
 
 export const ActiveCampaignsBoxEmpty = () => {
   return (
-    <div className="rounded-3xl bg-tide-lighter grid place-content-center border-2 border-tide-medium">
-      <h5 className="text-center text-sm px-6 opacity-50 text-black">
-        Join more giveaways to see them appear here
-      </h5>
+    <div className="rounded-2xl bg-elements grid place-content-center border-2 border-principal-gray">
+      <h5 className="text-center text-xl px-6 text-white">Active campaign will be shown here.</h5>
     </div>
   );
 };

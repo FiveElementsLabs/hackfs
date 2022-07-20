@@ -2,40 +2,7 @@ import React, { useState } from "react";
 import ActiveCampaignsBox from "./active-campaign-box";
 import { ActiveCampaignsBoxEmpty } from "./active-campaign-box";
 
-const campaigns = [
-  {
-    title: "Token Giveaway",
-    imageURL:
-      "https://img.freepik.com/free-photo/medical-pill-with-bitcoin-sign-pink-background-bitcoin-technology-concept-medicine_535844-1506.jpg?w=2000",
-    deadline: Date.now(),
-    participants: "21",
-    drawMethod: "0",
-  },
-  {
-    title: "5EL NFT Giveaway",
-    imageURL:
-      "https://d33wubrfki0l68.cloudfront.net/13ca0c32ffd56bcfaf861b9a8acb212d0f6482e3/d8df6/static/c3bcc8c47890ffd2a2c329972c73d0fd/e018d/ethereum-logo-portrait-black-gray.png",
-    deadline: Date.now(),
-    participants: "189",
-    drawMethod: "0",
-  },
-  {
-    title: "Token Giveaway #2",
-    imageURL:
-      "https://images.cointelegraph.com/images/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMDQvNTg3NTgxZjItNjE3Yi00MDRiLWIzNTgtOGI0NjM2ZDQzOTRiLmpwZw==.jpg",
-    deadline: Date.now(),
-    participants: "12",
-    drawMethod: "0",
-  },
-  {
-    title: "5EL NFT Giveaway",
-    imageURL:
-      "https://d33wubrfki0l68.cloudfront.net/13ca0c32ffd56bcfaf861b9a8acb212d0f6482e3/d8df6/static/c3bcc8c47890ffd2a2c329972c73d0fd/e018d/ethereum-logo-portrait-black-gray.png",
-    deadline: Date.now(),
-    participants: "189",
-    drawMethod: "0",
-  },
-];
+const campaigns = [];
 
 const ActiveCampaignsView = () => {
   const [switchCampaign, setSwitchCampaign] = useState(true);
@@ -67,12 +34,19 @@ const ActiveCampaignsView = () => {
         </div>
       </div>
       {switchCampaign ? (
-        <div className="grid grid-cols-3 gap-4">
-          {campaigns.map((campaign, id) => (
-            <ActiveCampaignsBox key={id} campaign={campaign} />
-          ))}
-          <ActiveCampaignsBoxEmpty />
-        </div>
+        <>
+          {campaigns.length > 0 ? (
+            <div className="grid grid-cols-3 gap-4">
+              {campaigns.map((campaign, id) => (
+                <ActiveCampaignsBox key={id} campaign={campaign} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              <ActiveCampaignsBoxEmpty />
+            </div>
+          )}
+        </>
       ) : null}
     </div>
   );
