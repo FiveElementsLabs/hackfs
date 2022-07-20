@@ -12,11 +12,11 @@ contract Whitelist is IWhitelistModule {
     whitelist = _whitelist;
   }
 
-  function getWhitelist() public view returns (address[] memory) {
+  function getWhitelist() public view override returns (address[] memory) {
     return whitelist;
   }
 
-  function addToWhitelist(address _address) public {
+  function addToWhitelist(address _address) public override {
     require(_address != address(0), "WhitelistModule::addToWhitelist:Address already in whitelist");
     require(
       msg.sender == CampaignStorage.getStorage().owner,
@@ -25,7 +25,7 @@ contract Whitelist is IWhitelistModule {
     whitelist.push(_address);
   }
 
-  function isWhitelisted(address _address) public view returns (bool) {
+  function isWhitelisted(address _address) public view override returns (bool) {
     for (uint256 i = 0; i < whitelist.length; i++) {
       if (whitelist[i] == _address) {
         return true;

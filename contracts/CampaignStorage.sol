@@ -26,6 +26,7 @@ struct StorageStruct {
   address owner;
   address factory;
   address rewardToken;
+  uint256 winners;
   uint256 amountPerUser;
   uint256 campaignStartTime;
   uint256 campaignEndTime;

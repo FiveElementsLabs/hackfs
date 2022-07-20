@@ -38,6 +38,7 @@ contract CampaignFactory {
 
   function createCampaign(
     address _rewardToken,
+    uint256 _winners,
     uint256 _rewardAmount,
     uint256 _amountPerUser,
     uint256 _campaignStartTime,
@@ -49,6 +50,7 @@ contract CampaignFactory {
       msg.sender,
       diamondCutFacet,
       _rewardToken,
+      _winners,
       _amountPerUser,
       _campaignStartTime,
       _campaignEndTime

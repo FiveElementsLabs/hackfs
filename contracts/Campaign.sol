@@ -9,6 +9,7 @@ contract Campaign {
     address _owner,
     address _diamondCutFacet,
     address _rewardToken,
+    uint256 _winners,
     uint256 _amountPerUser,
     uint256 _campaignStartTime,
     uint256 _campaignEndTime
@@ -28,6 +29,7 @@ contract Campaign {
     StorageStruct storage Storage = CampaignStorage.getStorage();
     Storage.factory = msg.sender;
     Storage.rewardToken = _rewardToken;
+    Storage.winners = _winners;
     Storage.amountPerUser = _amountPerUser;
     Storage.campaignStartTime = _campaignStartTime;
     Storage.campaignEndTime = _campaignEndTime;

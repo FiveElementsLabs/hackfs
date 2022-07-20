@@ -24,20 +24,19 @@ contract LotteryRewarder {
       );
   }
 
-  function lottery(uint256 numToExtract) external view {
+  function lottery() external {
     StorageStruct storage Storage = CampaignStorage.getStorage();
-    address[] memory eligibleUsers = IWhitelistModule(address(this)).whitelist();
+    uint256 winnersToAssign = Storage.winners;
+    address[] memory eligibleUsers = IWhitelistModule(address(this)).getWhitelist();
     IERC721Minter rewardToken = IERC721Minter(Storage.rewardToken);
-    for (uint256 i; i < numToExtract; i++) {
-      uint256 randNumb = _getRandomNumber(eligibleUsers.length - i);
+    for (uint256 i; i < winnersToAssign; i++) {
+      uint256 randNumb = _getRandomNumber(winnersToAssign) % (eligibleUsers.length - i);
 
       //mint reward token to user
-      rewardToken.mint(eligibleUsers[randNumb % (eligibleUsers.length - i)]);
+      rewardToken.mint(eligibleUsers[randNumb]);
 
       //remove the user from the list
-      eligibleUsers[randNumb % (eligibleUsers.length - i)] = eligibleUsers[
-        eligibleUsers.length - 1
-      ];
+      eligibleUsers[randNumb] = eligibleUsers[eligibleUsers.length - i];
     }
   }
 }
