@@ -34,6 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+# graph
+/graph/generated
+/graph/node_modules
+
 artifacts
 cache
 typechain-types

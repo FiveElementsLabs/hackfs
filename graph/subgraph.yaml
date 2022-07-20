@@ -1,0 +1,50 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: CryptoUnicorns
+    network: matic
+    source:
+      address: "0xdC0479CC5BbA033B3e7De9F178607150B3AbCe1f"
+      abi: ERC721
+      startBlock: 21418707
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Collection
+        - Owner
+        - Token
+        - Pair
+      abis:
+        - name: ERC721
+          file: ./abis/ERC721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/erc721.ts
+  - kind: ethereum
+    name: NonfungiblePositionManager
+    network: matic
+    source:
+      address: "0xC36442b4a4522E871399CD717aBDD847Ab11FE88"
+      abi: ERC721
+      startBlock: 22760586
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Collection
+        - Owner
+        - Token
+        - Pair
+      abis:
+        - name: ERC721
+          file: ./abis/ERC721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/erc721.ts
