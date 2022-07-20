@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import { useRouter } from "next/router";
 import ActiveCampaignsBox from "./active-campaign-box";
 import { CampaignsBoxEmpty } from "./active-campaign-box";
 import { getDeadline } from "../../utils/utils";
 
-const campaigns = [
+const fakeMyCampaigns = [
+  {
+    title: "Token Giveaway #2",
+    imageURL:
+      "https://images.cointelegraph.com/images/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMDQvNTg3NTgxZjItNjE3Yi00MDRiLWIzNTgtOGI0NjM2ZDQzOTRiLmpwZw==.jpg",
+    deadline: getDeadline(new Date().setDate(new Date().getDate() + 5)),
+    participants: "12",
+    drawMethod: "0",
+  },
+  {
+    title: "5EL NFT Giveaway",
+    imageURL:
+      "https://d33wubrfki0l68.cloudfront.net/13ca0c32ffd56bcfaf861b9a8acb212d0f6482e3/d8df6/static/c3bcc8c47890ffd2a2c329972c73d0fd/e018d/ethereum-logo-portrait-black-gray.png",
+    deadline: getDeadline(new Date().setDate(new Date().getDate() + 7)),
+    participants: "189",
+    drawMethod: "0",
+  },
+];
+
+const fakeCampaigns = [
   {
     title: "Token Giveaway",
     imageURL:
@@ -38,8 +58,15 @@ const campaigns = [
   },
 ];
 
-const ActiveCampaignsView = () => {
+const ActiveCampaignsView = ({ firstTab, secondTab }) => {
   const [switchCampaign, setSwitchCampaign] = useState(true);
+  const { pathname } = useRouter();
+  console.log("pathname: ", pathname);
+
+  const campaigns = useMemo(
+    () => (pathname === "/active-campaigns" ? fakeCampaigns : fakeMyCampaigns),
+    []
+  );
 
   return (
     <div className="grid max-w-4-xl mx-auto">
@@ -53,7 +80,7 @@ const ActiveCampaignsView = () => {
             }`}
             onClick={() => setSwitchCampaign(true)}
           >
-            active
+            {firstTab}
           </button>
           <button
             className={`px-4 rounded-[0.45rem] azeret font-medium text-xs uppercase focus:outline-none py-1.5 ${
@@ -63,7 +90,7 @@ const ActiveCampaignsView = () => {
             }`}
             onClick={() => setSwitchCampaign(false)}
           >
-            participated
+            {secondTab}
           </button>
         </div>
       </div>
