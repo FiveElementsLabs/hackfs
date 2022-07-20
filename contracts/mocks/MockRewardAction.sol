@@ -7,10 +7,11 @@ import "../CampaignStorage.sol";
 contract MockRewardAction {
   function claim() public {
     StorageStruct storage Storage = CampaignStorage.getStorage();
+    IERC20 token = IERC20(Storage.rewardToken);
     require(
-      Storage.amountPerUser <= Storage.rewardToken.balanceOf(address(this)),
+      Storage.amountPerUser <= token.balanceOf(address(this)),
       "RewardAction::claim:Not enough token to claim"
     );
-    Storage.rewardToken.transfer(msg.sender, Storage.amountPerUser);
+    token.transfer(msg.sender, Storage.amountPerUser);
   }
 }
