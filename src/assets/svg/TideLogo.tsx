@@ -1,7 +1,7 @@
 import React from "react";
 import { SVGProps } from "react";
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+const TideLogo = (props: SVGProps<SVGSVGElement>) => (
   <svg width={72} height={72} fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       d="M35.745 0a35.745 35.745 0 1 0 0 71.49 35.745 35.745 0 0 0 0-71.49Zm0 57.837a22.092 22.092 0 1 1 0-44.183 22.092 22.092 0 0 1 0 44.183Z"
@@ -38,4 +38,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default SvgComponent;
+export default TideLogo;

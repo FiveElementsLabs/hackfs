@@ -3,7 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["img.freepik.com", "d33wubrfki0l68.cloudfront.net", "images.cointelegraph.com"],
+    domains: [
+      "img.freepik.com",
+      "d33wubrfki0l68.cloudfront.net",
+      "images.cointelegraph.com",
+      "app.aave.com",
+    ],
   },
 };
 
