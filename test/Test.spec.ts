@@ -1,6 +1,7 @@
-import { Contract } from "ethers";
+import { expect } from "chai";
 import { ethers } from "hardhat";
 import { CampaignFactory } from "../typechain-types";
+import { getSelectors } from "./shared/fixtures";
 
 describe("Campaign Factory", () => {
   let gov: any = ethers.getSigners().then(async (signers) => {
@@ -21,7 +22,21 @@ describe("Campaign Factory", () => {
     await campaignFactory.deployed();
   });
 
-  it("Should let governance add modules", async () => {});
+  it("Should let governance add modules", async () => {
+    const mockActionFactory = await ethers.getContractFactory("MockAction");
+    const mockAction = await mockActionFactory.deploy();
+    await mockAction.deployed();
+
+    await campaignFactory.connect(gov).addModule(
+      {
+        facetAddress: mockAction.address,
+        action: 1,
+        functionSelectors: await getSelectors(mockAction),
+      },
+      true
+    );
+  });
+
   it("Should let a user deploy a campaign", async () => {
     const rewardToken = "0x123456789";
     const amountPerUser = 10;
