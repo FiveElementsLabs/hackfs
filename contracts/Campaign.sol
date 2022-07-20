@@ -39,13 +39,14 @@ contract Campaign {
     });
     CampaignStorage.diamondCut(cut, address(0), "");
     StorageStruct storage Storage = CampaignStorage.getStorage();
-    Storage.rewardToken = IERC20(_rewardToken);
+    Storage.factory = msg.sender;
+    Storage.rewardToken = _rewardToken;
     Storage.amountPerUser = _amountPerUser;
     Storage.campaignStartTime = _campaignStartTime;
     Storage.campaignEndTime = _campaignEndTime;
   }
 
-  fallback() external payable onlyActiveCampaign {
+  fallback() external payable {
     StorageStruct storage Storage = CampaignStorage.getStorage();
 
     address facet = Storage.selectorToFacetAndPosition[msg.sig].facetAddress;

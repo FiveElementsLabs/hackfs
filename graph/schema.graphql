@@ -1,0 +1,26 @@
+type Collection @entity {
+  id: ID!
+  name: String
+  tokensMinted: BigInt!
+  owners: BigInt!
+}
+
+type Token @entity {
+  id: ID!
+  owner: Owner!
+}
+
+type Owner @entity {
+  id: ID!
+  Tokens: [Token!] @derivedFrom(field: "owner")
+  pairs: [Pair!] @derivedFrom(field: "owner")
+}
+
+type Pair @entity {
+  id: ID!
+  tokenId: Token!
+  owner: Owner!
+  from: BigInt!
+  to: BigInt
+  timeHolded: BigInt
+}
