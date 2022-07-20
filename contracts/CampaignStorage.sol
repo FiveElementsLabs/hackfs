@@ -31,7 +31,7 @@ struct StorageStruct {
 }
 
 library CampaignStorage {
-  bytes32 private constant key = keccak256("position-manager-storage-location");
+  bytes32 private constant key = keccak256("campaign-storage-location");
 
   ///@notice get the storage from memory location
   ///@return s the storage struct
