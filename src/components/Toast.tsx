@@ -23,13 +23,13 @@ export default function Toast({
 
   var icon;
   if (type === "success")
-    icon = <CheckCircleIcon className="h-8 w-8 secondary" aria-hidden="true" />;
+    icon = <CheckCircleIcon className="h-8 w-8 text-bright-green" aria-hidden="true" />;
   else if (type === "error")
-    icon = <ExclamationCircleIcon className="h-8 w-8 text-red-500" aria-hidden="true" />;
+    icon = <ExclamationCircleIcon className="h-8 w-8 text-bright-red" aria-hidden="true" />;
   else if (type === "warning")
-    icon = <XCircleIcon className="h-8 w-8 text-orange-300" aria-hidden="true" />;
+    icon = <XCircleIcon className="h-8 w-8 text-bright-yellow" aria-hidden="true" />;
   else if (type === "info")
-    icon = <InformationCircleIcon className="h-8 w-8 text-blue-500" aria-hidden="true" />;
+    icon = <InformationCircleIcon className="h-8 w-8 text-bright-blue" aria-hidden="true" />;
   else if (type === "loading") icon = loadingSpinner;
   else throw new Error(`Invalid notification type: ${type}`);
 
@@ -44,22 +44,19 @@ export default function Toast({
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <div
-        className="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black 
-      ring-opacity-5 overflow-hidden"
-      >
+      <div className="max-w-sm w-full bg-elements shadow-lg rounded-lg pointer-events-auto overflow-hidden">
         <div className="p-3">
           <div className="flex items-center">
             <div className="flex-shrink-0">{icon}</div>
             <div className="ml-3 w-0 flex-1 pt-0.5">
-              <p className="work-sans-normal text-md text-gray-700">{title}</p>
-              <p className="work-sans-light mt-1 text-sm text-gray-500">{message}</p>
+              <p className="work-sans-normal text-md text-principal-lightgray">{title}</p>
+              <p className="work-sans-light mt-1 text-sm text-principal-gray">{message}</p>
             </div>
             <div className="ml-4 flex-shrink-0 flex">
               <button
                 type="button"
-                className="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="bg-transparent rounded-md inline-flex text-principal-lightgray 
+                hover:text-principal-gray focus:outline-none"
                 onClick={() => setShow(false)}
               >
                 <span className="sr-only">Close</span>

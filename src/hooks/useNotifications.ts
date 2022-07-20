@@ -32,7 +32,7 @@ export const useNotifications = () => {
     message: any = "",
     duration: number = DEFAULT_NOTIFICATION_TIMEOUT
   ) => {
-    if (notifications.length > MAX_NOTIFICATION_NUMBER) return null;
+    if (notifications?.length > MAX_NOTIFICATION_NUMBER) return null;
     const id = addNotification(type, title, message);
     setTimeout(() => removeNotification(id), duration);
   };
