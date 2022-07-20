@@ -40,8 +40,6 @@ const campaigns = [
 ];
 
 const MyCampaignsView = () => {
-  const [switchCampaign, setSwitchCampaign] = useState(true);
-
   return (
     <>
       <ActiveCampaignsView firstTab={"created"} secondTab={"drafts"} />

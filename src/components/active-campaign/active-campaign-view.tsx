@@ -122,17 +122,23 @@ const ActiveCampaignsView = ({ firstTab, secondTab }) => {
                   ))}
                 </div>
               ) : (
-                <div className="grid grid-cols-1 gap-4">
-                  <CampaignsBoxEmpty text={"Active campaigns will be shown here."} />
-                </div>
+                <CreateGiveawayBox />
               )}
             </>
           )}
         </>
       ) : (
-        <div className="grid grid-cols-1 gap-4">
-          <CampaignsBoxEmpty text={"The giveaways you participate to will appear here."} />
-        </div>
+        <>
+          {pathname === "/active-campaigns" ? (
+            <div className="grid grid-cols-1 gap-4">
+              <CampaignsBoxEmpty text={"The giveaways you participate to will appear here."} />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              <CampaignsBoxEmpty text={"Your draft campaigns will appear here."} />
+            </div>
+          )}
+        </>
       )}
     </div>
   );
