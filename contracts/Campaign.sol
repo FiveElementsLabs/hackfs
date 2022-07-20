@@ -49,7 +49,7 @@ contract Campaign {
     StorageStruct storage Storage = CampaignStorage.getStorage();
 
     address facet = Storage.selectorToFacetAndPosition[msg.sig].facetAddress;
-    require(facet != address(0), "PositionManager::Fallback: Function does not exist");
+    require(facet != address(0), "Campaign::Fallback: Function does not exist");
 
     ///@dev Execute external function from facet using delegatecall and return any value.
     assembly {
