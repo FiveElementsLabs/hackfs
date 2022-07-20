@@ -1,9 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import { useRouter } from "next/router";
 import ActiveCampaignsBox from "./active-campaign-box";
 import { CampaignsBoxEmpty, Campaign } from "./active-campaign-box";
 import { getDeadline } from "../../utils/utils";
+import path from "node:path/win32";
+import { CreateGiveawayBox } from "./create-giveaway-box";
 
-const campaigns: Campaign[] = [
+const fakeMyCampaigns: Campaign[] = [
+  {
+    title: "Token Giveaway #2",
+    imageURL:
+      "https://images.cointelegraph.com/images/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMDQvNTg3NTgxZjItNjE3Yi00MDRiLWIzNTgtOGI0NjM2ZDQzOTRiLmpwZw==.jpg",
+    deadline: getDeadline(new Date().setDate(new Date().getDate() + 5)),
+    participants: 12,
+    drawMethod: 0,
+  },
+  {
+    title: "5EL NFT Giveaway",
+    imageURL:
+      "https://d33wubrfki0l68.cloudfront.net/13ca0c32ffd56bcfaf861b9a8acb212d0f6482e3/d8df6/static/c3bcc8c47890ffd2a2c329972c73d0fd/e018d/ethereum-logo-portrait-black-gray.png",
+    deadline: getDeadline(new Date().setDate(new Date().getDate() + 7)),
+    participants: 189,
+    drawMethod: 0,
+  },
+];
+
+const fakeCampaigns: Campaign[] = [
   {
     title: "Token Giveaway",
     imageURL:
@@ -38,8 +60,15 @@ const campaigns: Campaign[] = [
   },
 ];
 
-const ActiveCampaignsView = () => {
+const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; secondTab: string }) => {
   const [switchCampaign, setSwitchCampaign] = useState(true);
+  const { pathname } = useRouter();
+  console.log("pathname: ", pathname);
+
+  const campaigns = useMemo(
+    () => (pathname === "/active-campaigns" ? fakeCampaigns : fakeMyCampaigns),
+    []
+  );
 
   return (
     <div className="grid max-w-4-xl mx-auto">
@@ -53,7 +82,7 @@ const ActiveCampaignsView = () => {
             }`}
             onClick={() => setSwitchCampaign(true)}
           >
-            active
+            {firstTab}
           </button>
           <button
             className={`px-4 rounded-[0.45rem] azeret font-medium text-xs uppercase focus:outline-none py-1.5 ${
@@ -63,28 +92,53 @@ const ActiveCampaignsView = () => {
             }`}
             onClick={() => setSwitchCampaign(false)}
           >
-            participated
+            {secondTab}
           </button>
         </div>
       </div>
       {switchCampaign ? (
         <>
-          {campaigns.length > 0 ? (
-            <div className="grid grid-cols-3 gap-4">
-              {campaigns.map((campaign, id) => (
-                <ActiveCampaignsBox key={id} campaign={campaign} />
-              ))}
-            </div>
+          {pathname === "/active-campaigns" ? (
+            <>
+              {campaigns.length > 0 ? (
+                <div className="grid grid-cols-3 gap-4">
+                  {campaigns.map((campaign, id) => (
+                    <ActiveCampaignsBox key={id} campaign={campaign} />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-4">
+                  <CampaignsBoxEmpty text={"Active campaigns will be shown here."} />
+                </div>
+              )}
+            </>
           ) : (
-            <div className="grid grid-cols-1 gap-4">
-              <CampaignsBoxEmpty text="Active campaigns will be shown here." />
-            </div>
+            <>
+              {campaigns.length > 0 ? (
+                <div className="grid grid-cols-3 gap-4">
+                  <CreateGiveawayBox />
+                  {campaigns.map((campaign, id) => (
+                    <ActiveCampaignsBox key={id} campaign={campaign} />
+                  ))}
+                </div>
+              ) : (
+                <CreateGiveawayBox />
+              )}
+            </>
           )}
         </>
       ) : (
-        <div className="grid grid-cols-1 gap-4">
-          <CampaignsBoxEmpty text="The giveaways you participate to will appear here." />
-        </div>
+        <>
+          {pathname === "/active-campaigns" ? (
+            <div className="grid grid-cols-1 gap-4">
+              <CampaignsBoxEmpty text={"The giveaways you participate to will appear here."} />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              <CampaignsBoxEmpty text={"Your draft campaigns will appear here."} />
+            </div>
+          )}
+        </>
       )}
     </div>
   );
