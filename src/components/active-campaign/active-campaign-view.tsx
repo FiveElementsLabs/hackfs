@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import ActiveCampaignsBox from "./active-campaign-box";
 import { CampaignsBoxEmpty } from "./active-campaign-box";
 import { getDeadline } from "../../utils/utils";
+import path from "node:path/win32";
+import { CreateGiveawayBox } from "./create-giveaway-box";
 
 const fakeMyCampaigns = [
   {
@@ -96,16 +98,35 @@ const ActiveCampaignsView = ({ firstTab, secondTab }) => {
       </div>
       {switchCampaign ? (
         <>
-          {campaigns.length > 0 ? (
-            <div className="grid grid-cols-3 gap-4">
-              {campaigns.map((campaign, id) => (
-                <ActiveCampaignsBox key={id} campaign={campaign} />
-              ))}
-            </div>
+          {pathname === "/active-campaigns" ? (
+            <>
+              {campaigns.length > 0 ? (
+                <div className="grid grid-cols-3 gap-4">
+                  {campaigns.map((campaign, id) => (
+                    <ActiveCampaignsBox key={id} campaign={campaign} />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-4">
+                  <CampaignsBoxEmpty text={"Active campaigns will be shown here."} />
+                </div>
+              )}
+            </>
           ) : (
-            <div className="grid grid-cols-1 gap-4">
-              <CampaignsBoxEmpty text={"Active campaigns will be shown here."} />
-            </div>
+            <>
+              {campaigns.length > 0 ? (
+                <div className="grid grid-cols-3 gap-4">
+                  <CreateGiveawayBox />
+                  {campaigns.map((campaign, id) => (
+                    <ActiveCampaignsBox key={id} campaign={campaign} />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-4">
+                  <CampaignsBoxEmpty text={"Active campaigns will be shown here."} />
+                </div>
+              )}
+            </>
           )}
         </>
       ) : (
