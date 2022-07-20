@@ -15,9 +15,35 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Collection
+        - Owner
+        - Token
+        - Pair
       abis:
         - name: ERC721
           file: CryptoUnicorns/abis/ERC721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: CryptoUnicorns/CryptoUnicorns.wasm
+  - kind: ethereum
+    name: NonfungiblePositionManager
+    network: matic
+    source:
+      address: "0xC36442b4a4522E871399CD717aBDD847Ab11FE88"
+      abi: ERC721
+      startBlock: 22760586
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Collection
+        - Owner
+        - Token
+        - Pair
+      abis:
+        - name: ERC721
+          file: NonfungiblePositionManager/abis/ERC721.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
