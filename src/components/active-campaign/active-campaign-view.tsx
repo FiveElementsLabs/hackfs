@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ActiveCampaignsBox from "./active-campaign-box";
-import { ActiveCampaignsBoxEmpty } from "./active-campaign-box";
+import { CampaignsBoxEmpty } from "./active-campaign-box";
 import { getDeadline } from "../../utils/utils";
 
 const campaigns = [
@@ -48,18 +48,18 @@ const ActiveCampaignsView = () => {
           <button
             className={`rounded-[0.45rem] azeret font-medium text-xs uppercase focus:outline-none py-1.5 ${
               switchCampaign
-                ? "px-6 bg-tide-lighter text-black z-10 -mr-3 border-2 border-secondary"
-                : "pl-6 pr-6 border-none bg-tide-darker z-0 text-white py-[1px]"
+                ? "px-6 bg-shade-3 text-white z-10 -mr-3 border-2 border-secondary"
+                : "pl-6 pr-6 border-none bg-shade-3 z-0 text-white opacity-80 py-[1px] hover:bg-shade-3 hover:opacity-90"
             }`}
             onClick={() => setSwitchCampaign(true)}
           >
-            activated
+            active
           </button>
           <button
-            className={`px-2 rounded-[0.45rem] azeret font-medium text-xs uppercase focus:outline-none py-1.5 ${
+            className={`px-4 rounded-[0.45rem] azeret font-medium text-xs uppercase focus:outline-none py-1.5 ${
               !switchCampaign
-                ? "px-6 bg-tide-lighter text-black z-10 -ml-3 border-2 border-secondary primary"
-                : "pl-6 pr-6 border-none bg-tide-darker z-0 text-white py-[1px]"
+                ? "px-6 bg-shade-3 text-white z-10 -ml-3 border-2 border-secondary"
+                : "pl-6 pr-6 border-none bg-shade-3 z-0 text-white opacity-80 py-[1px] hover:bg-shade-3 hover:opacity-90"
             }`}
             onClick={() => setSwitchCampaign(false)}
           >
@@ -77,11 +77,15 @@ const ActiveCampaignsView = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-4">
-              <ActiveCampaignsBoxEmpty />
+              <CampaignsBoxEmpty text={"Active campaigns will be shown here."} />
             </div>
           )}
         </>
-      ) : null}
+      ) : (
+        <div className="grid grid-cols-1 gap-4">
+          <CampaignsBoxEmpty text={"The giveaways you participate to will appear here."} />
+        </div>
+      )}
     </div>
   );
 };
