@@ -6,8 +6,8 @@ pragma abicoder v2;
 * EIP-2535 Diamonds: https://eips.ethereum.org/EIPS/eip-2535
 /******************************************************************************/
 
-import { IDiamondCut } from "../interfaces/IDiamondCut.sol";
 import "./CampaignStorage.sol";
+import { IDiamondCut } from "../interfaces/IDiamondCut.sol";
 
 contract DiamondCutFacet is IDiamondCut {
   /// @notice Add/replace/remove any number of functions and optionally execute
