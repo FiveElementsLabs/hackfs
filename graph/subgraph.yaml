@@ -7,7 +7,7 @@ dataSources:
     network: matic
     source:
       address: "0xdC0479CC5BbA033B3e7De9F178607150B3AbCe1f"
-      abi: ERC-721
+      abi: ERC721
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -15,8 +15,9 @@ dataSources:
       entities:
         - boh
       abis:
-        - name: ERC-721
-          file: ./abis/ERC-721.json
+        - name: ERC721
+          file: ./abis/ERC721.json
       eventHandlers:
-
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
       file: ./src/erc721.ts
