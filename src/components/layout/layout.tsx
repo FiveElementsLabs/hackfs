@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { useSharedState } from "../../lib/store";
 import { useWallet } from "../../hooks/useWallet";
 import Navbar from "./navbar";
+import Footer from "./footer";
 import { arrayBuffer } from "stream/consumers";
 
 const Layout = ({ children }) => {
@@ -16,6 +17,7 @@ const Layout = ({ children }) => {
     <div className="text-white min-h-screen bg-gradient-to-t from-tide-darker to-tide-dark">
       <Navbar />
       <main className="max-w-4xl mx-auto">{children}</main>
+      <Footer />
     </div>
   );
 };
