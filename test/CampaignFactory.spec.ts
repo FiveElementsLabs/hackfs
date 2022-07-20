@@ -27,7 +27,10 @@ describe("Campaign Factory", () => {
     await diamondCut.deployed();
 
     const campaignFactoryFactory = await ethers.getContractFactory("CampaignFactory");
-    campaignFactory = (await campaignFactoryFactory.deploy(diamondCut.address)) as CampaignFactory;
+    campaignFactory = (await campaignFactoryFactory.deploy(
+      diamondCut.address,
+      gov.address
+    )) as CampaignFactory;
     await campaignFactory.deployed();
   });
 
