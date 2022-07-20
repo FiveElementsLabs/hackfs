@@ -14,6 +14,7 @@ type State = {
   chain_id: number | string | null;
   loading: boolean;
   theme: string;
+  notifications: any[];
 };
 
 const getInitialTheme = () => {
@@ -33,6 +34,7 @@ export const initialState: State = {
   chain_id: null,
   loading: false,
   theme: getInitialTheme(),
+  notifications: [],
 };
 
 export const reducer = (state: State, action: action) => {
@@ -77,6 +79,30 @@ export const reducer = (state: State, action: action) => {
         ...state,
         network_name: action.payload.network_name,
         chain_id: action.payload.chain_id,
+      };
+
+    case actions.ADD_NOTIFICATION:
+      return {
+        ...state,
+        notifications: [...state.notifications, action.payload.notification],
+      };
+
+    case actions.UPDATE_NOTIFICATION:
+      return {
+        ...state,
+        notifications: state.notifications.map((notification) => {
+          if (notification.id === action.payload.notification.id)
+            return action.payload.notification;
+          return notification;
+        }),
+      };
+
+    case actions.REMOVE_NOTIFICATION:
+      return {
+        ...state,
+        notifications: state.notifications.filter(
+          (notification) => notification.id !== action.payload.id
+        ),
       };
 
     default:
