@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -14,6 +15,7 @@ import Discord from "../../assets/svg/Discord";
 import Lens from "../../assets/svg/Lens";
 
 const Navbar = () => {
+  const { pathname } = useRouter();
   return (
     <div className="pt-4 max-w-4xl mx-auto">
       <div className="flex items-center justify-between">
@@ -28,11 +30,27 @@ const Navbar = () => {
           </Link>
 
           <Link href="/active-campaigns">
-            <p className="text-sm cursor-pointer font-medium uppercase">Active Campaigns</p>
+            <p
+              className={`text-sm cursor-pointer font-medium uppercase ${
+                pathname === "/active-campaigns"
+                  ? "text-shade-2 underline-thickness-2 underline underline-offset-4"
+                  : ""
+              }`}
+            >
+              Active Campaigns
+            </p>
           </Link>
 
           <Link href="/my-campaigns">
-            <p className="text-sm cursor-pointer font-medium uppercase">My Campaigns</p>
+            <p
+              className={`text-sm cursor-pointer font-medium uppercase ${
+                pathname === "/my-campaigns"
+                  ? "text-shade-2 underline-thickness-2 underline underline-offset-4"
+                  : ""
+              }`}
+            >
+              My Campaigns
+            </p>
           </Link>
         </div>
 
