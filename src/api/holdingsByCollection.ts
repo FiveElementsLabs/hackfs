@@ -23,7 +23,7 @@ const GET_HOLDINGS_BY_COLLECTION = (collection: string) => {
 };
 
 export const getTopHolders = async (chain_id, collection: string, percentage: number) => {
-  const source = "orbitSubGraph";
+  const source = "tide-hack-fs";
   const result = (
     await ApolloClient(chain_id, source).query({
       query: gql(GET_HOLDINGS_BY_COLLECTION(collection)),
