@@ -117,7 +117,7 @@ const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; second
                 <div className="grid grid-cols-3 gap-4">
                   <CreateGiveawayBox />
                   {campaigns.map((campaign, id) => (
-                    <ActiveCampaignsBox key={id} campaign={campaign} />
+                    <ActiveCampaignsBox key={id} campaign={campaign} owned={true} />
                   ))}
                 </div>
               ) : (
