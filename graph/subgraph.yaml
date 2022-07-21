@@ -17,7 +17,7 @@ dataSources:
         - Collection
         - Owner
         - Token
-        - Pair
+        - Holdings
       abis:
         - name: ERC721
           file: ./abis/ERC721.json
@@ -40,7 +40,7 @@ dataSources:
         - Collection
         - Owner
         - Token
-        - Pair
+        - Holdings
       abis:
         - name: ERC721
           file: ./abis/ERC721.json
