@@ -14,7 +14,7 @@ const ActiveCampaignsBox = ({ campaign, owned }: { campaign: Campaign; owned: bo
   const { title, imageURL, deadline, participants, drawMethod } = campaign;
 
   return (
-    <Link href={owned ? "/edit-campaign/1" : "/campaign/1"}>
+    <Link href={owned ? "/campaign-details/1" : "/campaign/1"}>
       <div className="hover:opacity-80 rounded-2xl bg-elements text-white border-2 border-tide-medium cursor-pointer">
         <div className="p-3">
           <div className="relative h-36 w-full object-cover border-3 border-white rounded-2xl">
