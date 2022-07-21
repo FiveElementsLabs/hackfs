@@ -8,6 +8,7 @@ type Token @entity {
   id: ID!
   owner: Owner!
   collection: Collection!
+  holdings: [Holding!]! @derivedFrom(field: "token")
 }
 
 type Owner @entity {
@@ -18,7 +19,7 @@ type Owner @entity {
 
 type Holding @entity {
   id: ID!
-  tokenId: Token!
+  token: Token!
   owner: Owner!
   from: BigInt!
   to: BigInt

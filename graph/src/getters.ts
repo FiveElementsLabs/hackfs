@@ -12,9 +12,9 @@ export function getOwnerOrCreate(address: Address): Owner {
 }
 
 export function getTokenOrCreate(tokenId: BigInt, owner: Address): Token {
-  let token = Token.load(tokenId.toString());
+  let token = Token.load(dataSource.address().toHexString() + "-" + tokenId.toString());
   if (!token) {
-    token = new Token(tokenId.toString());
+    token = new Token(dataSource.address().toHexString() + "-" + tokenId.toString());
     token.owner = getOwnerOrCreate(owner).id;
     token.collection = getCollectionOrCreate().id;
     token.save();
@@ -30,7 +30,7 @@ export function getHoldingOrCreate(
   let holding = Holding.load(owner.toHexString() + "-" + tokenId.toString());
   if (!holding) {
     holding = new Holding(owner.toHexString() + "-" + tokenId.toString());
-    holding.tokenId = tokenId.toString();
+    holding.token = dataSource.address().toHexString() + "-" + tokenId.toString();
     holding.owner = owner.toHexString();
     holding.from = block.timestamp;
     holding.save();
