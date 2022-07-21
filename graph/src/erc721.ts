@@ -14,18 +14,9 @@ export function handleTransfer(event: Transfer): void {
     const oldHolding = getHoldingOrCreate(event.params.from, event.params.tokenId, event.block);
     oldHolding.to = event.block.timestamp;
     oldHolding.timeHolded = event.block.timestamp.minus(oldHolding.from);
-    // oldOwner.avgHoldingTime = calcAvgHoldingTime(event.params.from, event.block);
-    // oldOwner.save();
     oldHolding.save();
   }
   if (event.params.to != ZERO_ADDRESS) {
     const newHolding = getHoldingOrCreate(event.params.to, event.params.tokenId, event.block);
-    // newOwner.avgHoldingTime = calcAvgHoldingTime(event.params.to, event.block);
-    // if (newOwner.holdings) {
-    //   newOwner.holdings = newOwner.holdings!.concat([newHolding.id]);
-    // } else {
-    //   newOwner.holdings = [newHolding.id];
-    // }
-    // newOwner.save();
   }
 }
