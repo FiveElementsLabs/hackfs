@@ -31,9 +31,9 @@ const Navbar = () => {
 
           <Link href="/active-campaigns">
             <p
-              className={`text-sm cursor-pointer font-medium uppercase ${
+              className={`text-sm cursor-pointer font-medium uppercase hover:text-shade-2 ${
                 pathname === "/active-campaigns"
-                  ? "text-shade-2 underline-thickness-2 underline underline-offset-4"
+                  ? "text-shade-2 underline-thickness-2 underline underline-offset-4 "
                   : ""
               }`}
             >
@@ -43,7 +43,7 @@ const Navbar = () => {
 
           <Link href="/my-campaigns">
             <p
-              className={`text-sm cursor-pointer font-medium uppercase ${
+              className={`text-sm cursor-pointer font-medium uppercase hover:text-shade-2 ${
                 pathname === "/my-campaigns"
                   ? "text-shade-2 underline-thickness-2 underline underline-offset-4"
                   : ""
