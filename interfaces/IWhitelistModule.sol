@@ -5,7 +5,5 @@ pragma abicoder v2;
 interface IWhitelistModule {
   function getWhitelist() external view returns (address[] memory);
 
-  function addToWhitelist(address _address) external;
-
   function isWhitelisted(address _address) external view returns (bool);
 }

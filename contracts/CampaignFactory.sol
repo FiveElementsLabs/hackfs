@@ -3,10 +3,12 @@ pragma solidity ^0.8.0;
 pragma abicoder v2;
 
 import "./Campaign.sol";
+import "../interfaces/ICampaignFactory.sol";
 
-contract CampaignFactory {
+contract CampaignFactory is ICampaignFactory {
   address governance;
   address diamondCutFacet;
+  address public keeper;
   IDiamondCut.FacetCut[] public elegibilityModules;
   IDiamondCut.FacetCut[] public rewardModules;
 
@@ -20,13 +22,15 @@ contract CampaignFactory {
     _;
   }
 
-  constructor(address _diamondCutFacet) {
+  constructor(address _diamondCutFacet, address _keeper) {
     governance = msg.sender;
     diamondCutFacet = _diamondCutFacet;
+    keeper = _keeper;
   }
 
   function addModule(IDiamondCut.FacetCut calldata _module, bool isRewardModule)
     external
+    override
     onlyGovernance
   {
     if (isRewardModule) {
@@ -45,7 +49,7 @@ contract CampaignFactory {
     uint256 _campaignEndTime,
     address _checkElegibilityModule,
     address _rewardModule
-  ) public payable {
+  ) public payable override {
     Campaign campaign = new Campaign(
       msg.sender,
       diamondCutFacet,
