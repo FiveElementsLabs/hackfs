@@ -69,9 +69,9 @@ const InfoDropdown = () => {
   return (
     <Menu
       as="div"
-      className="grid place-content-center no-outline md:float-right relative w-mobile-100"
+      className="grid place-content-center no-outline md:float-right relative w-mobile-100 "
     >
-      <Menu.Button className="bg-bright-blue rounded-md w-12 grid place-content-center no-outline h-12 md:h-9">
+      <Menu.Button className="bg-bright-blue rounded-md w-12 grid place-content-center no-outline h-12 md:h-9 hover:opacity-80">
         <MoreSvg />
       </Menu.Button>
       <Transition
@@ -85,14 +85,14 @@ const InfoDropdown = () => {
       >
         <Menu.Items
           className="absolute z-10 right-0 md:right-1 top-0 md:top-11 w-64 origin-top-right 
-        rounded-md border-secondary border-2 focus:outline-none p-1 bg-dark-card"
+        rounded-md border-secondary border-2 focus:outline-none p-1 bg-dark-card "
         >
           {infoDropdownData.map((item, index) => (
             <div key={index} className={`${item.border ? "mt-2" : ""}`}>
               {item.desktop && (
                 <div
-                  className={`px-1 ${
-                    item.border ? "border-t border-principal-lightgray py-2" : ""
+                  className={`px-1 hover:opacity-90 hover:bg-bright-blue${
+                    item.border ? "border-t border-principal-lightgray py-2 " : ""
                   }`}
                   key={index}
                 >
