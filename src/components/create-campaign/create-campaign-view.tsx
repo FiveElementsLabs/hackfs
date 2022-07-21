@@ -9,10 +9,9 @@ import { DateRangePicker } from "react-nice-dates";
 import { enUS } from "date-fns/locale";
 import "react-nice-dates/build/style.css";
 
-import Upload from "../../assets/svg/upload";
 import Target from "../../assets/svg/target";
-import { RadioGroup } from "@headlessui/react";
-import { CheckCircleIcon } from "@heroicons/react/solid";
+
+import { uploadIpfs } from "../../lib/ipfs";
 
 const twitter = [{ name: "Tweet interaction" }, { name: "Follow on Twitter" }];
 const lens = [{ name: "Post interaction" }, { name: "Follow on Lens" }];
@@ -552,8 +551,8 @@ const FormData = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: IFormsInputs) =>
-    console.log({
+  const onSubmit = async (data: IFormsInputs) => {
+    const ipfsHash = await uploadIpfs({
       ...data,
       startDate,
       endDate,
@@ -568,6 +567,7 @@ const FormData = () => {
       selectedToken,
       rewardToAll,
     });
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 divide-y divide-gray-200">
