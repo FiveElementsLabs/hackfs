@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 pragma abicoder v2;
 
 import "../CampaignStorage.sol";
+import "../../interfaces/ICampaignFactory.sol";
+
 import "../../interfaces/IWhitelistModule.sol";
 
 contract Whitelist is IWhitelistModule {
@@ -16,13 +18,18 @@ contract Whitelist is IWhitelistModule {
     return whitelist;
   }
 
-  function addToWhitelist(address _address) public override {
-    require(_address != address(0), "WhitelistModule::addToWhitelist:Address already in whitelist");
+  function addToWhitelist(address[] memory _addresses) public {
     require(
-      msg.sender == CampaignStorage.getStorage().owner,
+      msg.sender == ICampaignFactory(CampaignStorage.getStorage().factory).keeper(),
       "WhitelistModule::addToWhitelist:Only owner can add to whitelist"
     );
-    whitelist.push(_address);
+    for (uint256 i; i < _addresses.length; i++) {
+      require(
+        _addresses[i] != address(0),
+        "WhitelistModule::addToWhitelist:Address already in whitelist"
+      );
+      whitelist.push(_addresses[i]);
+    }
   }
 
   function isWhitelisted(address _address) public view override returns (bool) {

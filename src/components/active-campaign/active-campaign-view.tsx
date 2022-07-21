@@ -66,7 +66,7 @@ const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; second
 
   const campaigns = useMemo(
     () => (pathname === "/active-campaigns" ? fakeCampaigns : fakeMyCampaigns),
-    []
+    [pathname]
   );
 
   return (

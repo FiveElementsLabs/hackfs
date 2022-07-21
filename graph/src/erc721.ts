@@ -5,7 +5,7 @@ import { getOwnerOrCreate, getPairOrCreate, getTokenOrCreate } from "./getters";
 const ZERO_ADDRESS = Address.fromHexString("0x0000000000000000000000000000000000000000");
 
 export function handleTransfer(event: Transfer): void {
-  const token = getTokenOrCreate(event.params.tokenId);
+  const token = getTokenOrCreate(event.params.tokenId, event.params.to);
   const newOwner = getOwnerOrCreate(event.params.to);
   token.owner = event.params.to.toHexString();
   token.save();
@@ -16,7 +16,7 @@ export function handleTransfer(event: Transfer): void {
     oldPair.timeHolded = event.block.timestamp.minus(oldPair.from);
     oldPair.save();
   }
-  if (event.params.from != ZERO_ADDRESS) {
+  if (event.params.to != ZERO_ADDRESS) {
     const newPair = getPairOrCreate(event.params.to, event.params.tokenId, event.block);
   }
 }
