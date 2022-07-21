@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { BadgeCheckIcon, PlusCircleIcon, RefreshIcon } from "@heroicons/react/outline";
-import { useSharedState } from "../../../lib/store";
 import { useCeramic } from "../../../hooks/useCeramic";
 import ConnectButton from "../../../components/ceramic/ConnectButton";
 import { FakeCampaignData } from "../[cid]";
@@ -13,7 +12,6 @@ import NoSSR from "../../../components/NoSSR";
 const CampaignRegistration: NextPage = () => {
   const router = useRouter();
   const { cid } = router.query;
-  const [{ did }] = useSharedState();
   const { useBasicProfile, useSocialAccounts } = useCeramic();
   const campaign = useMemo(() => FakeCampaignData, []);
 

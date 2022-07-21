@@ -1,4 +1,4 @@
-import { usePublicRecord, useViewerRecord } from "@self.id/react";
+import { usePublicRecord } from "@self.id/react";
 import { EthereumAuthProvider } from "@self.id/web";
 import { useSharedState } from "../lib/store";
 
@@ -11,8 +11,7 @@ export const useCeramic = () => {
   };
 
   const useBasicProfile = () => {
-    console.log(did);
-    const record = useViewerRecord("basicProfile");
+    const record = usePublicRecord("basicProfile", did);
     return record?.isLoading ? "Loading..." : record?.content ? record?.content : null;
   };
 

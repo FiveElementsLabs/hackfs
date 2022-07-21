@@ -10,9 +10,12 @@ const ConnectButton = () => {
   const [connection, connect, disconnect] = useViewerConnection();
 
   const newDid = useMemo(() => (connection as any)?.selfID?.id || null, [connection]);
+
   useEffect(() => {
     if (!did) dispatch({ type: actions.SET_DID, payload: { did: newDid } });
-  }, [connection, did, dispatch, newDid]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newDid]);
 
   return connection.status === "connected" ? (
     <button
