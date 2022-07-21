@@ -15,6 +15,7 @@ type State = {
   loading: boolean;
   theme: string;
   notifications: any[];
+  did: string | null;
 };
 
 const getInitialTheme = () => {
@@ -35,6 +36,7 @@ export const initialState: State = {
   loading: false,
   theme: getInitialTheme(),
   notifications: [],
+  did: null,
 };
 
 export const reducer = (state: State, action: action) => {
@@ -103,6 +105,12 @@ export const reducer = (state: State, action: action) => {
         notifications: state.notifications.filter(
           (notification) => notification.id !== action.payload.id
         ),
+      };
+
+    case actions.SET_DID:
+      return {
+        ...state,
+        did: action.payload.did,
       };
 
     default:

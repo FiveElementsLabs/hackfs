@@ -7,6 +7,7 @@ const actions: { [action: string]: string } = {
   ADD_NOTIFICATION: "ADD_NOTIFICATION",
   UPDATE_NOTIFICATION: "UPDATE_NOTIFICATION",
   REMOVE_NOTIFICATION: "REMOVE_NOTIFICATION",
+  SET_DID: "SET_DID",
 };
 
 export default actions;
