@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import { Disclosure } from "@headlessui/react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 import TokenImage from "../../components/TokenImage";
 import LinkImg from "../../assets/svg/Link";
 import LinkImg2 from "../../assets/svg/Link2";
@@ -11,8 +12,9 @@ import Nft from "../../assets/svg/Nft";
 import TwitterIcon from "../../assets/svg/Twitter";
 import LensIcon from "../../assets/svg/Lens";
 import CaretDown from "../../assets/svg/CaretDown";
+import { ArrowRightIcon } from "@heroicons/react/outline";
 
-const FakeCampaignData = {
+export const FakeCampaignData = {
   id: 1,
   title: "Giveaway #1",
   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lectus ac lorem tincidunt bibendum. Aliquam blandit ullamcorper luctus. Cras vulputate neque tincidunt lorem euismod pulvinar. Mauris malesuada vehicula nisl. Vestibulum faucibus tortor sit amet dictum rhoncus. Sed egestas eu urna vitae blandit.",
@@ -61,6 +63,20 @@ const FakeCampaignData = {
         "follow @synthetix.lens on Lens",
         "follow @cloudflare.lens on Lens",
       ],
+    },
+  ],
+  criteria: [
+    {
+      desc: "Must own at least 2 Eth in your wallet",
+      type: "erc20",
+    },
+    {
+      desc: "Must have owned a Cryptopunk for at least a week in the past",
+      type: "nft",
+    },
+    {
+      desc: "Must have a Twitter account older than 3 months",
+      type: "extra",
     },
   ],
 };
@@ -202,6 +218,18 @@ const Campaign: NextPage = () => {
                 </Disclosure>
               ))}
             </div>
+          </div>
+
+          <div className="mt-8 w-full flex justify-end">
+            <Link href={`/campaign/registration/${cid}`}>
+              <button
+                className="w-60 py-2 rounded-lg bg-bright-blue hover:opacity-90 hover:shadow-sm 
+              flex items-center justify-center gap-2"
+              >
+                <p className="text-lg tracking-wide">Join now</p>
+                <ArrowRightIcon width={24} />
+              </button>
+            </Link>
           </div>
         </div>
       )}
