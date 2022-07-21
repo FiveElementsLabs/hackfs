@@ -11,12 +11,11 @@ export function getOwnerOrCreate(address: Address): Owner {
   return owner;
 }
 
-export function getTokenOrCreate(tokenId: BigInt): Token {
+export function getTokenOrCreate(tokenId: BigInt, owner: Address): Token {
   let token = Token.load(tokenId.toString());
   if (!token) {
     token = new Token(tokenId.toString());
-    const collectionContract = ERC721.bind(dataSource.address());
-    token.owner = getOwnerOrCreate(collectionContract.ownerOf(tokenId)).id;
+    token.owner = getOwnerOrCreate(owner).id;
     token.save();
   }
   return token;
