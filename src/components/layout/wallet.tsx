@@ -31,7 +31,7 @@ export default function Wallet() {
                   <Listbox.Button
                     className="bg-bright-blue relative w-full  text-tide-darker
                   rounded-md shadow-sm pl-3 pr-24 py-2 text-left cursor-pointer focus:outline-none 
-                  focus:ring-none sm:text-sm font-medium"
+                  focus:ring-none sm:text-sm font-medium hover:opacity-80"
                   >
                     <span className="block truncate">
                       {selectedNetwork?.chainName || "Wrong Network"}
@@ -59,7 +59,7 @@ export default function Wallet() {
                           className={({ active }) =>
                             classNames(
                               active
-                                ? "text-principal-lightgray bg-bright-blue "
+                                ? "text-principal-lightgray bg-bright-blue hover:opacity-80"
                                 : "text-principal-lightgray bg-bright-blue ",
                               "cursor-pointer select-none relative py-2 pl-3 pr-9"
                             )
@@ -69,7 +69,7 @@ export default function Wallet() {
                             <>
                               <span
                                 className={classNames(
-                                  selected ? "font-bold" : "font-normal",
+                                  selected ? "font-bold" : "font-normal ",
                                   "block truncate"
                                 )}
                               >
@@ -80,7 +80,7 @@ export default function Wallet() {
                                 <span
                                   className={classNames(
                                     active ? "text-principal-lightgray" : "text-principal-gray",
-                                    "absolute inset-y-0 right-0 flex items-center pr-4"
+                                    "absolute inset-y-0 right-0 flex items-center pr-4 hover:opacity-80"
                                   )}
                                 >
                                   <CheckIcon className="h-5 w-5" aria-hidden="true" />
@@ -102,7 +102,7 @@ export default function Wallet() {
       {account ? (
         <button
           className="ml-2 py-2 px-4 rounded-md shadow-sm 
-          text-sm bg-bright-blue  text-tide-darker font-medium"
+          text-sm bg-bright-blue  text-tide-darker font-medium hover:opacity-80"
           onClick={logoutWallet}
         >
           {shortenAddress(account)}
@@ -110,7 +110,7 @@ export default function Wallet() {
       ) : (
         <button
           className="py-2 px-4 box-border rounded-md shadow-sm 
-          text-sm bg-bright-blue  text-tide-darker font-medium uppercase"
+          text-sm bg-bright-blue  text-tide-darker font-medium uppercase hover:opacity-80"
           onClick={loginWallet}
         >
           Connect Wallet

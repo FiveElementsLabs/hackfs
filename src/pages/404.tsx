@@ -15,7 +15,7 @@ export default function Custom404() {
       </p>
       <div
         className="mt-8 inline-flex items-center px-8 py-2 border border-transparent text-sm 
-            font-medium rounded-md bg-elements hover:bg-opacity-50"
+            font-medium rounded-md bg-bright-blue hover:bg-opacity-80 hover:cursor-pointer"
       >
         <Link href="/">Go back home</Link>
       </div>

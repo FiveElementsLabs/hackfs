@@ -14,3 +14,7 @@ h5,
 h6 {
   font-family: "Prompt", sans-serif;
 }
+
+.underline-thickness-2 {
+  text-decoration-thickness: 2px;
+}
