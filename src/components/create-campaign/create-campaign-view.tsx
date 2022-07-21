@@ -759,7 +759,7 @@ const FormData = () => {
             <div className="sm:col-span-6 mb-8">
               <h1 className="text-2xl mb-6">Prize</h1>
               <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-5">
-                <div className="flex gap-2 mb-2">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>Token</h1>
@@ -774,17 +774,17 @@ const FormData = () => {
                   errors={errors}
                 />
               </div>
-              <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-5">
-                <div className="flex gap-2 mb-2">
+              <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-8">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>NFT</h1>
                 </div>
                 <RewardSectionNFT number={1} register={register} errors={errors} />
               </div>
-              <h1 className="text-2xl mb-6">Required tasks</h1>
+              <h1 className="text-2xl mb-8">Required tasks</h1>
               <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-5">
-                <div className="flex gap-2 mb-2">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>Twitter</h1>
@@ -801,7 +801,7 @@ const FormData = () => {
                 />
               </div>
               <div className=" border-2 p-4 rounded-2xl border-principal-gray">
-                <div className="flex gap-2 mb-2">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>Lens</h1>
