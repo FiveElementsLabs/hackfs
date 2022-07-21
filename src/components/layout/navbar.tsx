@@ -49,7 +49,7 @@ const Navbar = () => {
                   : ""
               }`}
             >
-              My Campaigns
+              Campaigns owned
             </p>
           </Link>
         </div>
