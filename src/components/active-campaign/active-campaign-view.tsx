@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import ActiveCampaignsBox from "./active-campaign-box";
 import { CampaignsBoxEmpty, Campaign } from "./active-campaign-box";
 import { getDeadline } from "../../utils/utils";
-import path from "node:path/win32";
 import { CreateGiveawayBox } from "./create-giveaway-box";
 
 const fakeMyCampaigns: Campaign[] = [
@@ -118,7 +117,7 @@ const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; second
                 <div className="grid grid-cols-3 gap-4">
                   <CreateGiveawayBox />
                   {campaigns.map((campaign, id) => (
-                    <ActiveCampaignsBox key={id} campaign={campaign} />
+                    <ActiveCampaignsBox key={id} campaign={campaign} owned={true} />
                   ))}
                 </div>
               ) : (
