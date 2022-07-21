@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { FakeCampaignData } from "../[cid]";
 import Link from "next/link";
 import Image from "next/image";
+import { CheckCircleIcon } from "@heroicons/react/solid";
 import { BadgeCheckIcon, PlusCircleIcon, RefreshIcon } from "@heroicons/react/outline";
 
 const CampaignRegistration: NextPage = () => {
@@ -22,6 +23,23 @@ const CampaignRegistration: NextPage = () => {
               Go back to the campaign page to see the full info
             </p>
           </Link>
+
+          <div className="mt-6 border-2 border-principal-gray rounded-xl">
+            <div className="p-4">
+              <h2 className="text-lg font-medium">Connect your accounts to get started</h2>
+
+              <div className="mt-3 flex items-center">
+                <button
+                  type="button"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium 
+                rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 
+                focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Connect Twitter
+                </button>
+              </div>
+            </div>
+          </div>
 
           <div className="mt-6 border-2 border-principal-gray rounded-xl">
             <div className="p-4">

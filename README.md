@@ -1,6 +1,6 @@
 # HackFS: Tide Protocol repo
 
-Monorepo: NextJS + React + Typescript + Hardhat + Solidity
+Monorepo: NextJS + React + Typescript + Hardhat + Solidity + TheGraph subgraph
 
 ```bash
 git clone https://github.com/FiveElementsLabs/hackfs.git && cd hackfs
