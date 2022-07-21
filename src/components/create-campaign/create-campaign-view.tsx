@@ -634,11 +634,11 @@ const FormData = () => {
             <div>
             <h3 className="text-3xl leading-6 font-medium pt-6 pb-1">Settings</h3>
             </div>
-            <div className="sm:col-span-6 pb-2">
-              <label htmlFor="about" className="block text-base font-medium">
+            <div className="sm:col-span-6">
+              <label htmlFor="about" className="block text-base font-medium pb-2">
                 Timings *
               </label>
-              <div className="mt-1">
+              <div>
                 <DateRangePicker
                   startDate={startDate}
                   endDate={endDate}
@@ -657,7 +657,7 @@ const FormData = () => {
                     <div className="date-range">
                       <input
                         className={
-                          "input rounded-xl pl-2 pt-1 pb-1 mr-2 w-1/3 text-black" +
+                          "input rounded-xl pl-3 pt-2 pb-2 mr-2 text-black text-xs" +
                           (focus === startDate ? " -focused" : "")
                         }
                         {...startDateInputProps}
@@ -667,7 +667,7 @@ const FormData = () => {
                       <span> -&nbsp;&gt;</span>
                       <input
                         className={
-                          "input rounded-xl pl-2 pt-1 pb-1 ml-2 w-1/3 text-black" +
+                          "input rounded-xl pl-3 pt-2 pb-2 ml-2 text-black text-xs " +
                           (focus === endDate ? " -focused" : "")
                         }
                         {...endDateInputProps}
@@ -679,9 +679,9 @@ const FormData = () => {
               </div>
             </div>
 
-            <div className="sm:col-span-6 flex gap-4">
+            <div className="sm:col-span-6 flex gap-4 ">
               <div
-                className={` p-2 mb-8 rounded-md w-full border-2 text-sm ${
+                className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer ${
                   timings == "automatic" ? "border-shade-3" : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("automatic")}
@@ -692,7 +692,7 @@ const FormData = () => {
                 </h5>
               </div>
               <div
-                className={` p-2 mb-8 rounded-md w-full border-2 text-sm ${
+                className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer ${
                   timings == "manual" ? "border-shade-3" : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("manual")}
@@ -702,7 +702,7 @@ const FormData = () => {
               </div>
             </div>
 
-            <div className="sm:col-span-6 mb-8">
+            <div className="sm:col-span-6 mb-8 cursor-pointer">
               <div
                 className=" border-2 p-4 rounded-2xl border-principal-gray"
                 onClick={() => setDisplayTarget(!displayTarget)}
