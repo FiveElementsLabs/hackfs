@@ -62,7 +62,6 @@ const fakeCampaigns: Campaign[] = [
 const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; secondTab: string }) => {
   const [switchCampaign, setSwitchCampaign] = useState(true);
   const { pathname } = useRouter();
-  console.log("pathname: ", pathname);
 
   const campaigns = useMemo(
     () => (pathname === "/active-campaigns" ? fakeCampaigns : fakeMyCampaigns),
