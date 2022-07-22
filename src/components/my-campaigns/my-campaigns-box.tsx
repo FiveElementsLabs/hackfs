@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import { Campaign } from "../active-campaign/active-campaign-box";
 
-const ActiveCampaignsBox = ({ campaign }) => {
+const ActiveCampaignsBox = ({ campaign }: { campaign: Campaign }) => {
   const { title, imageURL, deadline, participants, drawMethod } = campaign;
 
   return (
@@ -31,7 +32,7 @@ const ActiveCampaignsBox = ({ campaign }) => {
   );
 };
 
-export const CampaignsBoxEmpty = ({ text }) => {
+export const CampaignsBoxEmpty = ({ text }: { text: string }) => {
   return (
     <div className="h-36 rounded-2xl bg-elements grid place-content-center">
       <h5 className="text-center text-xl px-6 text-white">{text}</h5>
