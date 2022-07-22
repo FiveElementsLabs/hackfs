@@ -1,16 +1,7 @@
 import React, { useMemo } from "react";
 import type { NextPage } from "next";
-import { Disclosure } from "@headlessui/react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import TokenImage from "../../components/TokenImage";
-import LinkImg from "../../assets/svg/Link";
-import LinkImg2 from "../../assets/svg/Link2";
-import Coin from "../../assets/svg/Coin";
-import Nft from "../../assets/svg/Nft";
-import TwitterIcon from "../../assets/svg/Twitter";
-import LensIcon from "../../assets/svg/Lens";
-import CaretDown from "../../assets/svg/CaretDown";
 import { shortenAddress } from "../../lib/helpers";
 import Copy from "../../assets/svg/Copy";
 import Token from "../../assets/svg/Token";
@@ -59,17 +50,17 @@ const FakeCampaignData = {
       name: "Twitter",
       image: <Twitter />,
       subtasks: [
-        <p>
+        <p key={1}>
           Follow <a className="text-bright-blue hover:underline hover:cursor-pointer">@aave</a>
         </p>,
-        <p>
+        <p key={2}>
           Follow <a className="text-bright-blue hover:underline hover:cursor-pointer">@synthetix</a>
         </p>,
-        <p>
+        <p key={3}>
           Follow{" "}
           <a className="text-bright-blue hover:underline hover:cursor-pointer">@cloudflare</a>
         </p>,
-        <p>
+        <p key={4}>
           Like and retweet{" "}
           <a className="text-bright-blue hover:underline hover:cursor-pointer">this post</a>
         </p>,
@@ -79,14 +70,14 @@ const FakeCampaignData = {
       name: "Lens",
       image: <Lens />,
       subtasks: [
-        <p>
+        <p key={1}>
           Follow <a className="text-bright-blue hover:underline hover:cursor-pointer">@aave.lens</a>
         </p>,
-        <p>
+        <p key={2}>
           Follow{" "}
           <a className="text-bright-blue hover:underline hover:cursor-pointer">@synthetix.lens</a>
         </p>,
-        <p>
+        <p key={3}>
           Follow{" "}
           <a className="text-bright-blue hover:underline hover:cursor-pointer">@cloudflare.lens</a>
         </p>,
@@ -171,14 +162,13 @@ const Campaign: NextPage = () => {
                       href={`https://etherscan.io/address/${campaign.address}`}
                       target="_blank"
                       className="text-bright-blue hover:underline"
+                      rel="noopener noreferrer"
                     >
                       {shortenAddress(campaign.address)}
                     </a>
                     <span
                       className="hover:cursor-pointer inline-block ml-2"
-                      onClick={() => {
-                        navigator.clipboard.writeText(campaign.address);
-                      }}
+                      onClick={() => navigator.clipboard.writeText(campaign.address)}
                     >
                       <Copy />
                     </span>
@@ -196,22 +186,22 @@ const Campaign: NextPage = () => {
                 <div className="flex flex-col gap-y-2">
                   <div className="text-sm text-principal-gray">
                     <Token className="inline-block mr-2" />
-                    Token (to be divided between the winners)
+                    Tokens (to be divided between the winners)
                   </div>
                   <div className="flex flex-row">
-                    {campaign.rewards.tokens.map((elem, index) => {
-                      return (
-                        <>
-                          <img
-                            width={18}
-                            key={index}
-                            src={`https://app.aave.com/icons/tokens/${elem.symbol.toLowerCase()}.svg`}
-                          />
-                          <span className="ml-1 mr-1">{elem.amount} </span>
-                          <span className="uppercase mr-3">{elem.symbol}</span>
-                        </>
-                      );
-                    })}
+                    {campaign.rewards.tokens.map((elem, index) => (
+                      <div key={index}>
+                        <Image
+                          width={18}
+                          height={18}
+                          alt="token"
+                          key={index}
+                          src={`https://app.aave.com/icons/tokens/${elem.symbol.toLowerCase()}.svg`}
+                        />
+                        <span className="ml-1 mr-1">{elem.amount} </span>
+                        <span className="uppercase mr-3">{elem.symbol}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -219,20 +209,16 @@ const Campaign: NextPage = () => {
                 <div className="flex flex-col gap-y-2">
                   <div className="text-sm text-principal-gray">
                     <Hexagon className="inline-block mr-2" />
-                    NFT
+                    NFTs
                   </div>
                   <div className="flex flex-row">
-                    {campaign.rewards.nfts.map((elem, index) => {
-                      return (
-                        <>
-                          <a key={index} href={elem.link}>
-                            <span className="text-bright-blue hover:underline text-sm">
-                              {elem.name}
-                            </span>
-                          </a>
-                        </>
-                      );
-                    })}
+                    {campaign.rewards.nfts.map((elem, index) => (
+                      <a key={index} href={elem.link}>
+                        <span className="text-bright-blue hover:underline text-sm">
+                          {elem.name}
+                        </span>
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -241,24 +227,24 @@ const Campaign: NextPage = () => {
               <h1 className="text-xl font-medium mb-1">Tasks</h1>
 
               <div className="w-full">
-                {campaign.tasks.map((task, index) => {
-                  return (
-                    <div className="mt-2" key={index}>
-                      <div className="mb-3 mt-3 gap-4">
-                        {task.name === "Twitter" ? (
-                          <Twitter className="inline-block mr-1" />
-                        ) : (
-                          <Lens className="inline-block mr-2" />
-                        )}
-                        {task.name}
-                      </div>
-
-                      {task.subtasks.map((subtask, index) => {
-                        return <p className="mt-1 text-sm text-principal-gray">{subtask}</p>;
-                      })}
+                {campaign.tasks.map((task, index) => (
+                  <div className="mt-2" key={index}>
+                    <div className="mb-3 mt-3 gap-4">
+                      {task.name === "Twitter" ? (
+                        <Twitter className="inline-block mr-1" />
+                      ) : (
+                        <Lens className="inline-block mr-2" />
+                      )}
+                      {task.name}
                     </div>
-                  );
-                })}
+                    {task.subtasks.map((subtask, index) => (
+                      <div key={index} className="mt-1 text-sm text-principal-gray">
+                        {subtask}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+                ;
               </div>
             </div>
           </div>
