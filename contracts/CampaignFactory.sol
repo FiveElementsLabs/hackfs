@@ -8,9 +8,8 @@ import "../interfaces/ICampaignFactory.sol";
 contract CampaignFactory is ICampaignFactory {
   address governance;
   address diamondCutFacet;
-  address public keeper;
-  IDiamondCut.FacetCut[] public elegibilityModules;
-  IDiamondCut.FacetCut[] public rewardModules;
+  address public override keeper;
+  IDiamondCut.FacetCut[] public modules;
 
   event CampaignCreated(address campaign);
 
@@ -28,16 +27,8 @@ contract CampaignFactory is ICampaignFactory {
     keeper = _keeper;
   }
 
-  function addModule(IDiamondCut.FacetCut calldata _module, bool isRewardModule)
-    external
-    override
-    onlyGovernance
-  {
-    if (isRewardModule) {
-      rewardModules.push(_module);
-    } else {
-      elegibilityModules.push(_module);
-    }
+  function addModule(IDiamondCut.FacetCut calldata _module) external override onlyGovernance {
+    modules.push(_module);
   }
 
   function createCampaign(
@@ -47,9 +38,8 @@ contract CampaignFactory is ICampaignFactory {
     uint256 _amountPerUser,
     uint256 _campaignStartTime,
     uint256 _campaignEndTime,
-    address _checkElegibilityModule,
-    address _rewardModule
-  ) public payable override {
+    address[] calldata _modules
+  ) external payable override {
     Campaign campaign = new Campaign(
       msg.sender,
       diamondCutFacet,
@@ -60,27 +50,15 @@ contract CampaignFactory is ICampaignFactory {
       _campaignEndTime
     );
     IERC20(_rewardToken).transferFrom(msg.sender, address(campaign), _rewardAmount);
-    IDiamondCut.FacetCut[] memory cut = new IDiamondCut.FacetCut[](2);
-    for (uint256 i; i < elegibilityModules.length; ++i) {
-      if (elegibilityModules[i].facetAddress == _checkElegibilityModule) {
-        cut[0] = elegibilityModules[i];
-        break;
-      }
-      require(
-        i != elegibilityModules.length - 1,
-        "CampaignFactory::createCampaign:ElegibilityModule not found"
-      );
-    }
+    IDiamondCut.FacetCut[] memory cut = new IDiamondCut.FacetCut[](_modules.length);
 
-    for (uint256 i; i < rewardModules.length; ++i) {
-      if (rewardModules[i].facetAddress == _rewardModule) {
-        cut[1] = rewardModules[i];
-        break;
+    for (uint256 i; i < _modules.length; ++i) {
+      for (uint256 y; y < modules.length; ++y) {
+        if (modules[y].facetAddress == _modules[i]) {
+          cut[i] = modules[y];
+          continue;
+        }
       }
-      require(
-        i != rewardModules.length - 1,
-        "CampaignFactory::createCampaign:RewardModule not found"
-      );
     }
 
     IDiamondCut(address(campaign)).diamondCut(cut, address(0), "");
