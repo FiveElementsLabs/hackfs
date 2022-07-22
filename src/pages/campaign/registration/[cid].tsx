@@ -1,16 +1,26 @@
 import React, { useMemo } from "react";
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { FakeCampaignData } from "../[cid]";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { BadgeCheckIcon, PlusCircleIcon, RefreshIcon } from "@heroicons/react/outline";
+import { useSharedState } from "../../../lib/store";
+import { useCeramic } from "../../../hooks/useCeramic";
+import { FakeCampaignData } from "../[cid]";
+import ConnectButton from "../../../components/ceramic/ConnectButton";
+import AddTwitterAccount from "../../../components/ceramic/AddTwitterAccount";
+import NoSSR from "../../../components/NoSSR";
 
 const CampaignRegistration: NextPage = () => {
   const router = useRouter();
   const { cid } = router.query;
+  const [{ did, twitter_verified, twitter_username }] = useSharedState();
+  const { useBasicProfile, useSocialAccounts } = useCeramic();
 
   const campaign = useMemo(() => FakeCampaignData, []);
+
+  const profile = useBasicProfile();
+  const socials = useSocialAccounts();
 
   return (
     <div className="w-full mt-8 pb-12 bg-dark-card rounded-xl">
@@ -22,6 +32,32 @@ const CampaignRegistration: NextPage = () => {
               Go back to the campaign page to see the full info
             </p>
           </Link>
+
+          <div className="mt-6 border-2 border-principal-gray rounded-xl">
+            <div className="p-4">
+              <h2 className="text-lg font-medium">Connect your accounts to get started</h2>
+
+              <div>
+                <div className="mt-3 flex items-center">
+                  <NoSSR>
+                    <ConnectButton />
+                  </NoSSR>
+                </div>
+                {twitter_verified ? (
+                  <p className="text-bright-green font-medium">
+                    Connected as {twitter_username} on Twitter
+                  </p>
+                ) : did ? (
+                  <div className="flex flex-col mt-3">
+                    <p className="text-lg font-medium">Verify your Twitter account</p>
+                    <AddTwitterAccount />
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
+          </div>
 
           <div className="mt-6 border-2 border-principal-gray rounded-xl">
             <div className="p-4">

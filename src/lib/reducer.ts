@@ -15,6 +15,9 @@ type State = {
   loading: boolean;
   theme: string;
   notifications: any[];
+  did: string | null;
+  twitter_verified: boolean;
+  twitter_username: string | null;
 };
 
 const getInitialTheme = () => {
@@ -35,6 +38,9 @@ export const initialState: State = {
   loading: false,
   theme: getInitialTheme(),
   notifications: [],
+  did: null,
+  twitter_verified: false,
+  twitter_username: null,
 };
 
 export const reducer = (state: State, action: action) => {
@@ -103,6 +109,24 @@ export const reducer = (state: State, action: action) => {
         notifications: state.notifications.filter(
           (notification) => notification.id !== action.payload.id
         ),
+      };
+
+    case actions.SET_DID:
+      return {
+        ...state,
+        did: action.payload.did,
+      };
+
+    case actions.SET_TWITTER_VERIFIED:
+      return {
+        ...state,
+        twitter_verified: action.payload,
+      };
+
+    case actions.SET_TWITTER_USERNAME:
+      return {
+        ...state,
+        twitter_username: action.payload,
       };
 
     default:

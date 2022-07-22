@@ -12,7 +12,7 @@ import Nft from "../../assets/svg/Nft";
 import TwitterIcon from "../../assets/svg/Twitter";
 import LensIcon from "../../assets/svg/Lens";
 import CaretDown from "../../assets/svg/CaretDown";
-import { ArrowRightIcon } from "@heroicons/react/outline";
+import { ArrowRightIcon, BadgeCheckIcon } from "@heroicons/react/outline";
 
 export const FakeCampaignData = {
   id: 1,
@@ -218,6 +218,19 @@ const Campaign: NextPage = () => {
                 </Disclosure>
               ))}
             </div>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-3">
+            <h1 className="text-3xl font-medium">Eligibility requirements</h1>
+            {campaign?.criteria?.map((criterion, idx) => (
+              <div
+                key={idx}
+                className="w-full py-2 px-3 bg-gray-600 rounded-md flex items-center gap-2"
+              >
+                <BadgeCheckIcon width={24} />
+                {criterion.desc}
+              </div>
+            ))}
           </div>
 
           <div className="mt-8 w-full flex justify-end">
