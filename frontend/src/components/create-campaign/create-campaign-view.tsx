@@ -20,10 +20,22 @@ const tokens = [
   { name: "ETH", address: "0x123456890" },
   { name: "BTC", address: "0x0987654321" },
 ];
-const targets = ["Select Filter", "Anime watcher", "Manga reader", "Book reader", "Game player"];
+const targets = [
+  "Select Filter",
+  "Anime watcher",
+  "Manga reader",
+  "Book reader",
+  "Game player",
+];
 
 const CreateCampaignView = () => {
-  const targets = ["Select Filter", "Anime watcher", "Manga reader", "Book reader", "Game player"];
+  const targets = [
+    "Select Filter",
+    "Anime watcher",
+    "Manga reader",
+    "Book reader",
+    "Game player",
+  ];
 
   const [timings, setTimings] = useState("automatic");
   const [selectedTarget, setSelectedTarget] = useState(targets[0]);
@@ -49,6 +61,14 @@ const RewardSectionToken = ({
   setRewardToAll,
   register,
   errors,
+}: {
+  number: any;
+  selectedToken: any;
+  setSelectedToken: any;
+  rewardToAll: any;
+  setRewardToAll: any;
+  register: any;
+  errors: any;
 }) => {
   return (
     <>
@@ -57,7 +77,9 @@ const RewardSectionToken = ({
           <h1 className="mb-2">Reward #{number}</h1>
 
           <div className="flex">
-            <h5 className="text-[12px] opacity-50 mr-2">Split between all participiants</h5>
+            <h5 className="text-[12px] opacity-50 mr-2">
+              Split between all participiants
+            </h5>
             <Toggle enabled={rewardToAll} setEnabled={setRewardToAll} />
           </div>
         </div>
@@ -68,30 +90,35 @@ const RewardSectionToken = ({
         </div>
         <div className="grid grid-cols-12 items-center gap-2">
           <div className="col-span-3">
-            <TokenList selected={selectedToken} setSelected={setSelectedToken} />
+            <TokenList
+              selected={selectedToken}
+              setSelected={setSelectedToken}
+            />
           </div>
 
           <div className="col-span-6">
             <input
               {...register("rewardToken")}
-              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2"
               placeholder="Amount"
             />
           </div>
           <div className="col-span-3">
             <input
               {...register("tokenWinners")}
-              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2"
               placeholder="Winner(s)"
             />
           </div>
         </div>
         <div className="mt-4">
-          <div className="col-span-3 text-[12px] opacity-50 mb-1">Contract address:</div>
+          <div className="col-span-3 text-[12px] opacity-50 mb-1">
+            Contract address:
+          </div>
 
           <input
             {...register("tokenAddress")}
-            className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+            className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 "
             placeholder="URL"
           />
         </div>
@@ -99,7 +126,15 @@ const RewardSectionToken = ({
     </>
   );
 };
-const RewardSectionNFT = ({ number, register, errors }) => {
+const RewardSectionNFT = ({
+  number,
+  register,
+  errors,
+}: {
+  number: any;
+  register: any;
+  errors: any;
+}) => {
   return (
     <>
       <div className=" border-2 p-4 rounded-2xl border-principal-gray">
@@ -107,31 +142,35 @@ const RewardSectionNFT = ({ number, register, errors }) => {
           <h1 className="mb-2">Reward #{number}</h1>
         </div>
         <div className="grid grid-cols-12 gap mb-1">
-          <div className="col-span-9 text-[12px] opacity-50">NFT redirect link:</div>
+          <div className="col-span-9 text-[12px] opacity-50">
+            NFT redirect link:
+          </div>
           <div className="col-span-3 text-[12px] opacity-50">Winner count:</div>
         </div>
         <div className="grid grid-cols-12 items-center gap-2 ">
           <div className="col-span-9">
             <input
               {...register("nftRedirect")}
-              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2"
               placeholder="Nft redirect link"
             />
           </div>
           <div className="col-span-3">
             <input
               {...register("nftWinners")}
-              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2"
               placeholder="Winner(s)"
             />
           </div>
         </div>
         <div className="mt-4">
-          <div className="col-span-3 text-[12px] opacity-50 mb-1">Contract address:</div>
+          <div className="col-span-3 text-[12px] opacity-50 mb-1">
+            Contract address:
+          </div>
 
           <input
             {...register("nftAddress")}
-            className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+            className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 "
             placeholder="URL"
           />
         </div>
@@ -149,6 +188,15 @@ const TaskSectionTwitter = ({
   setTwitterFollow,
   twitterLike,
   setTwitterLike,
+}: {
+  selectedTwitterAction: any;
+  setSelectedTwitterAction: any;
+  register: any;
+  errors: any;
+  twitterFollow: any;
+  setTwitterFollow: any;
+  twitterLike: any;
+  setTwitterLike: any;
 }) => {
   return (
     <>
@@ -171,7 +219,7 @@ const TaskSectionTwitter = ({
           <div className="col-span-5">
             <input
               {...register("twitterUrl")}
-              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2"
               placeholder="URL"
             />
           </div>
@@ -198,12 +246,23 @@ const TaskSectionLens = ({
   setLensMirror,
   register,
   errors,
+}: {
+  selectedLensAction: any;
+  setSelectedLensAction: any;
+  lensFollow: any;
+  setLensFollow: any;
+  lensMirror: any;
+  setLensMirror: any;
+  register: any;
+  errors: any;
 }) => {
   return (
     <>
       <div className=" border-2 p-4 rounded-2xl border-principal-gray">
         <div className="grid grid-cols-12 gap-2 mb-1">
-          <div className="col-span-4 text-[12px] opacity-50 text-white">Task:</div>
+          <div className="col-span-4 text-[12px] opacity-50 text-white">
+            Task:
+          </div>
           <div className="col-span-5 text-[12px] opacity-50">Post URL:</div>
           <div className="col-span-3 grid grid-cols-2">
             <div className="col-span-1 text-[12px] opacity-50">Collect</div>
@@ -217,7 +276,8 @@ const TaskSectionLens = ({
           <div className="col-span-5">
             <input
               {...register("lensUrl")}
-              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs border-gray-300
+               text-black pl-3 w-full rounded-md py-2"
               placeholder="URL"
             />
           </div>
@@ -236,16 +296,28 @@ const TaskSectionLens = ({
   );
 };
 
-function TwitterActionList({ selectedTwitterAction, setSelectedTwitterAction }) {
+function TwitterActionList({
+  selectedTwitterAction,
+  setSelectedTwitterAction,
+}: {
+  selectedTwitterAction: any;
+  setSelectedTwitterAction: any;
+}) {
   return (
     <Listbox value={selectedTwitterAction} onChange={setSelectedTwitterAction}>
       {({ open }) => (
         <>
           <div className="relative">
-            <Listbox.Button className="bg-white text-black relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm">
+            <Listbox.Button
+              className="bg-white text-black relative w-full border border-gray-300 
+            rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm"
+            >
               <span>{selectedTwitterAction.name}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <SelectorIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
               </span>
             </Listbox.Button>
 
@@ -256,7 +328,10 @@ function TwitterActionList({ selectedTwitterAction, setSelectedTwitterAction }) 
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+              <Listbox.Options
+                className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md 
+              py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+              >
                 {twitter.map((twi) => (
                   <Listbox.Option
                     key={twi.name}
@@ -310,10 +385,16 @@ function LensActionList() {
       {({ open }) => (
         <>
           <div className="relative">
-            <Listbox.Button className="bg-white text-black relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm">
+            <Listbox.Button
+              className="bg-white text-black relative w-full border border-gray-300 
+            rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm"
+            >
               <span>{selected.name}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <SelectorIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
               </span>
             </Listbox.Button>
 
@@ -324,7 +405,10 @@ function LensActionList() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+              <Listbox.Options
+                className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1
+               text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+              >
                 {lens.map((l) => (
                   <Listbox.Option
                     key={l.name}
@@ -370,7 +454,13 @@ function LensActionList() {
   );
 }
 
-function TokenList({ selected, setSelected }) {
+function TokenList({
+  selected,
+  setSelected,
+}: {
+  selected: any;
+  setSelected: any;
+}) {
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
@@ -387,7 +477,10 @@ function TokenList({ selected, setSelected }) {
                 {selected.name}
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <SelectorIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
               </span>
             </Listbox.Button>
 
@@ -414,7 +507,9 @@ function TokenList({ selected, setSelected }) {
                       <>
                         <span
                           className={classNames(
-                            selected ? "font-semibold" : "font-normal flex gap-2",
+                            selected
+                              ? "font-semibold"
+                              : "font-normal flex gap-2",
                             "block truncate"
                           )}
                         >
@@ -450,7 +545,13 @@ function TokenList({ selected, setSelected }) {
   );
 }
 
-function TargetList({ selected, setSelected }) {
+function TargetList({
+  selected,
+  setSelected,
+}: {
+  selected: any;
+  setSelected: any;
+}) {
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
@@ -459,7 +560,10 @@ function TargetList({ selected, setSelected }) {
             <Listbox.Button className="bg-white relative w-full border text-black border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               <span className="flex gap-2">{selected}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <SelectorIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
               </span>
             </Listbox.Button>
 
@@ -486,7 +590,9 @@ function TargetList({ selected, setSelected }) {
                       <>
                         <span
                           className={classNames(
-                            selected ? "font-semibold" : "font-normal flex gap-2",
+                            selected
+                              ? "font-semibold"
+                              : "font-normal flex gap-2",
                             "block truncate"
                           )}
                         >
@@ -516,7 +622,7 @@ function TargetList({ selected, setSelected }) {
   );
 }
 
-function Toggle({ enabled, setEnabled }) {
+function Toggle({ enabled, setEnabled }: { enabled: any; setEnabled: any }) {
   return (
     <Switch
       checked={enabled}
@@ -535,12 +641,18 @@ function Toggle({ enabled, setEnabled }) {
       >
         <span
           className={classNames(
-            enabled ? "opacity-0 ease-out duration-100" : "opacity-100 ease-in duration-200",
+            enabled
+              ? "opacity-0 ease-out duration-100"
+              : "opacity-100 ease-in duration-200",
             "absolute inset-0 h-full w-full flex items-center justify-center transition-opacity"
           )}
           aria-hidden="true"
         >
-          <svg className="h-3 w-3 text-gray-400" fill="none" viewBox="0 0 12 12">
+          <svg
+            className="h-3 w-3 text-gray-400"
+            fill="none"
+            viewBox="0 0 12 12"
+          >
             <path
               d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2"
               stroke="currentColor"
@@ -552,12 +664,18 @@ function Toggle({ enabled, setEnabled }) {
         </span>
         <span
           className={classNames(
-            enabled ? "opacity-100 ease-in duration-200" : "opacity-0 ease-out duration-100",
+            enabled
+              ? "opacity-100 ease-in duration-200"
+              : "opacity-0 ease-out duration-100",
             "absolute inset-0 h-full w-full flex items-center justify-center transition-opacity"
           )}
           aria-hidden="true"
         >
-          <svg className="h-3 w-3 text-indigo-600" fill="currentColor" viewBox="0 0 12 12">
+          <svg
+            className="h-3 w-3 text-indigo-600"
+            fill="currentColor"
+            viewBox="0 0 12 12"
+          >
             <path d="M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z" />
           </svg>
         </span>
@@ -602,7 +720,9 @@ const FormData = () => {
   const [selectedTarget, setSelectedTarget] = useState(targets[0]);
   const [displayTarget, setDisplayTarget] = useState(false);
   const [displayTargetSelect, setDisplayTargetSelect] = useState(false);
-  const [selectedTwitterAction, setSelectedTwitterAction] = useState(twitter[0]);
+  const [selectedTwitterAction, setSelectedTwitterAction] = useState(
+    twitter[0]
+  );
   const [twitterFollow, setTwitterFollow] = useState(false);
   const [twitterLike, setTwitterLike] = useState(false);
 
@@ -640,16 +760,24 @@ const FormData = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 divide-y divide-gray-200">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-8 divide-y divide-gray-200"
+    >
       <div className="space-y-8 divide-y divide-gray-200">
         <div>
           <div>
-            <h3 className="text-3xl leading-6 font-medium pt-5 pb-3">General</h3>
+            <h3 className="text-3xl leading-6 font-medium pt-5 pb-3">
+              General
+            </h3>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div className="sm:col-span-6">
-              <label htmlFor="title" className="block text-base font-medium pb-1">
+              <label
+                htmlFor="title"
+                className="block text-base font-medium pb-1"
+              >
                 Campaign Title *
               </label>
               <p className="text-bright-red text-sm">{errors.title?.message}</p>
@@ -663,7 +791,10 @@ const FormData = () => {
             </div>
 
             <div className="sm:col-span-6">
-              <label htmlFor="about" className="block text-base font-medium pb-1 pt-1">
+              <label
+                htmlFor="about"
+                className="block text-base font-medium pb-1 pt-1"
+              >
                 Description *
               </label>
               <p className="text-bright-red text-sm">{errors.title?.message}</p>
@@ -679,7 +810,10 @@ const FormData = () => {
             </div>
 
             <div className="sm:col-span-6">
-              <label htmlFor="photo" className="block text-base font-medium pb-1">
+              <label
+                htmlFor="photo"
+                className="block text-base font-medium pb-1"
+              >
                 Campaign Image *
               </label>
 
@@ -703,10 +837,15 @@ const FormData = () => {
             </div>
 
             <div>
-              <h3 className="text-3xl leading-6 font-medium pt-6 pb-1">Settings</h3>
+              <h3 className="text-3xl leading-6 font-medium pt-6 pb-1">
+                Settings
+              </h3>
             </div>
             <div className="sm:col-span-6">
-              <label htmlFor="about" className="block text-base font-medium pb-2">
+              <label
+                htmlFor="about"
+                className="block text-base font-medium pb-2"
+              >
                 Timings *
               </label>
               <div>
@@ -753,23 +892,30 @@ const FormData = () => {
             <div className="sm:col-span-6 flex gap-4 ">
               <div
                 className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer hover:border-shade-3 ${
-                  timings == "automatic" ? "border-shade-3 bg-bright-blue" : "border-principal-gray"
+                  timings == "automatic"
+                    ? "border-shade-3 bg-bright-blue"
+                    : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("automatic")}
               >
                 AUTOMATIC
                 <h5 className="text-[9px]">
-                  Winners will be automatically drawn by the draw time you setup.
+                  Winners will be automatically drawn by the draw time you
+                  setup.
                 </h5>
               </div>
               <div
                 className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer hover:border-shade-3 ${
-                  timings == "manual" ? "border-shade-3 bg-bright-blue" : "border-principal-gray"
+                  timings == "manual"
+                    ? "border-shade-3 bg-bright-blue"
+                    : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("manual")}
               >
                 MANUAL
-                <h5 className="text-[9px]">Winners will be manually drawn by you.</h5>
+                <h5 className="text-[9px]">
+                  Winners will be manually drawn by you.
+                </h5>
               </div>
             </div>
 
@@ -778,14 +924,19 @@ const FormData = () => {
                 className=" hover:border-shade-3  border-2 p-4 rounded-2xl border-principal-gray"
                 onClick={() => setDisplayTarget(!displayTarget)}
               >
-                <div className={`flex gap-2 ${displayTargetSelect ? "mb-2" : ""}`}>
+                <div
+                  className={`flex gap-2 ${displayTargetSelect ? "mb-2" : ""}`}
+                >
                   {" "}
                   <Target />
                   <div>{targets[0]}</div>
                 </div>
                 {displayTargetSelect && (
                   <div className="w-1/4">
-                    <TargetList selected={selectedTarget} setSelected={setSelectedTarget} />
+                    <TargetList
+                      selected={selectedTarget}
+                      setSelected={setSelectedTarget}
+                    />
                   </div>
                   // <Listbox
                   //   value={selectedTarget}
@@ -854,7 +1005,11 @@ const FormData = () => {
                   <Target />
                   <h1>NFT</h1>
                 </div>
-                <RewardSectionNFT number={1} register={register} errors={errors} />
+                <RewardSectionNFT
+                  number={1}
+                  register={register}
+                  errors={errors}
+                />
               </div>
               <h1 className="text-2xl mb-8">Required tasks</h1>
               <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-5">
@@ -899,7 +1054,8 @@ const FormData = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="uppercase ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-bright-blue hover:opacity-80"
+            className="uppercase ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
+             text-sm font-medium rounded-md text-white bg-bright-blue hover:opacity-80"
           >
             Create campaign
           </button>
