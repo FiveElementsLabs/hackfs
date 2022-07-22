@@ -60,12 +60,12 @@ const RewardSectionToken = ({
             <Toggle enabled={rewardToAll} setEnabled={setRewardToAll} />
           </div>
         </div>
-        <div className="grid grid-cols-12 gap-2">
+        <div className="grid grid-cols-12 gap-2 mb-1">
           <div className="col-span-3 text-[12px] opacity-50">Select token:</div>
           <div className="col-span-6 text-[12px] opacity-50">Total amount:</div>
           <div className="col-span-3 text-[12px] opacity-50">Winner count:</div>
         </div>
-        <div className="grid grid-cols-12 items-center gap-2 ">
+        <div className="grid grid-cols-12 items-center gap-2">
           <div className="col-span-3">
             <TokenList selected={selectedToken} setSelected={setSelectedToken} />
           </div>
@@ -73,24 +73,24 @@ const RewardSectionToken = ({
           <div className="col-span-6">
             <input
               {...register("rewardToken")}
-              className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
               placeholder="Amount"
             />
           </div>
           <div className="col-span-3">
             <input
               {...register("tokenWinners")}
-              className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
               placeholder="Winner(s)"
             />
           </div>
         </div>
         <div className="mt-4">
-          <div className="col-span-3 text-[12px] opacity-50">Contract address:</div>
+          <div className="col-span-3 text-[12px] opacity-50 mb-1">Contract address:</div>
 
           <input
             {...register("tokenAddress")}
-            className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+            className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
             placeholder="URL"
           />
         </div>
@@ -105,7 +105,7 @@ const RewardSectionNFT = ({ number, register, errors }) => {
         <div className="flex justify-between">
           <h1 className="mb-2">Reward #{number}</h1>
         </div>
-        <div className="grid grid-cols-12 gap-2">
+        <div className="grid grid-cols-12 gap mb-1">
           <div className="col-span-9 text-[12px] opacity-50">NFT redirect link:</div>
           <div className="col-span-3 text-[12px] opacity-50">Winner count:</div>
         </div>
@@ -113,24 +113,24 @@ const RewardSectionNFT = ({ number, register, errors }) => {
           <div className="col-span-9">
             <input
               {...register("nftRedirect")}
-              className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
               placeholder="Nft redirect link"
             />
           </div>
           <div className="col-span-3">
             <input
               {...register("nftWinners")}
-              className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
               placeholder="Winner(s)"
             />
           </div>
         </div>
         <div className="mt-4">
-          <div className="col-span-3 text-[12px] opacity-50">Contract address:</div>
+          <div className="col-span-3 text-[12px] opacity-50 mb-1">Contract address:</div>
 
           <input
             {...register("nftAddress")}
-            className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+            className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
             placeholder="URL"
           />
         </div>
@@ -152,7 +152,7 @@ const TaskSectionTwitter = ({
   return (
     <>
       <div className=" border-2 p-4 rounded-2xl border-principal-gray">
-        <div className="grid grid-cols-12 gap-2">
+        <div className="grid grid-cols-12 gap-2 mb-1">
           <div className="col-span-4 text-[12px] opacity-50">Task:</div>
           <div className="col-span-5 text-[12px] opacity-50">Twitter URL:</div>
           <div className="col-span-3 grid grid-cols-2">
@@ -170,7 +170,7 @@ const TaskSectionTwitter = ({
           <div className="col-span-5">
             <input
               {...register("twitterUrl")}
-              className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
               placeholder="URL"
             />
           </div>
@@ -201,7 +201,7 @@ const TaskSectionLens = ({
   return (
     <>
       <div className=" border-2 p-4 rounded-2xl border-principal-gray">
-        <div className="grid grid-cols-12 gap-2">
+        <div className="grid grid-cols-12 gap-2 mb-1">
           <div className="col-span-4 text-[12px] opacity-50">Task:</div>
           <div className="col-span-5 text-[12px] opacity-50">Post URL:</div>
           <div className="col-span-3 grid grid-cols-2">
@@ -216,7 +216,7 @@ const TaskSectionLens = ({
           <div className="col-span-5">
             <input
               {...register("lensUrl")}
-              className="bg-shade-1 px-2 w-full rounded-md py-2 text-black"
+              className="focus:ring-indigo-500 focus:border-indigo-500 rounded-md sm:text-xs border-gray-300 text-black pl-3 w-full rounded-md py-2 text-black"
               placeholder="URL"
             />
           </div>
@@ -699,11 +699,11 @@ const FormData = () => {
             <div>
               <h3 className="text-3xl leading-6 font-medium pt-6 pb-1">Settings</h3>
             </div>
-            <div className="sm:col-span-6 pb-2">
-              <label htmlFor="about" className="block text-base font-medium">
+            <div className="sm:col-span-6">
+              <label htmlFor="about" className="block text-base font-medium pb-2">
                 Timings *
               </label>
-              <div className="mt-1">
+              <div>
                 <DateRangePicker
                   startDate={startDate}
                   endDate={endDate}
@@ -722,7 +722,7 @@ const FormData = () => {
                     <div className="date-range">
                       <input
                         className={
-                          "input rounded-xl pl-2 pt-1 pb-1 mr-2 w-1/3 text-black sm:text-xs" +
+                          "input rounded-md pl-2 pt-1 pb-1 mr-2 w-1/3 text-black sm:text-xs" +
                           (focus === startDate ? " -focused" : "")
                         }
                         {...startDateInputProps}
@@ -732,7 +732,7 @@ const FormData = () => {
                       <span> -&nbsp;&gt;</span>
                       <input
                         className={
-                          "input rounded-xl pl-2 pt-1 pb-1 ml-2 w-1/3 text-black sm:text-xs" +
+                          "input rounded-md pl-2 pt-1 pb-1 ml-2 w-1/3 text-black sm:text-xs" +
                           (focus === endDate ? " -focused" : "")
                         }
                         {...endDateInputProps}
@@ -744,9 +744,9 @@ const FormData = () => {
               </div>
             </div>
 
-            <div className="sm:col-span-6 flex gap-4">
+            <div className="sm:col-span-6 flex gap-4 ">
               <div
-                className={` p-2 mb-8 rounded-md w-full border-2 text-sm ${
+                className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer hover:border-shade-3 ${
                   timings == "automatic" ? "border-shade-3" : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("automatic")}
@@ -757,7 +757,7 @@ const FormData = () => {
                 </h5>
               </div>
               <div
-                className={` p-2 mb-8 rounded-md w-full border-2 text-sm ${
+                className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer hover:border-shade-3 ${
                   timings == "manual" ? "border-shade-3" : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("manual")}
@@ -767,9 +767,9 @@ const FormData = () => {
               </div>
             </div>
 
-            <div className="sm:col-span-6 mb-8">
+            <div className="sm:col-span-6 mb-8 cursor-pointer ">
               <div
-                className=" border-2 p-4 rounded-2xl border-principal-gray"
+                className=" hover:border-shade-3 border-2 p-4 rounded-2xl border-principal-gray"
                 onClick={() => setDisplayTarget(!displayTarget)}
               >
                 <div className={`flex gap-2 ${displayTargetSelect ? "mb-2" : ""}`}>
@@ -825,8 +825,8 @@ const FormData = () => {
             </div>
             <div className="sm:col-span-6 mb-8">
               <h1 className="text-2xl mb-6">Prize</h1>
-              <div className=" border-2 p-4 rounded-2xl border-principal-gray">
-                <div className="flex gap-2 mb-2">
+              <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-5">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>Token</h1>
@@ -841,17 +841,17 @@ const FormData = () => {
                   errors={errors}
                 />
               </div>
-              <div className=" border-2 p-4 rounded-2xl border-principal-gray">
-                <div className="flex gap-2 mb-2">
+              <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-8">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>NFT</h1>
                 </div>
                 <RewardSectionNFT number={1} register={register} errors={errors} />
               </div>
-              <h1 className="text-2xl mb-6">Required tasks</h1>
-              <div className=" border-2 p-4 rounded-2xl border-principal-gray">
-                <div className="flex gap-2 mb-2">
+              <h1 className="text-2xl mb-8">Required tasks</h1>
+              <div className=" border-2 p-4 rounded-2xl border-principal-gray mb-5">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>Twitter</h1>
@@ -868,7 +868,7 @@ const FormData = () => {
                 />
               </div>
               <div className=" border-2 p-4 rounded-2xl border-principal-gray">
-                <div className="flex gap-2 mb-2">
+                <div className="flex gap-2 mb-3">
                   {" "}
                   <Target />
                   <h1>Lens</h1>

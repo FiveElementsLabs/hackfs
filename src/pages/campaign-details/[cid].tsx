@@ -207,7 +207,7 @@ const Campaign: NextPage = () => {
                             key={index}
                             src={`https://app.aave.com/icons/tokens/${elem.symbol.toLowerCase()}.svg`}
                           />
-                          <span className="ml-1">{elem.amount}</span>
+                          <span className="ml-1 mr-1">{elem.amount} </span>
                           <span className="uppercase mr-3">{elem.symbol}</span>
                         </>
                       );
