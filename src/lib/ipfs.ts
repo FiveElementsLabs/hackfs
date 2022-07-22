@@ -8,9 +8,7 @@ const client = create({
 
 export const uploadIpfs = async (jsonObj: object) => {
   const result = await client.add(
-    JSON.stringify({
-      ...jsonObj,
-    })
+    JSON.stringify({...jsonObj})
   );
 
   return result;

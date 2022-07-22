@@ -4,10 +4,10 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
+      "app.aave.com",
       "img.freepik.com",
       "d33wubrfki0l68.cloudfront.net",
       "images.cointelegraph.com",
-      "app.aave.com",
     ],
   },
 };
