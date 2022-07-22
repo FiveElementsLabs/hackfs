@@ -1,24 +1,25 @@
 type Collection @entity {
   id: ID!
   name: String
-  tokensMinted: BigInt!
-  owners: BigInt!
+  tokens: [Token!]! @derivedFrom(field: "collection")
 }
 
 type Token @entity {
   id: ID!
   owner: Owner!
+  collection: Collection!
+  holdings: [Holding!]! @derivedFrom(field: "token")
 }
 
 type Owner @entity {
   id: ID!
-  Tokens: [Token!] @derivedFrom(field: "owner")
-  pairs: [Pair!] @derivedFrom(field: "owner")
+  tokensHolded: [Token!] @derivedFrom(field: "owner")
+  holdings: [Holding!] @derivedFrom(field: "owner")
 }
 
-type Pair @entity {
+type Holding @entity {
   id: ID!
-  tokenId: Token!
+  token: Token!
   owner: Owner!
   from: BigInt!
   to: BigInt

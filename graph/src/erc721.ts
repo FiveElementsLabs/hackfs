@@ -1,6 +1,6 @@
 import { Address } from "@graphprotocol/graph-ts";
 import { Transfer } from "../generated/CryptoUnicorns/ERC721";
-import { getOwnerOrCreate, getPairOrCreate, getTokenOrCreate } from "./getters";
+import { getOwnerOrCreate, getHoldingOrCreate, getTokenOrCreate } from "./getters";
 
 const ZERO_ADDRESS = Address.fromHexString("0x0000000000000000000000000000000000000000");
 
@@ -11,12 +11,12 @@ export function handleTransfer(event: Transfer): void {
   token.save();
   if (event.params.from != ZERO_ADDRESS) {
     const oldOwner = getOwnerOrCreate(event.params.from);
-    const oldPair = getPairOrCreate(event.params.from, event.params.tokenId, event.block);
-    oldPair.to = event.block.timestamp;
-    oldPair.timeHolded = event.block.timestamp.minus(oldPair.from);
-    oldPair.save();
+    const oldHolding = getHoldingOrCreate(event.params.from, event.params.tokenId, event.block);
+    oldHolding.to = event.block.timestamp;
+    oldHolding.timeHolded = event.block.timestamp.minus(oldHolding.from);
+    oldHolding.save();
   }
   if (event.params.to != ZERO_ADDRESS) {
-    const newPair = getPairOrCreate(event.params.to, event.params.tokenId, event.block);
+    const newHolding = getHoldingOrCreate(event.params.to, event.params.tokenId, event.block);
   }
 }

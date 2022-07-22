@@ -102,7 +102,7 @@ const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; second
               {campaigns.length > 0 ? (
                 <div className="grid grid-cols-3 gap-4">
                   {campaigns.map((campaign, id) => (
-                    <ActiveCampaignsBox key={id} campaign={campaign} />
+                    <ActiveCampaignsBox key={id} campaign={campaign} owned={false} />
                   ))}
                 </div>
               ) : (
