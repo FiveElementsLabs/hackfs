@@ -202,7 +202,7 @@ const TaskSectionLens = ({
     <>
       <div className=" border-2 p-4 rounded-2xl border-principal-gray">
         <div className="grid grid-cols-12 gap-2 mb-1">
-          <div className="col-span-4 text-[12px] opacity-50">Task:</div>
+          <div className="col-span-4 text-[12px] opacity-50 text-white">Task:</div>
           <div className="col-span-5 text-[12px] opacity-50">Post URL:</div>
           <div className="col-span-3 grid grid-cols-2">
             <div className="col-span-1 text-[12px] opacity-50">Collect</div>
@@ -647,14 +647,13 @@ const FormData = () => {
               <label htmlFor="title" className="block text-base font-medium pb-1">
                 Campaign Title *
               </label>
+              <p className="text-bright-red text-sm">{errors.title?.message}</p>
               <div className="mt-1 flex rounded-md shadow-sm">
                 <input
                   {...register("title")}
                   placeholder="Campaign Title"
                   className="flex-1  block h-8 w-full min-w-0 rounded-md sm:text-xs text-black pl-3"
                 />
-
-                <p>{errors.title?.message}</p>
               </div>
             </div>
 
@@ -662,6 +661,8 @@ const FormData = () => {
               <label htmlFor="about" className="block text-base font-medium pb-1 pt-1">
                 Description *
               </label>
+              <p className="text-bright-red text-sm">{errors.title?.message}</p>
+
               <div className="mt-1">
                 <textarea
                   {...register("description")}
@@ -669,7 +670,6 @@ const FormData = () => {
                   placeholder="Additional Info"
                   className="shadow-sm  pl-3 pt-3 block text-black w-full sm:text-xs border border-gray-300 rounded-md"
                 />
-                <p>{errors.description?.message}</p>
               </div>
             </div>
 
@@ -677,6 +677,7 @@ const FormData = () => {
               <label htmlFor="photo" className="block text-base font-medium pb-1">
                 Campaign Image *
               </label>
+              
               <div className="mt-1 flex">
                 {/* <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                   <svg
@@ -892,16 +893,10 @@ const FormData = () => {
       <div className="pt-5">
         <div className="flex justify-end">
           <button
-            type="button"
-            className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Cancel
-          </button>
-          <button
             type="submit"
-            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="uppercase ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-bright-blue hover:opacity-80"
           >
-            Save
+            Create campaign
           </button>
         </div>
       </div>
