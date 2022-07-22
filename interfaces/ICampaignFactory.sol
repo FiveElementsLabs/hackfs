@@ -7,7 +7,7 @@ import "./IDiamondCut.sol";
 interface ICampaignFactory {
   function keeper() external returns (address);
 
-  function addModule(IDiamondCut.FacetCut calldata _module, bool isRewardModule) external;
+  function addModule(IDiamondCut.FacetCut calldata _module) external;
 
   function createCampaign(
     address _rewardToken,
@@ -16,7 +16,6 @@ interface ICampaignFactory {
     uint256 _amountPerUser,
     uint256 _campaignStartTime,
     uint256 _campaignEndTime,
-    address _checkElegibilityModule,
-    address _rewardModule
+    address[] calldata _modules
   ) external payable;
 }
