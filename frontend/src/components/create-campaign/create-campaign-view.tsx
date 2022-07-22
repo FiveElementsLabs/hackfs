@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from "react";
+import Image from "next/image";
 import { Listbox, Transition, Switch } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { useForm } from "react-hook-form";
@@ -377,10 +378,12 @@ function TokenList({ selected, setSelected }) {
           <div className="relative">
             <Listbox.Button className="bg-white relative w-full border text-black border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm">
               <span className="flex gap-2">
-                <img
+                <Image
+                  alt="token"
                   width={18}
+                  height={18}
                   src={`https://app.aave.com/icons/tokens/${selected.name.toLowerCase()}.svg`}
-                ></img>
+                />
                 {selected.name}
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
@@ -415,10 +418,12 @@ function TokenList({ selected, setSelected }) {
                             "block truncate"
                           )}
                         >
-                          <img
+                          <Image
                             width={18}
+                            height={18}
+                            alt="token"
                             src={`https://app.aave.com/icons/tokens/${token.name.toLowerCase()}.svg`}
-                          ></img>
+                          />
                           {token.name}
                         </span>
 
@@ -561,7 +566,7 @@ function Toggle({ enabled, setEnabled }) {
   );
 }
 
-function classNames(...classes) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -677,7 +682,7 @@ const FormData = () => {
               <label htmlFor="photo" className="block text-base font-medium pb-1">
                 Campaign Image *
               </label>
-              
+
               <div className="mt-1 flex">
                 {/* <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                   <svg
