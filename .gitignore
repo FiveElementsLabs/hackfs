@@ -37,6 +37,7 @@ yarn-error.log*
 # graph
 /graph/generated
 /graph/node_modules
+/graph/build
 
 artifacts
 cache
