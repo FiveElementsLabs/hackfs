@@ -33,7 +33,7 @@ const ActiveCampaignsBox = ({ campaign, owned }: { campaign: Campaign; owned: bo
             </div>
             <div>
               <h4 className="font-medium opacity-70 text-white">Draw method</h4>
-              <p className="text-shade-3">{drawMethod ? "Everyone wins" : ""}</p>
+              <p className="text-shade-3">{drawMethod ? "Everyone wins" : "Manual"}</p>
             </div>
           </div>
         </div>

@@ -130,7 +130,7 @@ const ActiveCampaignsView = ({ firstTab, secondTab }: { firstTab: String; second
         <>
           {pathname === "/active-campaigns" ? (
             <div className="grid grid-cols-1 gap-4">
-              <CampaignsBoxEmpty text={"The giveaways you participate to will appear here."} />
+              <CampaignsBoxEmpty text={"The campaigns you participate to will appear here."} />
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-4">

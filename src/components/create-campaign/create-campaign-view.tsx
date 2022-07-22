@@ -240,7 +240,7 @@ function TwitterActionList({ selectedTwitterAction, setSelectedTwitterAction }) 
       {({ open }) => (
         <>
           <div className="relative">
-            <Listbox.Button className="bg-white text-black relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <Listbox.Button className="bg-white text-black relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm">
               <span>{selectedTwitterAction.name}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -308,7 +308,7 @@ function LensActionList() {
       {({ open }) => (
         <>
           <div className="relative">
-            <Listbox.Button className="bg-white text-black relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <Listbox.Button className="bg-white text-black relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm">
               <span>{selected.name}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -374,7 +374,7 @@ function TokenList({ selected, setSelected }) {
       {({ open }) => (
         <>
           <div className="relative">
-            <Listbox.Button className="bg-white relative w-full border text-black border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <Listbox.Button className="bg-white relative w-full border text-black border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1  sm:text-sm">
               <span className="flex gap-2">
                 <img
                   width={18}
@@ -580,13 +580,13 @@ const FormData = () => {
           <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div className="sm:col-span-6">
               <label htmlFor="title" className="block text-base font-medium pb-1">
-                Giveaway Title *
+                Campaign Title *
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
                 <input
                   {...register("title")}
-                  placeholder="Giveaway Title"
-                  className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block h-8 w-full min-w-0 rounded-md sm:text-xs border-gray-300 text-black pl-3"
+                  placeholder="Campaign Title"
+                  className="flex-1  block h-8 w-full min-w-0 rounded-md sm:text-xs text-black pl-3"
                 />
 
                 <p>{errors.title?.message}</p>
@@ -602,7 +602,7 @@ const FormData = () => {
                   {...register("description")}
                   rows={10}
                   placeholder="Additional Info"
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 pl-3 pt-3 block text-black w-full sm:text-xs border border-gray-300 rounded-md"
+                  className="shadow-sm  pl-3 pt-3 block text-black w-full sm:text-xs border border-gray-300 rounded-md"
                 />
                 <p>{errors.description?.message}</p>
               </div>
@@ -610,7 +610,7 @@ const FormData = () => {
 
             <div className="sm:col-span-6">
               <label htmlFor="photo" className="block text-base font-medium pb-1">
-                Giveaway Image *
+                Campaign Image *
               </label>
               <div className="mt-1 flex">
                 {/* <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
@@ -624,7 +624,7 @@ const FormData = () => {
                 </span> */}
                 <button
                   type="button"
-                  className="bg-white py-1 px-4 border border-gray-300 rounded-md shadow-sm text-sm text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="bg-white py-1 px-4 border rounded-md shadow-sm text-sm text-principal-gray font-medium focus:outline-none"
                 >
                   UPLOAD
                 </button>
@@ -632,7 +632,7 @@ const FormData = () => {
             </div>
 
             <div>
-            <h3 className="text-3xl leading-6 font-medium pt-6 pb-1">Settings</h3>
+              <h3 className="text-3xl leading-6 font-medium pt-6 pb-1">Settings</h3>
             </div>
             <div className="sm:col-span-6">
               <label htmlFor="about" className="block text-base font-medium pb-2">
@@ -682,7 +682,7 @@ const FormData = () => {
             <div className="sm:col-span-6 flex gap-4 ">
               <div
                 className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer hover:border-shade-3 ${
-                  timings == "automatic" ? "border-shade-3" : "border-principal-gray"
+                  timings == "automatic" ? "border-shade-3 bg-bright-blue" : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("automatic")}
               >
@@ -693,7 +693,7 @@ const FormData = () => {
               </div>
               <div
                 className={` p-2 mb-8 rounded-md w-full border-2 text-sm cursor-pointer hover:border-shade-3 ${
-                  timings == "manual" ? "border-shade-3" : "border-principal-gray"
+                  timings == "manual" ? "border-shade-3 bg-bright-blue" : "border-principal-gray"
                 }`}
                 onClick={() => setTimings("manual")}
               >
@@ -704,7 +704,7 @@ const FormData = () => {
 
             <div className="sm:col-span-6 mb-8 cursor-pointer ">
               <div
-                className=" hover:border-shade-3 border-2 p-4 rounded-2xl border-principal-gray"
+                className=" hover:border-shade-3  border-2 p-4 rounded-2xl border-principal-gray"
                 onClick={() => setDisplayTarget(!displayTarget)}
               >
                 <div className={`flex gap-2 ${displayTargetSelect ? "mb-2" : ""}`}>
@@ -743,14 +743,15 @@ const FormData = () => {
                   </Listbox>
                 )}
                 {(displayTarget || displayTargetSelect) && (
-                  <div className="p-2">
+                  <div className="mt-3">
                     <button
-                      className="text-shade-3"
-                      onClick={() => {
+                      className="text-white bg-bright-blue rounded-lg px-2 hover:opacity-80"
+                      onClick={(e) => {
+                        e.preventDefault();
                         setDisplayTargetSelect(!displayTargetSelect);
                       }}
                     >
-                      + ADD FILTER
+                      ADD FILTER
                     </button>
                   </div>
                 )}
