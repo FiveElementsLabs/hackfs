@@ -10,7 +10,7 @@ const PlusBtn = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <circle cx="43.5" cy="43.5" r="41" fill="#73ABFF" stroke-width="5" />
+    <circle cx="43.5" cy="43.5" r="41" fill="#73ABFF" strokeWidth="5" />
     <rect x="38.0625" y="19.0312" width="10.875" height="48.9375" rx="5" fill="white" />
     <rect
       x="67.9688"
