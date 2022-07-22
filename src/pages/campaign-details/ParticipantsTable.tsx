@@ -3,22 +3,22 @@ import { shortenAddress } from "../../lib/helpers";
 
 const participants = [
   {
+    image: "https://cdn.pixabay.com/photo/2022/03/03/20/47/the-simpson-7046041_1280.jpg",
+    address: "0xac251c002d3139ad4297ba619195b2E44889Ae3d",
+    reward: "/",
+    date: "20/07/2022 03:23 PM",
+  },
+  {
     image: "https://cdn.pixabay.com/photo/2022/01/17/17/20/bored-6945309_1280.png",
     address: "0x9be7b0f285d04201f27682f591a60417c47d095a",
-    reward: "lindsay.walton@example.com",
-    date: "Member",
+    reward: "/",
+    date: "21/07/2022 10:41 AM",
   },
   {
     image: "https://cdn.pixabay.com/photo/2022/02/18/16/09/ape-7020995_1280.png",
     address: "0xaaee9188F8E1D121d6080d8d198acb17A92B9642",
-    reward: "lindsay.walton@example.com",
-    date: "Member",
-  },
-  {
-    image: "https://cdn.pixabay.com/photo/2022/03/03/20/47/the-simpson-7046041_1280.jpg",
-    address: "0xac251c002d3139ad4297ba619195b2E44889Ae3d",
-    reward: "lindsay.walton@example.com",
-    date: "Member",
+    reward: "/",
+    date: "21/07/2022 11:21 AM",
   },
   // More people...
 ];
