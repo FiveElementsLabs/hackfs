@@ -5,7 +5,7 @@ import { useWallet } from "../../hooks/useWallet";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: any }) => {
   const [{ account }] = useSharedState();
   const { autoLoginWallet } = useWallet();
 
