@@ -23,7 +23,7 @@ const DeployCampaign = async (CampaignFactory: Contract) => {
   const tokenEth = (await tokensFixture("ETH")).tokenFixture;
   await tokenEth.mint(users[0].address, ethers.utils.parseEther("1000000000000"));
 
-  const SingleRewardActionFactory = await ethers.getContractFactory("SingleRewardAction");
+  const SingleRewardActionFactory = await ethers.getContractFactory("MockRewardAction");
   const SingleRewardAction = await SingleRewardActionFactory.deploy();
   const MockElegibilityModuleFactory = await ethers.getContractFactory("MockElegibilityModule");
   const MockElegibilityModule = await MockElegibilityModuleFactory.deploy();
@@ -56,6 +56,16 @@ const DeployCampaign = async (CampaignFactory: Contract) => {
   console.log("Campaign Address: ", campaignAddress);
 
   const Campaign = await ethers.getContractAt("Campaign", campaignAddress);
+
+  return Campaign;
 };
 
-DeployFactory().then((CampaignFactory) => DeployCampaign(CampaignFactory));
+const Interaction = async (Campaign: Contract) => {
+  const Claim = await ethers.getContractAt("MockRewardAction", Campaign.address);
+  const tx = await Claim.claim();
+  const wait = await tx.wait();
+};
+
+DeployFactory().then((CampaignFactory) =>
+  DeployCampaign(CampaignFactory).then((Campaign) => Interaction(Campaign))
+);

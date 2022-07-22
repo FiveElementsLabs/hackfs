@@ -39,27 +39,21 @@ describe("Campaign Factory", () => {
     mockAction = await mockActionFactory.deploy();
     await mockAction.deployed();
 
-    await campaignFactory.connect(gov).addModule(
-      {
-        facetAddress: mockAction.address,
-        action: 0,
-        functionSelectors: await getSelectors(mockAction),
-      },
-      true
-    );
+    await campaignFactory.connect(gov).addModule({
+      facetAddress: mockAction.address,
+      action: 0,
+      functionSelectors: await getSelectors(mockAction),
+    });
 
     const mockModuleFactory = await ethers.getContractFactory("MockElegibilityModule");
     mockModule = await mockModuleFactory.deploy();
     await mockModule.deployed();
 
-    await campaignFactory.connect(gov).addModule(
-      {
-        facetAddress: mockModule.address,
-        action: 0,
-        functionSelectors: await getSelectors(mockModule),
-      },
-      false
-    );
+    await campaignFactory.connect(gov).addModule({
+      facetAddress: mockModule.address,
+      action: 0,
+      functionSelectors: await getSelectors(mockModule),
+    });
   });
 
   it("Should let a user deploy a campaign", async () => {
@@ -74,18 +68,16 @@ describe("Campaign Factory", () => {
     const checkElegibilityModule = mockModule.address;
     const rewardModule = mockAction.address;
     await tokenEth.connect(deployer).approve(campaignFactory.address, rewardAmount);
-    const tx = await campaignFactory
-      .connect(deployer)
-      .createCampaign(
-        tokenEth.address,
-        winners,
-        rewardAmount,
-        amountPerUser,
-        campaignStartTime,
-        campaignEndTime,
-        checkElegibilityModule,
-        rewardModule
-      );
+    const tx = await campaignFactory.connect(deployer).createCampaign(
+      tokenEth.address,
+      winners,
+      rewardAmount,
+      amountPerUser,
+      campaignStartTime,
+      campaignEndTime,
+
+      [rewardModule, checkElegibilityModule]
+    );
     const wait = await tx.wait();
     const campaignAddress = wait.events![wait.events!.length - 1].args!.campaign;
     const campaignClaimFallback = await ethers.getContractAt("MockRewardAction", campaignAddress);
