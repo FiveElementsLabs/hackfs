@@ -574,19 +574,19 @@ const FormData = () => {
       <div className="space-y-8 divide-y divide-gray-200">
         <div>
           <div>
-            <h3 className="text-lg leading-6 font-medium ">General</h3>
+            <h3 className="text-3xl leading-6 font-medium pt-5 pb-3">General</h3>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-            <div className="sm:col-span-4">
-              <label htmlFor="title" className="block text-sm font-medium ">
+            <div className="sm:col-span-6">
+              <label htmlFor="title" className="block text-base font-medium pb-1">
                 Giveaway Title *
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
                 <input
                   {...register("title")}
                   placeholder="Giveaway Title"
-                  className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-md sm:text-sm border-gray-300 text-black pl-2"
+                  className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block h-8 w-full min-w-0 rounded-md sm:text-xs border-gray-300 text-black pl-3"
                 />
 
                 <p>{errors.title?.message}</p>
@@ -594,25 +594,25 @@ const FormData = () => {
             </div>
 
             <div className="sm:col-span-6">
-              <label htmlFor="about" className="block text-sm font-medium">
+              <label htmlFor="about" className="block text-base font-medium pb-1 pt-1">
                 Description *
               </label>
               <div className="mt-1">
                 <textarea
                   {...register("description")}
-                  rows={3}
+                  rows={10}
                   placeholder="Additional Info"
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 pl-2 block text-black w-full sm:text-sm border border-gray-300 rounded-md"
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 pl-3 pt-3 block text-black w-full sm:text-xs border border-gray-300 rounded-md"
                 />
                 <p>{errors.description?.message}</p>
               </div>
             </div>
 
             <div className="sm:col-span-6">
-              <label htmlFor="photo" className="block text-sm font-medium ">
-                Photo
+              <label htmlFor="photo" className="block text-base font-medium pb-1">
+                Giveaway Image *
               </label>
-              <div className="mt-1 flex items-center">
+              <div className="mt-1 flex">
                 {/* <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                   <svg
                     className="h-full w-full text-gray-300"
@@ -624,18 +624,18 @@ const FormData = () => {
                 </span> */}
                 <button
                   type="button"
-                  className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="bg-white py-1 px-4 border border-gray-300 rounded-md shadow-sm text-sm text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Upload
+                  UPLOAD
                 </button>
               </div>
             </div>
 
             <div>
-              <h3 className="text-lg leading-6 font-medium ">Settings</h3>
+            <h3 className="text-3xl leading-6 font-medium pt-6 pb-1">Settings</h3>
             </div>
-            <div className="sm:col-span-6">
-              <label htmlFor="about" className="block text-sm font-medium">
+            <div className="sm:col-span-6 pb-2">
+              <label htmlFor="about" className="block text-base font-medium">
                 Timings *
               </label>
               <div className="mt-1">
@@ -657,7 +657,7 @@ const FormData = () => {
                     <div className="date-range">
                       <input
                         className={
-                          "input rounded-xl mr-2 text-black" +
+                          "input rounded-xl pl-2 pt-1 pb-1 mr-2 w-1/3 text-black" +
                           (focus === startDate ? " -focused" : "")
                         }
                         {...startDateInputProps}
@@ -667,7 +667,7 @@ const FormData = () => {
                       <span> -&nbsp;&gt;</span>
                       <input
                         className={
-                          "input rounded-xl ml-2 text-black" +
+                          "input rounded-xl pl-2 pt-1 pb-1 ml-2 w-1/3 text-black" +
                           (focus === endDate ? " -focused" : "")
                         }
                         {...endDateInputProps}
