@@ -4,7 +4,7 @@ import { useSharedState } from "../lib/store";
 import { useTwitterAPI } from "./useTwitterAPI";
 import { useNotifications } from "./useNotifications";
 import { useAsyncMemo } from "use-async-memo";
-import RewardModuleJson from "../../../backend/artifacts/contracts/mocks/MockRewardAction.sol/MockRewardAction.json";
+import RewardModuleJson from "../../public/abi/MockRewardAction.json";
 import { FakeCampaignData } from "../pages/campaign/[cid]";
 
 export const useCampaignTasks = () => {
