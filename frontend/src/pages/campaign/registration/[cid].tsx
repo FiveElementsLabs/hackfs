@@ -3,9 +3,14 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { BadgeCheckIcon, PlusCircleIcon, RefreshIcon } from "@heroicons/react/outline";
+import {
+  BadgeCheckIcon,
+  PlusCircleIcon,
+  RefreshIcon,
+} from "@heroicons/react/outline";
 import { useSharedState } from "../../../lib/store";
 import { useCeramic } from "../../../hooks/useCeramic";
+import { useCampaignTasks } from "../../../hooks/useCampaignTasks";
 import { FakeCampaignData } from "../[cid]";
 import ConnectButton from "../../../components/ceramic/ConnectButton";
 import AddTwitterAccount from "../../../components/ceramic/AddTwitterAccount";
@@ -16,6 +21,7 @@ const CampaignRegistration: NextPage = () => {
   const { cid } = router.query;
   const [{ did, twitter_verified, twitter_username }] = useSharedState();
   const { useBasicProfile, useSocialAccounts } = useCeramic();
+  const { tasksCompleted, checkTasksCompleted } = useCampaignTasks();
 
   const campaign = useMemo(() => FakeCampaignData, []);
 
@@ -35,7 +41,9 @@ const CampaignRegistration: NextPage = () => {
 
           <div className="mt-6 border-2 border-principal-gray rounded-xl">
             <div className="p-4">
-              <h2 className="text-lg font-medium">Connect your accounts to get started</h2>
+              <h2 className="text-lg font-medium">
+                Connect your accounts to get started
+              </h2>
 
               <div>
                 <div className="mt-3 flex items-center">
@@ -49,7 +57,9 @@ const CampaignRegistration: NextPage = () => {
                   </p>
                 ) : did ? (
                   <div className="flex flex-col mt-3">
-                    <p className="text-lg font-medium">Verify your Twitter account</p>
+                    <p className="text-lg font-medium">
+                      Verify your Twitter account
+                    </p>
                     <AddTwitterAccount />
                   </div>
                 ) : (
@@ -65,13 +75,17 @@ const CampaignRegistration: NextPage = () => {
                 Registration is{" "}
                 <span
                   className={`${
-                    campaign.status === "active" ? "text-bright-green" : "text-bright-red"
+                    campaign.status === "active"
+                      ? "text-bright-green"
+                      : "text-bright-red"
                   }`}
                 >
                   {campaign.status === "active" ? "Open" : "Closed"}
                 </span>
               </h2>
-              <p className="mt-2">To join the campaign, you must complete these tasks:</p>
+              <p className="mt-2">
+                To join the campaign, you must complete these tasks:
+              </p>
 
               <div className="mt-3 p-3 border-2 border-principal-gray rounded-md bg-blue-400 text-gray-700">
                 <h3 className="text-xl text-center w-full text-white font-medium tracking-wide">
@@ -88,12 +102,22 @@ const CampaignRegistration: NextPage = () => {
                         focus-within:ring-offset-2 focus-within:ring-indigo-500"
                       >
                         <div className="flex items-center">
-                          <Image src="/twitter_circle.png" alt="twitter" width={28} height={28} />
+                          <Image
+                            src="/twitter_circle.png"
+                            alt="twitter"
+                            width={28}
+                            height={28}
+                          />
                         </div>
                         <div className="flex-1 min-w-0">
                           <a href="#" className="focus:outline-none">
-                            <span className="absolute inset-0" aria-hidden="true" />
-                            <p className="text-sm font-medium text-gray-900">{subtask}</p>
+                            <span
+                              className="absolute inset-0"
+                              aria-hidden="true"
+                            />
+                            <p className="text-sm font-medium text-gray-900">
+                              {subtask}
+                            </p>
                           </a>
                         </div>
                       </div>
@@ -126,8 +150,13 @@ const CampaignRegistration: NextPage = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <a href="#" className="focus:outline-none">
-                            <span className="absolute inset-0" aria-hidden="true" />
-                            <p className="text-sm font-medium text-gray-900">{subtask}</p>
+                            <span
+                              className="absolute inset-0"
+                              aria-hidden="true"
+                            />
+                            <p className="text-sm font-medium text-gray-900">
+                              {subtask}
+                            </p>
                           </a>
                         </div>
                       </div>
@@ -135,7 +164,9 @@ const CampaignRegistration: NextPage = () => {
                 </div>
               </div>
 
-              <p className="mt-4">Additionally, you must satisfy these additional criteria:</p>
+              <p className="mt-4">
+                Additionally, you must satisfy these additional criteria:
+              </p>
               <div className="mt-4 flex flex-col gap-3">
                 {campaign?.criteria?.map((criterion, idx) => (
                   <div
@@ -152,6 +183,7 @@ const CampaignRegistration: NextPage = () => {
                 <button
                   className="flex items-center gap-2 py-2 px-4 bg-bright-blue hover:bg-opacity-90 
                 hover:shadow-md rounded-md"
+                  onClick={() => checkTasksCompleted()}
                 >
                   <RefreshIcon width={24} />
                   Refresh data
