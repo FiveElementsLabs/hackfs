@@ -31,6 +31,10 @@ const hardhat: HardhatUserConfig = {
         blockNumber: 15000000,
       },
     },
+    mumbai: {
+      url: process.env.ALCHEMY_MUMBAI || "",
+      accounts: [process.env.PVTKEY_MUMBAI || ""],
+    },
   },
   mocha: { timeout: 100000 },
 };
