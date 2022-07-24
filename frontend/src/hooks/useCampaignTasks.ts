@@ -46,7 +46,7 @@ export const useCampaignTasks = () => {
 
   const campaignTasks = useAsyncMemo(fetchTasks, [campaign_id]);
   const tasksCompleted = useAsyncMemo(checkTasksCompleted, [campaignTasks]);
-  const tasksLeft = campaignTasks?.length - tasksCompleted?.length;
+  const tasksLeft = campaignTasks?.length || 0 - tasksCompleted?.length || 0;
 
   return { campaignTasks, tasksCompleted, tasksLeft };
 };
