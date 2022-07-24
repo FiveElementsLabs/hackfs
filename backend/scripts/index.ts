@@ -22,6 +22,7 @@ const DeployCampaign = async () => {
   ///factory = 0xE023f90F8AA0b36dc4593F6BaFe9D1b766b88459
   /// reward action = 0xc08B7720AD65a2b51e9c5F79EEd7c6b814A63066
   /// mock elegible = 0xbf47a1d8E5a90c7F1Ac0b9CbB100111B403ec9b0
+  /// mock reward = 0x51091368Db47AEb4Ca953a3fEFBFF5F61FC78EC1
   const users = await ethers.getSigners();
 
   const tokenEth = await ethers.getContractAt(
@@ -59,6 +60,20 @@ const DeployCampaign = async () => {
   //   functionSelectors: await getSelectors(MockElegibilityModule),
   // });
 
+  // const MockRewardActionFactory = await ethers.getContractFactory("MockRewardAction");
+  // const MockRewardAction = await MockRewardActionFactory.deploy();
+
+  // await CampaignFactory.addModule({
+  //   facetAddress: MockRewardAction.address,
+  //   action: 0,
+  //   functionSelectors: await getSelectors(MockRewardAction),
+  // });
+
+  // const MockRewardAction = await ethers.getContractAt(
+  //   "MockRewardAction",
+  //   "0x51091368Db47AEb4Ca953a3fEFBFF5F61FC78EC1"
+  // );
+
   //await tokenEth.approve(CampaignFactory.address, 1e15);
   console.log("after approve");
 
@@ -69,7 +84,7 @@ const DeployCampaign = async () => {
     1e5, // amount per user
     Math.floor((new Date() as any) / 1000), // start time in seconds
     Math.floor((new Date() as any) / 1000) + 3600, //end time in seconds
-    ["0xbf47a1d8E5a90c7F1Ac0b9CbB100111B403ec9b0", "0xc08B7720AD65a2b51e9c5F79EEd7c6b814A63066"]
+    ["0xbf47a1d8E5a90c7F1Ac0b9CbB100111B403ec9b0", "0x51091368Db47AEb4Ca953a3fEFBFF5F61FC78EC1"]
   );
   const wait = await tx.wait();
   const campaignAddress = wait.events![wait.events!.length - 1].args!.campaign;
