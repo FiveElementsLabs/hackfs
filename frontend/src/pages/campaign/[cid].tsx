@@ -14,72 +14,7 @@ import LensIcon from "../../assets/svg/Lens";
 import CaretDown from "../../assets/svg/CaretDown";
 import { ArrowRightIcon, BadgeCheckIcon } from "@heroicons/react/outline";
 
-export const FakeCampaignData = {
-  id: 1,
-  title: "Giveaway #1",
-  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lectus ac lorem tincidunt bibendum. Aliquam blandit ullamcorper luctus. Cras vulputate neque tincidunt lorem euismod pulvinar. Mauris malesuada vehicula nisl. Vestibulum faucibus tortor sit amet dictum rhoncus. Sed egestas eu urna vitae blandit.",
-  img: "url",
-  url: "url",
-  status: "active",
-  endDate: "2h:10m",
-  participants: 4,
-  winners: "0/100",
-  rewards: {
-    tokens: [
-      {
-        symbol: "USDC",
-        amount: "10",
-        address: "0x0",
-      },
-      {
-        symbol: "DAI",
-        amount: "10",
-        address: "0x1",
-      },
-    ],
-    nfts: [
-      {
-        name: "Beta testers collection",
-        address: "0x124097",
-        amount: 4,
-        link: "https://aave.com",
-      },
-    ],
-  },
-  tasks: [
-    {
-      name: "twitter",
-      subtasks: [
-        "follow @aave on Twitter",
-        "follow @synthetix on Twitter",
-        "follow @cloudflare on Twitter",
-        "Like and retweet this post",
-      ],
-    },
-    {
-      name: "lens",
-      subtasks: [
-        "follow @aave.lens on Lens",
-        "follow @synthetix.lens on Lens",
-        "follow @cloudflare.lens on Lens",
-      ],
-    },
-  ],
-  criteria: [
-    {
-      desc: "Must own at least 2 Eth in your wallet",
-      type: "erc20",
-    },
-    {
-      desc: "Must have owned a Cryptopunk for at least a week in the past",
-      type: "nft",
-    },
-    {
-      desc: "Must have a Twitter account older than 3 months",
-      type: "extra",
-    },
-  ],
-};
+import { FakeCampaignData } from "../../../mockData";
 
 const Campaign: NextPage = () => {
   const router = useRouter();
@@ -104,8 +39,9 @@ const Campaign: NextPage = () => {
 
           <div className="relative w-full h-72 mt-8">
             <Image
-              src="/FallbackImage.png"
+              src={campaign.img}
               alt="fallback campaign image"
+              className="object-cover object-center rounded-lg"
               layout="fill"
               priority
             />

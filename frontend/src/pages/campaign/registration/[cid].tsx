@@ -11,10 +11,11 @@ import {
 import { useSharedState } from "../../../lib/store";
 import { useCeramic } from "../../../hooks/useCeramic";
 import { useCampaignTasks } from "../../../hooks/useCampaignTasks";
-import { FakeCampaignData } from "../[cid]";
 import ConnectButton from "../../../components/ceramic/ConnectButton";
 import AddTwitterAccount from "../../../components/ceramic/AddTwitterAccount";
 import NoSSR from "../../../components/NoSSR";
+
+import { FakeCampaignData } from "../../../../mockData";
 
 const CampaignRegistration: NextPage = () => {
   const router = useRouter();
@@ -111,7 +112,12 @@ const CampaignRegistration: NextPage = () => {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <a href="#" className="focus:outline-none">
+                          <a
+                            href="https://twitter.com/MEGAMINFT/status/1550651754655916032"
+                            className="focus:outline-none"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
                             <span
                               className="absolute inset-0"
                               aria-hidden="true"

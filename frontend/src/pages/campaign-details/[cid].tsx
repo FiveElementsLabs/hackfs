@@ -10,87 +10,13 @@ import Twitter from "../../assets/svg/Twitter";
 import Lens from "../../assets/svg/Lens";
 import ParticipantsTable from "./ParticipantsTable";
 
-const FakeCampaignData = {
-  id: 1,
-  address: "0x8d3b65FcFFceCcF80e27a9910D19301B1492821f",
-  title: "Giveaway #1",
-  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lectus ac lorem tincidunt bibendum. Aliquam blandit ullamcorper luctus. Cras vulputate neque tincidunt lorem euismod pulvinar. Mauris malesuada vehicula nisl. Vestibulum faucibus tortor sit amet dictum rhoncus. Sed egestas eu urna vitae blandit.",
-  img: "url",
-  url: "http//tide.protocol/campaign/1",
-  status: "active",
-  startDate: "7h:50m",
-  drawMethod: 1,
-  endDate: "2h:10m",
-  participants: 4,
-  winners: "0/100",
-  rewards: {
-    tokens: [
-      {
-        symbol: "ETH",
-        amount: "0.0024",
-        address: "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-      },
-      {
-        symbol: "USDC",
-        amount: "20.00",
-        address: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-      },
-    ],
-    nfts: [
-      {
-        name: "Beta testers collection",
-        address: "0x124097",
-        amount: 4,
-        link: "https://aave.com",
-      },
-    ],
-  },
-  tasks: [
-    {
-      name: "Twitter",
-      image: <Twitter />,
-      subtasks: [
-        <p key={1}>
-          Follow <a className="text-bright-blue hover:underline hover:cursor-pointer">@aave</a>
-        </p>,
-        <p key={2}>
-          Follow <a className="text-bright-blue hover:underline hover:cursor-pointer">@synthetix</a>
-        </p>,
-        <p key={3}>
-          Follow{" "}
-          <a className="text-bright-blue hover:underline hover:cursor-pointer">@cloudflare</a>
-        </p>,
-        <p key={4}>
-          Like and retweet{" "}
-          <a className="text-bright-blue hover:underline hover:cursor-pointer">this post</a>
-        </p>,
-      ],
-    },
-    {
-      name: "Lens",
-      image: <Lens />,
-      subtasks: [
-        <p key={1}>
-          Follow <a className="text-bright-blue hover:underline hover:cursor-pointer">@aave.lens</a>
-        </p>,
-        <p key={2}>
-          Follow{" "}
-          <a className="text-bright-blue hover:underline hover:cursor-pointer">@synthetix.lens</a>
-        </p>,
-        <p key={3}>
-          Follow{" "}
-          <a className="text-bright-blue hover:underline hover:cursor-pointer">@cloudflare.lens</a>
-        </p>,
-      ],
-    },
-  ],
-};
+import { FakeCampaignDataDetails } from "../../../mockData";
 
 const Campaign: NextPage = () => {
   const router = useRouter();
   const { cid } = router.query;
 
-  const campaign = useMemo(() => FakeCampaignData, []);
+  const campaign = useMemo(() => FakeCampaignDataDetails, []);
 
   return (
     <div className="w-full mt-8 pb-12">
@@ -114,7 +40,9 @@ const Campaign: NextPage = () => {
                   <h3 className="text-sm text-principal-gray">Status</h3>
                   <p
                     className={`text-sm uppercase font-medium ${
-                      campaign.status === "active" ? "text-bright-green" : "text-bright-red"
+                      campaign.status === "active"
+                        ? "text-bright-green"
+                        : "text-bright-red"
                     }`}
                   >
                     {campaign.status}
@@ -137,10 +65,12 @@ const Campaign: NextPage = () => {
               </div>
               <div className="flex flex-row mt-3">
                 <h3 className="text-sm text-principal-gray mr-2">
-                  Participants: <span className="text-shade-2">{campaign.participants}</span>
+                  Participants:{" "}
+                  <span className="text-shade-2">{campaign.participants}</span>
                 </h3>
                 <h3 className="text-sm text-principal-gray">
-                  Winner(s): <span className="text-shade-2">{campaign.winners}</span>
+                  Winner(s):{" "}
+                  <span className="text-shade-2">{campaign.winners}</span>
                 </h3>
               </div>
             </div>
@@ -152,7 +82,10 @@ const Campaign: NextPage = () => {
                 <div className="flex flex-col gap-y-2">
                   <h3 className="text-sm text-principal-gray">
                     Campaign url:{" "}
-                    <a href={campaign.url} className="text-bright-blue hover:underline">
+                    <a
+                      href={campaign.url}
+                      className="text-bright-blue hover:underline"
+                    >
                       {campaign.url}
                     </a>
                   </h3>
@@ -168,14 +101,18 @@ const Campaign: NextPage = () => {
                     </a>
                     <span
                       className="hover:cursor-pointer inline-block ml-2"
-                      onClick={() => navigator.clipboard.writeText(campaign.address)}
+                      onClick={() =>
+                        navigator.clipboard.writeText(campaign.address)
+                      }
                     >
                       <Copy />
                     </span>
                   </h3>
                   <h3 className="text-sm text-principal-gray">
                     Draw method:{" "}
-                    <span className="text-white">{campaign.drawMethod ? "Everyone wins" : ""}</span>
+                    <span className="text-white">
+                      {campaign.drawMethod ? "Everyone wins" : ""}
+                    </span>
                   </h3>
                 </div>
               </div>
@@ -238,7 +175,10 @@ const Campaign: NextPage = () => {
                       {task.name}
                     </div>
                     {task.subtasks.map((subtask, index) => (
-                      <div key={index} className="mt-1 text-sm text-principal-gray">
+                      <div
+                        key={index}
+                        className="mt-1 text-sm text-principal-gray"
+                      >
                         {subtask}
                       </div>
                     ))}

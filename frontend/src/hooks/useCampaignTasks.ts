@@ -5,7 +5,8 @@ import { useTwitterAPI } from "./useTwitterAPI";
 import { useNotifications } from "./useNotifications";
 import { useAsyncMemo } from "use-async-memo";
 import RewardModuleJson from "../../public/abi/MockRewardAction.json";
-import { FakeCampaignData } from "../pages/campaign/[cid]";
+
+import { FakeCampaignData } from "../../mockData";
 
 export const useCampaignTasks = () => {
   const [{ campaign_id, twitter_username, provider }] = useSharedState();
@@ -35,16 +36,20 @@ export const useCampaignTasks = () => {
     const completedTasks = [];
     for (const task of campaignTasks) {
       if (task.name === "twitter") {
-        for (const subtask of task?.subtasks) {
+        // TODO: const subtask of task?.subtasks
+        for (const subtask of [task?.subtasks[0]]) {
           // For now, use just one mocked subtask
           // if (subtask.type === "like+retweet") ...
           // if (!subtask?.tweet_id) continue;
           // + more checks
 
           // Demo data
-          const tweet_id = "1522592186499571712";
+          const tweet_id = "1550651754655916032";
           const liked = await checkTweetLiked(tweet_id);
-          if (liked) completedTasks.push(subtask);
+          if (liked) {
+            completedTasks.push(subtask);
+            notify("success", `Twitter Task completed`);
+          }
         }
       }
     }
