@@ -21,7 +21,8 @@ const CampaignRegistration: NextPage = () => {
   const { cid } = router.query;
   const [{ did, twitter_verified, twitter_username }] = useSharedState();
   const { useBasicProfile, useSocialAccounts } = useCeramic();
-  const { tasksCompleted, checkTasksCompleted } = useCampaignTasks();
+  const { tasksCompleted, checkTasksCompleted, checkAndClaim } =
+    useCampaignTasks();
 
   const campaign = useMemo(() => FakeCampaignData, []);
 
@@ -189,12 +190,14 @@ const CampaignRegistration: NextPage = () => {
                   Refresh data
                 </button>
                 <button
-                  disabled
                   className="flex items-center gap-2 py-2 px-4 bg-bright-blue hover:bg-opacity-90 
                 hover:shadow-md rounded-md disabled:bg-gray-700 disabled:text-gray-300"
+                  onClick={async () => {
+                    await checkAndClaim();
+                  }}
                 >
                   <PlusCircleIcon width={24} />
-                  Join Campaign
+                  Check and claim
                 </button>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { Contract } from "ethers";
 import { ethers } from "hardhat";
 import { getSelectors, tokensFixture } from "../test/shared/fixtures";
+import { SingleRewardAction__factory } from "../typechain-types";
 
 const DeployFactory = async () => {
   const users = await ethers.getSigners();
@@ -17,45 +18,87 @@ const DeployFactory = async () => {
   return CampaignFactory;
 };
 
-const DeployCampaign = async (CampaignFactory: Contract) => {
+const DeployCampaign = async () => {
+  ///factory = 0xE023f90F8AA0b36dc4593F6BaFe9D1b766b88459
+  /// reward action = 0xc08B7720AD65a2b51e9c5F79EEd7c6b814A63066
+  /// mock elegible = 0xbf47a1d8E5a90c7F1Ac0b9CbB100111B403ec9b0
+  /// mock reward = 0x51091368Db47AEb4Ca953a3fEFBFF5F61FC78EC1
   const users = await ethers.getSigners();
 
-  const tokenEth = (await tokensFixture("ETH")).tokenFixture;
-  await tokenEth.mint(users[0].address, ethers.utils.parseEther("1000000000000"));
+  const tokenEth = await ethers.getContractAt(
+    "MockToken",
+    "0xA6FA4fB5f76172d178d61B04b0ecd319C5d1C0aa"
+  );
 
-  const SingleRewardActionFactory = await ethers.getContractFactory("SingleRewardAction");
-  const SingleRewardAction = await SingleRewardActionFactory.deploy();
-  const MockElegibilityModuleFactory = await ethers.getContractFactory("MockElegibilityModule");
-  const MockElegibilityModule = await MockElegibilityModuleFactory.deploy();
+  const CampaignFactory = await ethers.getContractAt(
+    "CampaignFactory",
+    "0xE023f90F8AA0b36dc4593F6BaFe9D1b766b88459"
+  );
+  console.log(tokenEth.address);
 
-  await CampaignFactory.addModule({
-    facetAddress: SingleRewardAction.address,
-    action: 0,
-    functionSelectors: await getSelectors(SingleRewardAction),
-  });
+  // const SingleRewardActionFactory = await ethers.getContractFactory("MockRewardAction");
+  // const SingleRewardAction = await SingleRewardActionFactory.deploy();
+  // const MockElegibilityModuleFactory = await ethers.getContractFactory("MockElegibilityModule");
+  // const MockElegibilityModule = await MockElegibilityModuleFactory.deploy();
+  // const SingleRewardAction = await ethers.getContractAt(
+  //   "MockRewardAction",
+  //   "0xc08B7720AD65a2b51e9c5F79EEd7c6b814A63066"
+  // );
+  // const MockElegibilityModule = await ethers.getContractAt(
+  //   "MockElegibilityModule",
+  //   "0xbf47a1d8E5a90c7F1Ac0b9CbB100111B403ec9b0"
+  // );
+  // await CampaignFactory.addModule({
+  //   facetAddress: SingleRewardAction.address,
+  //   action: 0,
+  //   functionSelectors: await getSelectors(SingleRewardAction),
+  // });
 
-  await CampaignFactory.addModule({
-    facetAddress: MockElegibilityModule.address,
-    action: 0,
-    functionSelectors: await getSelectors(MockElegibilityModule),
-  });
+  // await CampaignFactory.addModule({
+  //   facetAddress: MockElegibilityModule.address,
+  //   action: 0,
+  //   functionSelectors: await getSelectors(MockElegibilityModule),
+  // });
 
-  await tokenEth.approve(CampaignFactory.address, 100);
+  // const MockRewardActionFactory = await ethers.getContractFactory("MockRewardAction");
+  // const MockRewardAction = await MockRewardActionFactory.deploy();
+
+  // await CampaignFactory.addModule({
+  //   facetAddress: MockRewardAction.address,
+  //   action: 0,
+  //   functionSelectors: await getSelectors(MockRewardAction),
+  // });
+
+  // const MockRewardAction = await ethers.getContractAt(
+  //   "MockRewardAction",
+  //   "0x51091368Db47AEb4Ca953a3fEFBFF5F61FC78EC1"
+  // );
+
+  //await tokenEth.approve(CampaignFactory.address, 1e15);
+  console.log("after approve");
 
   const tx = await CampaignFactory.createCampaign(
     tokenEth.address, // erc20 reward token
-    1, // winners
-    100, // amount total reward
-    1, // amount per user
+    10, // winners
+    1e6, // amount total reward
+    1e5, // amount per user
     Math.floor((new Date() as any) / 1000), // start time in seconds
     Math.floor((new Date() as any) / 1000) + 3600, //end time in seconds
-    [MockElegibilityModule.address, SingleRewardAction.address]
+    ["0xbf47a1d8E5a90c7F1Ac0b9CbB100111B403ec9b0", "0x51091368Db47AEb4Ca953a3fEFBFF5F61FC78EC1"]
   );
   const wait = await tx.wait();
   const campaignAddress = wait.events![wait.events!.length - 1].args!.campaign;
   console.log("Campaign Address: ", campaignAddress);
 
   const Campaign = await ethers.getContractAt("Campaign", campaignAddress);
+
+  return Campaign;
 };
 
-DeployFactory().then((CampaignFactory) => DeployCampaign(CampaignFactory));
+const Interaction = async (Campaign: Contract) => {
+  const Claim = await ethers.getContractAt("MockRewardAction", Campaign.address);
+  const tx = await Claim.claim();
+  const wait = await tx.wait();
+};
+
+DeployCampaign();
