@@ -23,10 +23,12 @@ const Home: NextPage = () => {
             <Rocket />
           </div>
           <div>
-            <h2 className="mt-1 text-xl font-medium">Target your Web3 audience</h2>
+            <h2 className="mt-1 text-xl font-medium">
+              Target your Web3 audience
+            </h2>
             <p className="mt-3">
-              Use our sophisticated suite of tools to pinpoint the best audience for your NFT or
-              DeFi product
+              Use our sophisticated suite of tools to pinpoint the best audience
+              for your NFT or DeFi product
             </p>
           </div>
         </div>
@@ -36,9 +38,12 @@ const Home: NextPage = () => {
             <Share />
           </div>
           <div>
-            <h2 className="mt-1 text-xl font-medium">Create effective campaigns</h2>
+            <h2 className="mt-1 text-xl font-medium">
+              Create effective campaigns
+            </h2>
             <p className="mt-3">
-              Choose between a rich set of options to build campaigns tailor-fitted to your public
+              Choose between a rich set of options to build campaigns
+              tailor-fitted to your public
             </p>
           </div>
         </div>
@@ -48,18 +53,21 @@ const Home: NextPage = () => {
             <Coins />
           </div>
           <div>
-            <h2 className="mt-1 text-xl font-medium">Reward your most loyal users</h2>
+            <h2 className="mt-1 text-xl font-medium">
+              Reward your most loyal users
+            </h2>
             <p className="mt-3">
-              Web3 is all about bringing the value back to users who contribute the most
+              Web3 is all about bringing the value back to users who contribute
+              the most
             </p>
           </div>
         </div>
       </div>
 
       <div className="mt-6 w-full grid">
-        <div className="h-16 bg-elements grid place-content-center rounded-xl">
-          <h2 className="text-3xl font-medium">How it works</h2>
-        </div>
+        {/* <div className="h-16 bg-elements grid place-content-center rounded-xl"> */}
+        {/* <h2 className="text-3xl font-medium">How it works</h2> */}
+        {/* </div> */}
       </div>
     </div>
   );

@@ -103,7 +103,12 @@ const Campaign: NextPage = () => {
           <p className="text-md mt-6">{campaign.desc}</p>
 
           <div className="relative w-full h-72 mt-8">
-            <Image src="/FallbackImage.png" alt="fallback campaign image" layout="fill" priority />
+            <Image
+              src="/FallbackImage.png"
+              alt="fallback campaign image"
+              layout="fill"
+              priority
+            />
           </div>
 
           <div className="flex items-center justify-between mt-6 w-full">
@@ -111,7 +116,9 @@ const Campaign: NextPage = () => {
               <h3 className="text-md text-gray-400">Status</h3>
               <p
                 className={`text-md uppercase font-medium ${
-                  campaign.status === "active" ? "text-bright-green" : "text-bright-red"
+                  campaign.status === "active"
+                    ? "text-bright-green"
+                    : "text-bright-red"
                 }`}
               >
                 {campaign.status}
@@ -127,12 +134,16 @@ const Campaign: NextPage = () => {
 
             <div className="flex flex-col">
               <h3 className="text-md text-gray-400">Participants</h3>
-              <p className="text-md uppercase font-medium">{campaign.participants}</p>
+              <p className="text-md uppercase font-medium">
+                {campaign.participants}
+              </p>
             </div>
 
             <div className="flex flex-col">
               <h3 className="text-md text-gray-400">Winner(s)</h3>
-              <p className="text-md uppercase font-medium">{campaign.winners}</p>
+              <p className="text-md uppercase font-medium">
+                {campaign.winners}
+              </p>
             </div>
           </div>
 
@@ -203,7 +214,9 @@ const Campaign: NextPage = () => {
 
                         <CaretDown
                           color="white"
-                          className={`mr-3 ${open ? "-rotate-180" : "rotate-0"}`}
+                          className={`mr-3 ${
+                            open ? "-rotate-180" : "rotate-0"
+                          }`}
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel as="div" className="mt-2 ml-6">

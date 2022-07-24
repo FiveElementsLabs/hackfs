@@ -3,37 +3,45 @@ import axios from "axios";
 import { useSharedState } from "../lib/store";
 
 export const useTwitterAPI = () => {
-  const [{ twitter_username, twitter_verified }] = useSharedState();
+  const [{ twitter_username }] = useSharedState();
 
-  const verifiedUser = useMemo(
-    () => (twitter_username && twitter_verified ? twitter_username : null),
-    [twitter_username, twitter_verified]
-  );
-
-  const bearerToken = process.env.NEXT_PUBLIC_TWITTER_TOKEN;
-  if (!bearerToken) throw new Error("please provide a twitter api key");
-
-  const makeQuery = async (endpoint: string, tweet_id: string, next_token: string) => {
+  const makeQuery = async (
+    endpoint: string,
+    next_token: string | null = null
+  ) => {
     const opt: any = {
-      headers: {
-        Authorization: `Bearer ${bearerToken}`,
-        "Content-Type": "application/json",
-      },
-      params: {
-        query: `conversation_id:${tweet_id}`,
-        max_results: 100,
-      },
+      method: "post",
+      body: JSON.stringify({
+        query: endpoint,
+        params: { next_token },
+      }),
     };
 
-    if (next_token) opt.params.next_token = next_token;
-    return await axios.get(endpoint, opt);
+    const res = await fetch("/api/queryTwitter", opt);
+    return await res.json();
   };
 
-  const checkTweetLiked = () => {};
+  const checkTweetLiked = async (tweetId: string) => {
+    const endpoint = `https://api.twitter.com/2/tweets/${tweetId}/liking_users?user.fields=username`;
+    const result = await makeQuery(endpoint);
+    const likers = result?.data?.data;
+    const liked = likers?.some(
+      (liker: any) => liker.username === twitter_username
+    );
+    return liked;
+  };
 
-  const checkTweetRetweeted = () => {};
+  const checkTweetRetweeted = async () => {};
 
-  const checkTweetCommented = () => {};
+  const checkTweetCommented = async () => {};
 
-  const checkAccountFollowed = () => {};
+  const checkAccountFollowed = async () => {};
+
+  return {
+    makeQuery,
+    checkTweetLiked,
+    checkTweetRetweeted,
+    checkTweetCommented,
+    checkAccountFollowed,
+  };
 };
