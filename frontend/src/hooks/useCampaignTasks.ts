@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useSharedState } from "../lib/store";
 import { useTwitterAPI } from "./useTwitterAPI";
+import { useNotifications } from "./useNotifications";
 import { useAsyncMemo } from "use-async-memo";
 
 import { FakeCampaignData } from "../pages/campaign/[cid]";
 
 export const useCampaignTasks = () => {
   const [{ campaign_id, twitter_username }] = useSharedState();
+  const { notify } = useNotifications();
   const { checkTweetLiked, checkTweetRetweeted, checkTweetCommented } =
     useTwitterAPI();
 
@@ -20,12 +22,15 @@ export const useCampaignTasks = () => {
   };
 
   const checkTasksCompleted = async (): Promise<any> => {
-    if (
-      // !campaign_id ||
-      !campaignTasks?.length ||
-      !twitter_username
-    )
+    if (!campaign_id || !campaignTasks?.length) return null;
+    if (!twitter_username) {
+      notify("warning", "No twitter account connected");
       return null;
+    }
+
+    console.log("checking tasks");
+    notify("info", "Checking tasks...");
+
     const completedTasks = [];
     for (const task of campaignTasks) {
       if (task.name === "twitter") {
@@ -48,5 +53,5 @@ export const useCampaignTasks = () => {
   const tasksCompleted = useAsyncMemo(checkTasksCompleted, [campaignTasks]);
   const tasksLeft = campaignTasks?.length || 0 - tasksCompleted?.length || 0;
 
-  return { campaignTasks, tasksCompleted, tasksLeft };
+  return { campaignTasks, tasksCompleted, tasksLeft, checkTasksCompleted };
 };

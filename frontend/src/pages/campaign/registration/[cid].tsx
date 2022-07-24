@@ -21,7 +21,7 @@ const CampaignRegistration: NextPage = () => {
   const { cid } = router.query;
   const [{ did, twitter_verified, twitter_username }] = useSharedState();
   const { useBasicProfile, useSocialAccounts } = useCeramic();
-  const { tasksCompleted, tasksLeft } = useCampaignTasks();
+  const { tasksCompleted, checkTasksCompleted } = useCampaignTasks();
 
   const campaign = useMemo(() => FakeCampaignData, []);
 
@@ -183,6 +183,7 @@ const CampaignRegistration: NextPage = () => {
                 <button
                   className="flex items-center gap-2 py-2 px-4 bg-bright-blue hover:bg-opacity-90 
                 hover:shadow-md rounded-md"
+                  onClick={() => checkTasksCompleted()}
                 >
                   <RefreshIcon width={24} />
                   Refresh data
