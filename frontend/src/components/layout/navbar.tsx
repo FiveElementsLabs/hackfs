@@ -17,7 +17,7 @@ import Lens from "../../assets/svg/Lens";
 const Navbar = () => {
   const { pathname } = useRouter();
   return (
-    <div className="bg-principal-blue py-2">
+    <div className="bg-principal-blue py-2 z-20">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">

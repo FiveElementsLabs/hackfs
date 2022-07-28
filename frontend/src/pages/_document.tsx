@@ -18,13 +18,42 @@ export default class Document extends NextDocument {
             rel="stylesheet"
           />
 
-          <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/favicons/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicons/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicons/favicon-16x16.png"
+          />
           <link rel="manifest" href="/favicons/site.webmanifest" />
           <meta name="apple-mobile-web-app-title" content="Tide" />
           <meta name="application-name" content="Tide" />
-          {/* <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" /> */}
+          <link
+            rel="mask-icon"
+            href="/favicon/safari-pinned-tab.svg"
+            color="#5bbad5"
+          />
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            (function(){
+              document.documentElement.style.background = '#040722';
+              document.body.style.background = '#040722';
+            })()
+          `,
+            }}
+          />
         </Head>
 
         <body>
