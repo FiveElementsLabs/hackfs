@@ -8,7 +8,7 @@ import DiscordFooter from "../../assets/svg/Discord";
 
 export default function Footer() {
   return (
-    <div className="bg-principal-blue py-6">
+    <div className="bg-principal-blue py-6 mt-10">
       <div className="max-w-4xl mx-auto text-xs">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">
