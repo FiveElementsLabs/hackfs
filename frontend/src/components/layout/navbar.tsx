@@ -17,46 +17,48 @@ import Lens from "../../assets/svg/Lens";
 const Navbar = () => {
   const { pathname } = useRouter();
   return (
-    <div className="pt-4 max-w-4xl mx-auto">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <Link href="/">
-            <div className="flex items-center">
-              <div className="scale-75">
-                <TideLogo />
+    <div className="bg-principal-blue py-2">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link href="/">
+              <div className="flex items-center">
+                <div className="scale-75">
+                  <TideLogo />
+                </div>
+                <h2 className="text-4xl font-medium cursor-pointer">tide</h2>
               </div>
-              <h2 className="text-4xl font-medium cursor-pointer">tide</h2>
-            </div>
-          </Link>
+            </Link>
 
-          <Link href="/active-campaigns">
-            <p
-              className={`text-sm cursor-pointer font-medium uppercase hover:text-shade-2 ${
-                pathname === "/active-campaigns"
-                  ? "text-shade-2 underline-thickness-2 underline underline-offset-4 "
-                  : ""
-              }`}
-            >
-              Active Campaigns
-            </p>
-          </Link>
+            <Link href="/active-campaigns">
+              <p
+                className={`text-sm cursor-pointer font-medium uppercase hover:text-shade-2 ${
+                  pathname === "/active-campaigns"
+                    ? "text-shade-2 underline-thickness-2 underline underline-offset-4 "
+                    : ""
+                }`}
+              >
+                Active Campaigns
+              </p>
+            </Link>
 
-          <Link href="/my-campaigns">
-            <p
-              className={`text-sm cursor-pointer font-medium uppercase hover:text-shade-2 ${
-                pathname === "/my-campaigns"
-                  ? "text-shade-2 underline-thickness-2 underline underline-offset-4"
-                  : ""
-              }`}
-            >
-              Campaigns owned
-            </p>
-          </Link>
-        </div>
+            <Link href="/my-campaigns">
+              <p
+                className={`text-sm cursor-pointer font-medium uppercase hover:text-shade-2 ${
+                  pathname === "/my-campaigns"
+                    ? "text-shade-2 underline-thickness-2 underline underline-offset-4"
+                    : ""
+                }`}
+              >
+                Campaigns owned
+              </p>
+            </Link>
+          </div>
 
-        <div className="flex items-center gap-2">
-          <Wallet />
-          <InfoDropdown />
+          <div className="flex items-center gap-2">
+            <Wallet />
+            <InfoDropdown />
+          </div>
         </div>
       </div>
     </div>
@@ -92,7 +94,9 @@ const InfoDropdown = () => {
               {item.desktop && (
                 <div
                   className={`px-1 hover:opacity-90 hover:bg-bright-blue${
-                    item.border ? "border-t border-principal-lightgray py-2 " : ""
+                    item.border
+                      ? "border-t border-principal-lightgray py-2 "
+                      : ""
                   }`}
                   key={index}
                 >

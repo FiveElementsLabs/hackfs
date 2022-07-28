@@ -13,9 +13,13 @@ const Layout = ({ children }: { children: any }) => {
   useMemo(() => (!account ? autoLoginWallet() : null), [account]);
 
   return (
-    <div className="min-h-screen bg-dark-bg text-principal-lightgray">
+    <div className="text-light-bg">
       <Navbar />
-      <main className="max-w-4xl mx-auto">{children}</main>
+
+      <div className="relative -z-10 bg-dark-bg min-h-screen">
+        <main className="max-w-4xl mx-auto ">{children}</main>
+      </div>
+
       <Footer />
     </div>
   );
