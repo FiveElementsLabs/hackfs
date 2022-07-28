@@ -1,4 +1,3 @@
-import React from "react";
 import { useMemo } from "react";
 import { useSharedState } from "../../lib/store";
 import { useWallet } from "../../hooks/useWallet";

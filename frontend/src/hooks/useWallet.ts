@@ -9,10 +9,13 @@ export const useWallet = () => {
   const { notify } = useNotifications();
 
   const connectMetamask = async () => {
-    const provider = new ethers.providers.Web3Provider((window as any).ethereum);
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum
+    );
     const account = (await provider.send("eth_requestAccounts", []))[0];
     const { chainId: chain_id } = await provider.getNetwork();
-    const network_name = chain_id in networks ? networks[chain_id].chainName : "Wrong Network";
+    const network_name =
+      chain_id in networks ? networks[chain_id].chainName : "Wrong Network";
 
     dispatch({
       type: actions.LOGIN_WALLET,
@@ -30,7 +33,8 @@ export const useWallet = () => {
 
   const autoLoginWallet = async () => {
     if (typeof window !== "undefined") {
-      const shouldAutoConnect = window.localStorage.getItem("shouldConnectMetamask") === "true";
+      const shouldAutoConnect =
+        window.localStorage.getItem("shouldConnectMetamask") === "true";
 
       if (shouldAutoConnect) await loginWallet();
     }
@@ -48,8 +52,11 @@ export const useWallet = () => {
         method: "wallet_switchEthereumChain",
         params: [{ chainId: networks[chainId].chainId }],
       });
-      const Web3Provider = new ethers.providers.Web3Provider((window as any).ethereum);
-      const { name: network_name, chainId: chain_id } = await Web3Provider.getNetwork();
+      const Web3Provider = new ethers.providers.Web3Provider(
+        (window as any).ethereum
+      );
+      const { name: network_name, chainId: chain_id } =
+        await Web3Provider.getNetwork();
       dispatch({
         type: actions.CHANGE_NETWORK,
         payload: { provider: Web3Provider, network_name, chain_id },
@@ -62,8 +69,11 @@ export const useWallet = () => {
             method: "wallet_addEthereumChain",
             params: [{ ...networks[chainId] }],
           });
-          const Web3Provider = new ethers.providers.Web3Provider((window as any).ethereum);
-          const { name: network_name, chainId: chain_id } = await Web3Provider.getNetwork();
+          const Web3Provider = new ethers.providers.Web3Provider(
+            (window as any).ethereum
+          );
+          const { name: network_name, chainId: chain_id } =
+            await Web3Provider.getNetwork();
           dispatch({
             type: actions.CHANGE_NETWORK,
             payload: { provider: Web3Provider, network_name, chain_id },

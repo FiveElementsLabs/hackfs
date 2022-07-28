@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-import axios from "axios";
 import { useSharedState } from "../lib/store";
 
 export const useTwitterAPI = () => {

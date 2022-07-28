@@ -1,4 +1,3 @@
-import React from "react";
 import TideLogo from "../../assets/svg/TideLogo";
 import FelFooter from "../../assets/svg/FiveElements";
 import DocsFooter from "../../assets/svg/Docs";

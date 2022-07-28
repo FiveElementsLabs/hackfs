@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState, Fragment } from "react";
+import { useState, Fragment } from "react";
 import { Listbox, Transition, Switch } from "@headlessui/react";
 import {
   ArrowSmRightIcon,

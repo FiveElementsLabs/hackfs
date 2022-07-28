@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from "react";
+import { Fragment, useMemo } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { useSharedState } from "../../lib/store";
@@ -23,7 +23,9 @@ export default function Wallet() {
         <div>
           <Listbox
             value={selectedNetwork}
-            onChange={(n) => changeNetwork(Number(n?.chainId).toString(10) || "137")}
+            onChange={(n) =>
+              changeNetwork(Number(n?.chainId).toString(10) || "137")
+            }
           >
             {({ open }) => (
               <>
@@ -37,7 +39,10 @@ export default function Wallet() {
                       {selectedNetwork?.chainName || "Wrong Network"}
                     </span>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none ">
-                      <SelectorIcon className="h-5 w-5 text-tide-darker" aria-hidden="true" />
+                      <SelectorIcon
+                        className="h-5 w-5 text-tide-darker"
+                        aria-hidden="true"
+                      />
                     </span>
                   </Listbox.Button>
 
@@ -79,11 +84,16 @@ export default function Wallet() {
                               {selected ? (
                                 <span
                                   className={classNames(
-                                    active ? "text-principal-lightgray" : "text-principal-gray",
+                                    active
+                                      ? "text-principal-lightgray"
+                                      : "text-principal-gray",
                                     "absolute inset-y-0 right-0 flex items-center pr-4 hover:opacity-80"
                                   )}
                                 >
-                                  <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                  <CheckIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
                                 </span>
                               ) : null}
                             </>

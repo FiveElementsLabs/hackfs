@@ -1,15 +1,14 @@
-import React from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+
 import Wallet from "./wallet";
 import MoreSvg from "../../assets/svg/MoreDots";
 import TideLogo from "../../assets/svg/TideLogo";
 import Fel from "../../assets/svg/FiveElements";
 import Docs from "../../assets/svg/Docs";
 import Contact from "../../assets/svg/Contact";
-import Medium from "../../assets/svg/Medium";
 import Twitter from "../../assets/svg/Twitter";
 import Discord from "../../assets/svg/Discord";
 import Lens from "../../assets/svg/Lens";

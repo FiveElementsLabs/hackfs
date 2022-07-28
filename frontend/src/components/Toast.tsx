@@ -23,13 +23,30 @@ export default function Toast({
 
   var icon;
   if (type === "success")
-    icon = <CheckCircleIcon className="h-8 w-8 text-bright-green" aria-hidden="true" />;
+    icon = (
+      <CheckCircleIcon
+        className="h-8 w-8 text-bright-green"
+        aria-hidden="true"
+      />
+    );
   else if (type === "error")
-    icon = <ExclamationCircleIcon className="h-8 w-8 text-bright-red" aria-hidden="true" />;
+    icon = (
+      <ExclamationCircleIcon
+        className="h-8 w-8 text-bright-red"
+        aria-hidden="true"
+      />
+    );
   else if (type === "warning")
-    icon = <XCircleIcon className="h-8 w-8 text-bright-yellow" aria-hidden="true" />;
+    icon = (
+      <XCircleIcon className="h-8 w-8 text-bright-yellow" aria-hidden="true" />
+    );
   else if (type === "info")
-    icon = <InformationCircleIcon className="h-8 w-8 text-bright-blue" aria-hidden="true" />;
+    icon = (
+      <InformationCircleIcon
+        className="h-8 w-8 text-bright-blue"
+        aria-hidden="true"
+      />
+    );
   else if (type === "loading") icon = loadingSpinner;
   else throw new Error(`Invalid notification type: ${type}`);
 
@@ -49,8 +66,12 @@ export default function Toast({
           <div className="flex items-center">
             <div className="flex-shrink-0">{icon}</div>
             <div className="ml-3 w-0 flex-1 pt-0.5">
-              <p className="work-sans-normal text-md text-principal-lightgray">{title}</p>
-              <p className="work-sans-light mt-1 text-sm text-principal-gray">{message}</p>
+              <p className="work-sans-normal text-md text-principal-lightgray">
+                {title}
+              </p>
+              <p className="work-sans-light mt-1 text-sm text-principal-gray">
+                {message}
+              </p>
             </div>
             <div className="ml-4 flex-shrink-0 flex">
               <button
@@ -121,7 +142,12 @@ const loadingSpinner = (
 
 export const TxLinkComponent = (url: string) => {
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" className="text-bright-blue text-sm">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-bright-blue text-sm"
+    >
       View on Block Explorer
     </a>
   );

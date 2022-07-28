@@ -6,7 +6,11 @@ type ITokenImage = {
   offsetSize?: string;
 };
 
-export default function TokenImage({ token, offsetMarginLeft, offsetSize }: ITokenImage) {
+export default function TokenImage({
+  token,
+  offsetMarginLeft,
+  offsetSize,
+}: ITokenImage) {
   const fallbackImageUrl =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Icon-round-Question_mark.jpg/1200px-Icon-round-Question_mark.jpg";
 
