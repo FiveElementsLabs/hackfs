@@ -34,7 +34,7 @@ export default function Landing() {
 
         <FeatureCard
           right
-          animationMargin="-300px"
+          animationMargin="-100px"
           image="EffectiveCampaigns.png"
           title={
             <>
@@ -49,7 +49,7 @@ export default function Landing() {
 
         <FeatureCard
           left
-          animationMargin="-400px"
+          animationMargin="-100px"
           image="RewardUsers.png"
           title={
             <>
