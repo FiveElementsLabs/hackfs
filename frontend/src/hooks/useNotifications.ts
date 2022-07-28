@@ -16,7 +16,12 @@ export const useNotifications = () => {
     return id;
   };
 
-  const updateNotification = (id: string, type: string, title: string, message: string) => {
+  const updateNotification = (
+    id: string,
+    type: string,
+    title: string,
+    message: string
+  ) => {
     const notification = { id, type, title, message };
     dispatch({ type: actions.UPDATE_NOTIFICATION, payload: { notification } });
     return id;
@@ -47,12 +52,18 @@ export const useNotifications = () => {
 
     tx.wait()
       .then((data: any) => {
-        dispatch({ type: actions.REMOVE_NOTIFICATION, payload: { id: notification.id } });
+        dispatch({
+          type: actions.REMOVE_NOTIFICATION,
+          payload: { id: notification.id },
+        });
         notify("success", "Transaction confirmed.", ViewTxLink(data));
         success = true;
       })
       .catch((data: any) => {
-        dispatch({ type: actions.REMOVE_NOTIFICATION, payload: { id: notification.id } });
+        dispatch({
+          type: actions.REMOVE_NOTIFICATION,
+          payload: { id: notification.id },
+        });
         notify("error", "Transaction failed.", ViewTxLink(data));
         success = false;
       });
@@ -67,7 +78,8 @@ export const useNotifications = () => {
   const ViewTxLink = (data: any) => {
     try {
       const { transactionHash } = data;
-      const url = networks[chain_id].blockExplorerUrls[0] + "tx/" + transactionHash;
+      const url =
+        networks[chain_id].blockExplorerUrls[0] + "tx/" + transactionHash;
       return TxLinkComponent(url);
     } catch (err: any) {
       console.error(err?.message);

@@ -13,7 +13,8 @@ function createTweetLink(did: string): string {
 }
 
 export default function AddTwitterAccount() {
-  const [{ did, twitter_verified, twitter_username }, dispatch] = useSharedState();
+  const [{ did, twitter_verified, twitter_username }, dispatch] =
+    useSharedState();
   const { useIdentityLink, useAddTwitterAttestation } = useCeramic();
   const identityLink = useIdentityLink();
   const addTwitterAttestation = useAddTwitterAttestation(identityLink);
@@ -43,7 +44,12 @@ export default function AddTwitterAccount() {
   }, [challengeLoading, did, identityLink, twitterUsername]);
 
   const verify = useCallback(() => {
-    if (self == null || challenge == null || typeof twitterUsername !== "string" || verifyLoading) {
+    if (
+      self == null ||
+      challenge == null ||
+      typeof twitterUsername !== "string" ||
+      verifyLoading
+    ) {
       return;
     }
 
@@ -115,10 +121,16 @@ export default function AddTwitterAccount() {
               <p className="p-2 text-xl font-bold">Step 2</p>
               <div className="flex">
                 <p className="mr-1">Tweet a verification from </p>{" "}
-                <p className="text-blue-600 font-medium">@{twitterUsername as string}</p>
+                <p className="text-blue-600 font-medium">
+                  @{twitterUsername as string}
+                </p>
               </div>
 
-              <a href={createTweetLink(did)} target="_blank" rel="noopener noreferrer">
+              <a
+                href={createTweetLink(did)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <button
                   className="w-28 py-1 bg-blue-500 hover:bg-blue-600 text-lg text-white rounded-lg font-medium
               disabled:bg-gray-500"

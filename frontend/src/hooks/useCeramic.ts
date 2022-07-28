@@ -16,7 +16,9 @@ export const useCeramic = () => {
   const useSocialAccounts = () => useViewerRecord("alsoKnownAs");
 
   const useIdentityLink = (url?: string): IdentityLink => {
-    const [identityLink, setIdentityLink] = useState(() => new IdentityLink(url));
+    const [identityLink, setIdentityLink] = useState(
+      () => new IdentityLink(url)
+    );
     useEffect(() => {
       setIdentityLink(new IdentityLink(url));
     }, [url]);
@@ -27,12 +29,19 @@ export const useCeramic = () => {
     const accountsRecord = useSocialAccounts();
 
     return useCallback(
-      async (did: any, username: string, challengeCode: string): Promise<boolean> => {
+      async (
+        did: any,
+        username: string,
+        challengeCode: string
+      ): Promise<boolean> => {
         if (!accountsRecord.isMutable || accountsRecord.isMutating) {
           return false;
         }
 
-        const attestation = await identityLink.confirmTwitterChallenge(did, challengeCode);
+        const attestation = await identityLink.confirmTwitterChallenge(
+          did,
+          challengeCode
+        );
         const accounts = accountsRecord.content?.accounts ?? [];
 
         const existing = findTwitter(accounts, username);

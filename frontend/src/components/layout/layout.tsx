@@ -1,4 +1,3 @@
-import React from "react";
 import { useMemo } from "react";
 import { useSharedState } from "../../lib/store";
 import { useWallet } from "../../hooks/useWallet";
@@ -13,10 +12,14 @@ const Layout = ({ children }: { children: any }) => {
   useMemo(() => (!account ? autoLoginWallet() : null), [account]);
 
   return (
-    <div className="min-h-screen bg-dark-bg text-principal-lightgray">
-      <Navbar />
-      <main className="max-w-4xl mx-auto">{children}</main>
-      <Footer />
+    <div className="text-light-bg bg-dark-bg">
+      <div className="relative z-10">
+        <Navbar />
+
+        <main className="max-w-4xl mx-auto ">{children}</main>
+
+        <Footer />
+      </div>
     </div>
   );
 };

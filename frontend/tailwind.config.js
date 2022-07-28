@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/pages/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: "class",
   theme: {
     screens: {
@@ -31,11 +34,15 @@ module.exports = {
           3: "#73ABFF",
         },
         dark: {
-          card: "#0f1d45", // #0B0E29
+          card: "#0f1d45",
+          card2: "#0C1840",
           bg: "#040722",
         },
         buttonHover: "#69B4FF",
         elements: "#0A3576",
+        light: {
+          bg: "#E6EBF1",
+        },
       },
       spacing: {
         128: "32rem",

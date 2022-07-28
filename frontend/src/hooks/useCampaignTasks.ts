@@ -1,12 +1,10 @@
-import axios from "axios";
 import { ethers } from "ethers";
+import { useAsyncMemo } from "use-async-memo";
 import { useSharedState } from "../lib/store";
 import { useTwitterAPI } from "./useTwitterAPI";
 import { useNotifications } from "./useNotifications";
-import { useAsyncMemo } from "use-async-memo";
-import RewardModuleJson from "../../public/abi/MockRewardAction.json";
-
 import { FakeCampaignData } from "../../mockData";
+import RewardModuleJson from "../../public/abi/MockRewardAction.json";
 
 export const useCampaignTasks = () => {
   const [{ campaign_id, twitter_username, provider }] = useSharedState();

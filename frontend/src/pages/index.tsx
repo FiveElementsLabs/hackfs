@@ -1,76 +1,69 @@
-import React from "react";
-import type { NextPage } from "next";
-import Rocket from "../assets/svg/Rocket";
-import Share from "../assets/svg/Share";
-import Coins from "../assets/svg/Coins";
+import Link from "next/link";
+import Bubbles from "../components/landing/Bubbles";
+import FeatureCard from "../components/landing/FeatureCard";
+import Title from "../components/landing/Title";
 
-const Home: NextPage = () => {
+export default function Landing() {
   return (
-    <div className="mt-8">
+    <>
       <div
-        className="relative h-[18.1rem] w-full rounded-xl bg-no-repeat bg-center bg-cover
-        grid place-content-center"
-        style={{ backgroundImage: `url(/HeaderGraphic.png)` }}
-      >
-        <h1 className="text-3xl font-medium text-center">
-          Boost your content and <br /> grow your audience
-        </h1>
+        id="top-hue"
+        className="absolute top-0 left-0 right-0 bg-gradient-to-t h-[700px] 
+      from-dark-bg to-light-bg opacity-5 -z-10"
+      />
+
+      <Bubbles />
+
+      <Title />
+
+      <div id="features" className="flex flex-col gap-8 w-full">
+        <FeatureCard
+          left
+          animationMargin="-100px"
+          image="TargetAudience.png"
+          title={
+            <>
+              Target your <br />
+              Web3 audience
+            </>
+          }
+          description="Use our sophisticated suite of tools to pinpoint the best audience for
+          your NFT or DeFi product"
+          link="/"
+        />
+
+        <FeatureCard
+          right
+          animationMargin="-100px"
+          image="EffectiveCampaigns.png"
+          title={
+            <>
+              Create effective <br />
+              campaigns
+            </>
+          }
+          description="Choose between a rich set of options to build campaigns
+          tailor-fitted to your public. Giveaways, raffles & more."
+          link="/"
+        />
+
+        <FeatureCard
+          left
+          animationMargin="-100px"
+          image="RewardUsers.png"
+          title={
+            <>
+              Reward your <br />
+              most loyal users
+            </>
+          }
+          description="Rewad user that promote your contents or interact with your
+          protocol"
+          link="/"
+        />
       </div>
 
-      <div className="grid grid-cols-3 mt-3 gap-4">
-        <div className="bg-dark-card h-64 p-4 rounded-2xl">
-          <div className="bg-elements rounded-xl h-16 w-16 grid place-content-center scale-90">
-            <Rocket />
-          </div>
-          <div>
-            <h2 className="mt-1 text-xl font-medium">
-              Target your Web3 audience
-            </h2>
-            <p className="mt-3">
-              Use our sophisticated suite of tools to pinpoint the best audience
-              for your NFT or DeFi product
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-dark-card h-64 p-4 rounded-2xl">
-          <div className="bg-elements rounded-xl h-16 w-16 grid place-content-center scale-90">
-            <Share />
-          </div>
-          <div>
-            <h2 className="mt-1 text-xl font-medium">
-              Create effective campaigns
-            </h2>
-            <p className="mt-3">
-              Choose between a rich set of options to build campaigns
-              tailor-fitted to your public
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-dark-card h-64 p-4 rounded-2xl">
-          <div className="bg-elements rounded-xl h-16 w-16 grid place-content-center scale-90">
-            <Coins />
-          </div>
-          <div>
-            <h2 className="mt-1 text-xl font-medium">
-              Reward your most loyal users
-            </h2>
-            <p className="mt-3">
-              Web3 is all about bringing the value back to users who contribute
-              the most
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-6 w-full grid">
-        {/* <div className="h-16 bg-elements grid place-content-center rounded-xl"> */}
-        {/* <h2 className="text-3xl font-medium">How it works</h2> */}
-        {/* </div> */}
-      </div>
-    </div>
+      <div id="padding" className="py-72" />
+    </>
   );
-};
-
-export default Home;
+}
