@@ -6,6 +6,8 @@ import { useWallet } from "../../hooks/useWallet";
 import { shortenAddress } from "../../lib/helpers";
 import networks, { network } from "../../lib/networks";
 
+const IS_MULTICHAIN = false;
+
 const classNames = (...classes: any) => classes.filter(Boolean).join(" ");
 
 export default function Wallet() {
@@ -19,7 +21,7 @@ export default function Wallet() {
 
   return (
     <div className="flex items-center w-auto text-tide-darker">
-      {network_name && (
+      {network_name && IS_MULTICHAIN && (
         <div>
           <Listbox
             value={selectedNetwork}

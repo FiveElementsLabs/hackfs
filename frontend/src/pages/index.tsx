@@ -1,26 +1,26 @@
-import Link from "next/link";
 import Bubbles from "../components/landing/Bubbles";
 import FeatureCard from "../components/landing/FeatureCard";
 import Title from "../components/landing/Title";
 
 export default function Landing() {
   return (
-    <>
+    <div className="px-4 lg:px-0">
       <div
         id="top-hue"
-        className="absolute top-0 left-0 right-0 bg-gradient-to-t h-[700px] 
+        className="hidden sm:block absolute top-0 left-0 right-0 bg-gradient-to-t h-[700px] 
       from-dark-bg to-light-bg opacity-5 -z-10"
       />
 
-      <Bubbles />
+      <Bubbles className="hidden sm:block" />
 
       <Title />
 
-      <div id="features" className="flex flex-col gap-8 w-full">
+      <div id="features" className="flex flex-col gap-8 w-full mt-5 md:mt-0">
         <FeatureCard
           left
           animationMargin="-100px"
           image="TargetAudience.png"
+          mobileImage="TargetAudienceMobile.png"
           title={
             <>
               Target your <br />
@@ -36,6 +36,7 @@ export default function Landing() {
           right
           animationMargin="-100px"
           image="EffectiveCampaigns.png"
+          mobileImage="EffectiveCampaignsMobile.png"
           title={
             <>
               Create effective <br />
@@ -51,6 +52,7 @@ export default function Landing() {
           left
           animationMargin="-100px"
           image="RewardUsers.png"
+          mobileImage="RewardUsersMobile.png"
           title={
             <>
               Reward your <br />
@@ -63,7 +65,7 @@ export default function Landing() {
         />
       </div>
 
-      <div id="padding" className="py-72" />
-    </>
+      <div id="padding" className="py-24 md:py-72" />
+    </div>
   );
 }
