@@ -1,6 +1,6 @@
-export default function Bubbles() {
+export default function Bubbles({ className = "" }: { className?: string }) {
   return (
-    <>
+    <div className={className}>
       <div
         className="absolute top-0 right-0 -translate-y-[100px] opacity-10 
         w-[600px] h-[600px] bg-no-repeat bg-center bg-contain -z-10"
@@ -26,6 +26,6 @@ export default function Bubbles() {
         w-[900px] h-[600px] bg-no-repeat bg-center bg-contain -z-10"
         style={{ backgroundImage: "url(/landing/Bubble05.png)" }}
       />
-    </>
+    </div>
   );
 }

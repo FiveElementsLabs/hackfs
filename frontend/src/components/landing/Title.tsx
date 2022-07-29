@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 
 export default function Title() {
   return (
-    <div className="py-40">
+    <div className="py-12 sm:py-40">
       <motion.h1
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         transition={{ duration: 1.1, ease: [0.6, 0.05, -0.01, 0.9] }}
-        className="text-5xl font-light tracking-wide"
+        className="text-4xl w-64 sm:w-auto sm:text-5xl font-light tracking-wide"
       >
         Grow your project <br />
         community <span className="font-medium">organically</span>
@@ -17,16 +17,17 @@ export default function Title() {
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         transition={{ duration: 1, delay: 0.5, ease: [0.6, 0.05, -0.01, 0.9] }}
-        className="text-xl tracking-wide text-shade-2 font-light mt-6"
+        className="text-lg sm:text-xl w-72 sm:w-auto tracking-wide text-shade-2 font-light mt-6"
       >
-        Create transparent, automated and flexible <br />
+        Create transparent, automated and flexible{" "}
+        <br className="hidden sm:block" />
         campaigns and reward users directly
       </motion.h2>
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         transition={{ duration: 1, delay: 0.5, ease: [0.6, 0.05, -0.01, 0.9] }}
-        className="mt-8 flex gap-5 items-center justify-start"
+        className="mt-6 sm:mt-8 flex gap-5 items-center justify-start"
       >
         <Link href="/">
           <button
